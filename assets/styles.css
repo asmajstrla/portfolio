@@ -218,6 +218,7 @@ p { margin: 0 0 1em; max-width: 62ch; }
 
 .gallery { columns: 3 280px; column-gap: 20px; padding-bottom: 110px; }
 .tile { break-inside: avoid; margin: 0 0 20px; display: block; text-decoration: none; }
+.tile video { display: block; width: 100%; height: auto; border-radius: 18px; aspect-ratio: var(--ar, 1); object-fit: cover; }
 .tile .ph, .tile img { height: auto; width: 100%; object-fit: cover; border-radius: 18px; aspect-ratio: var(--ar, 1); }
 .tile figcaption { padding: 10px 2px 0; font-size: 15px; font-weight: 500; }
 .tile:hover figcaption { text-decoration: underline; text-underline-offset: 3px; }

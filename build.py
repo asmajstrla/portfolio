@@ -148,6 +148,12 @@ GRAPHIC = [
     ("The Great Wave neon", shot("6620247-The-Great-Wave-Neon"), "images/work/the-great-wave-neon.webp", 1.333),
     ("Custom neons", shot("6494993-Custom-Neons"), "images/work/custom-neons.webp", 1.333),
 ]
+# Pieces that play as looping video instead of a still (title: video file).
+# The still image is shown first and to anyone who prefers reduced motion.
+GALLERY_VIDEOS = {
+    "Nom Com movie night": "images/work/nom-com-movie-night.mp4",
+}
+
 TILE_COLORS = ["var(--c1)", "var(--c3)", "var(--c5)", "var(--c4)", "var(--c6)", "var(--c2)"]
 
 
@@ -228,6 +234,11 @@ def page(title, body, current, prefix="", description=""):
   </div>
 </footer>
 <script>
+  const vids = document.querySelectorAll('video[data-autoplay]');
+  if (vids.length && !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {{
+    const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(() => {{}}) : e.target.pause()), {{ threshold: 0.25 }});
+    vids.forEach(v => io.observe(v));
+  }}
   const b = document.querySelector('.menu-btn'), m = document.getElementById('menu');
   b.addEventListener('click', () => {{
     const open = m.classList.toggle('open');
@@ -333,6 +344,9 @@ def build_gallery(title, intro, items, current):
     for i, (name, link, img, ar) in enumerate(items):
         color = TILE_COLORS[i % len(TILE_COLORS)]
         inner = art(img, name, "Add image", color)
+        if name in GALLERY_VIDEOS:
+            inner = (f'<video src="{GALLERY_VIDEOS[name]}" poster="{img}" muted loop playsinline '
+                     f'preload="metadata" aria-label="{escape(name)}, animated" data-autoplay></video>')
         tiles.append(f'<a class="tile" href="{link}" style="--ar:{ar}"><figure style="margin:0">{inner}<figcaption>{escape(name)}</figcaption></figure></a>')
     body = f"""<section class="page-head wrap">
   <h1>{escape(title)}</h1>
