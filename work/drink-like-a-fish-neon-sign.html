@@ -25,7 +25,7 @@
   <a class="close" href="../other-work.html">Close</a>
 </header>
 <main>
-  <div class="gallery"><button class="shot" type="button" aria-label="View Drink Like a Fish neon sign larger"><img src="../images/work/drink-like-a-fish-neon-sign.webp" alt="Drink Like a Fish neon sign" loading="lazy"></button><a class="next-panel" href="nom-neon.html"><img src="../images/work/nom-neon.webp" alt=""><div><strong>Next: Nom neon</strong><span>Neon sign</span></div></a></div>
+  <div class="gallery-slot"><div class="gallery"><button class="shot" type="button" aria-label="View Drink Like a Fish neon sign larger"><img src="../images/work/drink-like-a-fish-neon-sign.webp" alt="Drink Like a Fish neon sign" loading="lazy"></button><a class="next-panel" href="nom-neon.html"><img src="../images/work/nom-neon.webp" alt=""><div><strong>Next: Nom neon</strong><span>Neon sign</span></div></a></div></div>
   <div class="info">
     <div class="left"></div>
     <div>
@@ -76,6 +76,21 @@
     const io = new IntersectionObserver(es => es.forEach(e =>
       e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
     vids.forEach(v => io.observe(v));
+  }
+
+  // project strip: starts tall, shrinks as you scroll, then the text slides underneath
+  const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');
+  if (strip) {
+    const wide = matchMedia('(min-width: 761px)');
+    let ticking = false;
+    const fit = () => {
+      ticking = false;
+      if (!wide.matches) { strip.style.height = ''; return; }
+      const full = slot.offsetHeight, least = full * 34 / 62;
+      strip.style.height = Math.max(least, full - scrollY) + 'px';
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(fit); } }, { passive: true });
+    addEventListener('resize', fit); wide.addEventListener('change', fit); fit();
   }
 
   // lightbox

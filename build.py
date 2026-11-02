@@ -134,6 +134,21 @@ SCRIPT = """<script>
     vids.forEach(v => io.observe(v));
   }
 
+  // project strip: starts tall, shrinks as you scroll, then the text slides underneath
+  const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');
+  if (strip) {
+    const wide = matchMedia('(min-width: 761px)');
+    let ticking = false;
+    const fit = () => {
+      ticking = false;
+      if (!wide.matches) { strip.style.height = ''; return; }
+      const full = slot.offsetHeight, least = full * 34 / 62;
+      strip.style.height = Math.max(least, full - scrollY) + 'px';
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(fit); } }, { passive: true });
+    addEventListener('resize', fit); wide.addEventListener('change', fit); fit();
+  }
+
   // lightbox
   const lb = document.querySelector('.lightbox');
   if (lb) {
@@ -369,7 +384,7 @@ def build_project(p):
     year = (escape(p["year"]) + "<br>") if p.get("year") else ""
     body = f"""{project_header(p, pre)}
 <main>
-  <div class="gallery">{shots}{next_panel}</div>
+  <div class="gallery-slot"><div class="gallery">{shots}{next_panel}</div></div>
   <div class="info">
     <div class="left">{left}</div>
     <div>

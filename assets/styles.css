@@ -219,9 +219,11 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .more li a:hover { color: var(--muted); }
 
 /* ---------- project page ---------- */
+/* the slot holds the strip's full height in the page; the strip itself is pinned
+   under the header and shrinks from 62% to 34% of the screen as you scroll (see script) */
+.gallery-slot { height: min(62svh, 50vw); }
 .gallery {
-  /* stays pinned under the header while the details scroll beneath it */
-  position: sticky; top: var(--header); z-index: 20; background: var(--bg);
+  position: fixed; top: var(--header); left: 0; right: 0; z-index: 20; background: var(--bg);
   display: flex; gap: 2px; height: min(62svh, 50vw);
   overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: thin;
 }
@@ -263,6 +265,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .pager .next { text-align: right; }
 
 @media (max-width: 760px) {
+  .gallery-slot { height: auto; }
   .gallery { position: static; height: 62vw; min-height: 240px; }
   .info, .story section { grid-template-columns: 1fr; }
   .facts { grid-template-columns: 1fr 1fr; }
