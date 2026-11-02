@@ -349,9 +349,10 @@ def build_project(p):
         f'<button class="shot" type="button" aria-label="View {escape(alt)} larger">{media(src, alt, vids, pre)}</button>'
         for src, alt, vids in strip
     ) or '<div class="empty">Add images for this project</div>'
-    nimg = f'<img src="{pre}{nxt["images"][0]}" alt="">' if nxt["images"] else ""
-    next_panel = (f'<a class="next-panel" href="{nxt["slug"]}.html">{nimg}'
-                  f'<div><strong>Next: {escape(nxt["title"])}</strong><span>{escape(nxt["type"])}</span></div></a>')
+    next_panel = (f'<a class="next-panel" href="{nxt["slug"]}.html">'
+                  f'<div><strong>Next: {escape(nxt["title"])}</strong><span>{escape(nxt["type"])}</span>'
+                  f'<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" '
+                  f'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>')
 
     left = ""
     if p.get("client"):
