@@ -69,9 +69,21 @@ def head(title, prefix):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+{THEME_BOOT}
 <link rel="stylesheet" href="{prefix}assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-4%20-35%20130.48%20130.48%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23080a16%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%227%22%3E%3Cpolyline%20points%3D%22.5%2043.04%20118.98%2043.04%20118.98%2030.62%203.5%2030.62%203.5%2018.48%20121.98%2018.48%22/%3E%3Cline%20x1%3D%22121.98%22%20y1%3D%2256.02%22%20x2%3D%2289.28%22%20y2%3D%2256.02%22/%3E%3Cline%20x1%3D%2277.59%22%20y1%3D%223.5%22%20x2%3D%2244.89%22%20y2%3D%223.5%22/%3E%3Cline%20x1%3D%2233.2%22%20y1%3D%2256.02%22%20x2%3D%22.5%22%20y2%3D%2256.02%22/%3E%3Cpolyline%20points%3D%22106.63%2056.02%2061.24%203.5%2015.85%2056.02%22/%3E%3C/g%3E%3C/svg%3E">
 </head>"""
+
+
+THEME_TOGGLE = (
+    '<button class="theme-toggle" type="button" aria-label="Switch to dark mode">'
+    '<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">'
+    '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>'
+    '<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button>')
+
+# set the saved theme before the page paints, so there's no flash
+THEME_BOOT = """<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"""
 
 
 def header(current, prefix="", views=False):
@@ -83,8 +95,11 @@ def header(current, prefix="", views=False):
     return f"""<header class="top">
   <a class="brand" href="{prefix}index.html" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
   {toggle}
-  <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-  <ul class="links" id="menu">{links}</ul></nav>
+  <div class="top-right">
+    <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="links" id="menu">{links}</ul></nav>
+    {THEME_TOGGLE}
+  </div>
 </header>"""
 
 
@@ -92,7 +107,7 @@ def project_header(p, prefix):
     return f"""<header class="top">
   <a class="brand" href="{prefix}index.html" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
   <span></span>
-  <a class="close" href="{prefix}{p['section_page']}">Close</a>
+  <div class="top-right"><a class="close" href="{prefix}{p['section_page']}">Close</a>{THEME_TOGGLE}</div>
 </header>"""
 
 
@@ -112,6 +127,21 @@ SCRIPT = """<script>
     const open = menu.classList.toggle('open');
     mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
   });
+
+  // light / dark toggle
+  const tt = document.querySelector('.theme-toggle');
+  if (tt) {
+    const root = document.documentElement, sys = matchMedia('(prefers-color-scheme: dark)');
+    const isDark = () => (root.dataset.theme || (sys.matches ? 'dark' : 'light')) === 'dark';
+    const label = () => tt.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode');
+    tt.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
+    });
+    sys.addEventListener('change', label); label();
+  }
 
   // list / grid toggle, remembered per page
   const key = 'view:' + location.pathname;
