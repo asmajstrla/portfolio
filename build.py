@@ -350,10 +350,8 @@ def build_about():
   </section>
   <div class="story" style="padding-top:24px">
     <section><h2>Bio</h2><div class="body">{bio}</div></section>
-    <section><h2>Highlights</h2><div><ul class="xp hl">{hl}</ul></div></section>
     <section><h2>Experience</h2><div>{xp}</div></section>
     <section><h2>Awards and recognition</h2><div><ul class="xp">{awards}</ul><p class="note-sm">American Advertising Federation (ADDY) awards</p></div></section>
-    <section><h2>Mentorship and leadership</h2><div><ul class="xp hl">{mentor}</ul></div></section>
     <section><h2>Contact</h2><div class="body"><p>{"<br>".join(contact)}</p></div></section>
   </div>
 </main>"""
