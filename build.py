@@ -241,9 +241,61 @@ def build_index(key, label, pg, projects, intro):
     return page(label, body, view="grid")
 
 
+OTHER_PAGE = "other-work.html"
+for p in SELECTED:
+    p["section_page"] = OTHER_PAGE
+
+# the three boxes on the Brand page: (title, subtitle, link, cover image)
+BRAND_BOXES = [
+    ("Hawkers Asian Street Food", "Brand identity and creative direction", "work/hawkers.html",
+     "images/work/hawkers-tiger.webp"),
+    ("UCF", "Environmental and print design", "work/ucf.html",
+     "images/work/ucf-mba-downtown-wall-wrap.webp"),
+    ("Other work", "Illustration, lettering, signage and personal projects", OTHER_PAGE,
+     "images/work/kabuki-mask.webp"),
+]
+
+
+def build_brand(key, label, pg, projects, intro):
+    boxes = "".join(
+        f'<li><a class="box" href="{href}"><img src="{img}" alt="" loading="lazy">'
+        f'<span class="box-text"><strong>{escape(t)}</strong><span>{escape(sub)}</span></span></a></li>'
+        for t, sub, href, img in BRAND_BOXES)
+    body = f"""{header(pg)}
+<main>
+  <section class="stage stage-short">
+    <div>
+      <p class="lede">{escape(intro)}</p>
+      <h1 class="word">{escape(label)}</h1>
+    </div>
+  </section>
+  <ul class="boxes">{boxes}</ul>
+</main>"""
+    return page(label, body)
+
+
+def build_other():
+    body = f"""{header("brand.html")}
+<main>
+  <section class="stage stage-short">
+    <div>
+      <p class="lede"><a href="brand.html">Brand</a> / Illustration, lettering, signage and personal projects.</p>
+      <h1 class="word">other work</h1>
+    </div>
+  </section>
+  {masonry(SELECTED).replace(' switchable', '')}
+</main>"""
+    return page("Other work", body)
+
+
 def build_project(p):
     pre = "../"
-    projs = next(s[3] for s in SECTIONS if s[0] == p["section"])
+    if p in C.CLIENTS:
+        projs = C.CLIENTS
+    elif p in SELECTED:
+        projs = SELECTED
+    else:
+        projs = next(s[3] for s in SECTIONS if s[0] == p["section"])
     i = projs.index(p)
     prev, nxt = projs[i - 1], projs[(i + 1) % len(projs)]
 
@@ -365,7 +417,8 @@ def main():
         old.unlink()
     files = {"index.html": build_home(), "about.html": build_about()}
     for s in SECTIONS:
-        files[s[2]] = build_index(*s)
+        files[s[2]] = build_brand(*s) if s[0] == "brand" else build_index(*s)
+    files[OTHER_PAGE] = build_other()
     for p in ALL.values():
         files[f"work/{p['slug']}.html"] = build_project(p)
     # old addresses keep working
