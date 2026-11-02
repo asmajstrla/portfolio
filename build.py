@@ -18,7 +18,8 @@ PIECES = {p["slug"]: p for p in C.PIECES}
 IN_CLIENT = {slug: c for c in C.CLIENTS for _, slugs in c["groups"] for slug in slugs}
 for c in C.CLIENTS:
     # a client page's covers: the first piece from each group
-    c["images"] = [PIECES[g[1][0]]["images"][0] for g in c["groups"] if g[1]][:4]
+    c["images"] = ([c["cover"]] if c.get("cover") else []) + \
+        [PIECES[g[1][0]]["images"][0] for g in c["groups"] if g[1]][:4]
     c.setdefault("videos", {})
     for _, slugs in c["groups"]:
         for slug in slugs:
@@ -246,21 +247,18 @@ for p in SELECTED:
     p["section_page"] = OTHER_PAGE
 
 # the three boxes on the Brand page: (title, subtitle, link, cover image)
-BRAND_BOXES = [
-    ("Hawkers Asian Street Food", "Brand identity and creative direction", "work/hawkers.html",
-     "images/work/hawkers-noodle-tiger-shirt.webp"),
-    ("UCF", "Environmental and print design", "work/ucf.html",
-     "images/work/ucf-mba-downtown-wall-wrap.webp"),
-    ("Other work", "Illustration, signage and more", OTHER_PAGE,
-     "images/work/kabuki-mask.webp"),
+BRAND_BOXES = [  # (title, subtitle, link, cover, crop position)
+    (c["title"], c["type"], f'work/{c["slug"]}.html', c.get("cover") or c["images"][0], c.get("crop", "center"))
+    for c in C.CLIENTS
 ]
 
 
 def rail(items, prefix=""):
     """Tall boxes to the right of the big word; scrolls sideways when there are more than fit."""
     out = []
-    for t, sub, href, img in items:
-        pic = f'<img src="{prefix}{img}" alt="" loading="lazy">' if img else '<span class="box-empty">Add a cover image</span>'
+    for t, sub, href, img, *pos in items:
+        style = f' style="object-position:{pos[0]}"' if pos else ""
+        pic = f'<img src="{prefix}{img}" alt=""{style} loading="lazy">' if img else '<span class="box-empty">Add a cover image</span>'
         out.append(f'<li><a class="box" href="{prefix}{href}">{pic}'
                    f'<span class="box-text"><strong>{escape(t)}</strong><span>{escape(sub)}</span></span></a></li>')
     return f'<div class="rail-wrap"><ul class="rail" tabindex="0" aria-label="Projects">{"".join(out)}</ul></div>'
