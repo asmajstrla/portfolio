@@ -58,7 +58,8 @@ p { margin: 0 0 1em; }
 @media (prefers-reduced-transparency: reduce) {
   .top { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
-.brand { font-weight: 600; letter-spacing: -0.01em; justify-self: start; }
+.brand { justify-self: start; display: flex; align-items: center; padding: 4px 0; }
+.brand .logo { height: 18px; width: auto; display: block; }   /* same height as the menu text */
 .views { display: flex; gap: 14px; }
 .views button { font: inherit; color: var(--muted); background: none; border: 0; padding: 4px 0; cursor: pointer; }
 .views button[aria-pressed="true"] { color: var(--ink); }
@@ -185,7 +186,6 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
 }
-.rail.fade-l { --fade-l: 72px; }
 .rail.fade-r { --fade-r: 96px; }
 .rail > li { flex: none; scroll-snap-align: start; }
 .box {
@@ -206,7 +206,6 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
   .stage-rail { grid-template-columns: 1fr; }
   .rail-wrap, .rail-wrap.spills { justify-self: stretch; width: auto; margin: 0 calc(-1 * var(--pad)); }
   .rail { padding: 0 var(--pad) 10px; scroll-padding: 0 var(--pad); }
-  .rail.fade-l { --fade-l: 32px; }
   .rail.fade-r { --fade-r: 48px; }
   .box { width: 66vw; height: auto; aspect-ratio: 66 / 108; }
 }
