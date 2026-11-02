@@ -259,10 +259,6 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 @media (max-width: 760px) {
   .stage-rail { grid-template-columns: 1fr; }
   .rail-wrap, .rail-wrap.spills { justify-self: stretch; width: auto; margin: 0 calc(-1 * var(--pad)); }
-  /* the slider pins under the header as the title scrolls away; the extra space below
-     gives the page just enough scroll for it to reach the top */
-  .rail-wrap { position: sticky; top: var(--header); align-self: start; z-index: 5; }
-  .stage-rail { padding-bottom: max(var(--pad), calc(100svh - var(--header) - 108vw - 10px - var(--foot))); }
   .rail { padding: 0 var(--pad) 10px; scroll-padding: 0 var(--pad); }
   .rail.fade-r { --fade-r: 48px; }
   .box { width: 66vw; height: auto; aspect-ratio: 66 / 108; }
@@ -339,8 +335,9 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .pager .next { text-align: right; }
 
 @media (max-width: 760px) {
-  .gallery-slot { height: auto; }
-  .gallery { position: static; height: 62vw; min-height: 240px; }
+  /* phones: the image strip pins under the header while the details scroll beneath it */
+  .gallery-slot { display: contents; }
+  .gallery { position: sticky; top: var(--header); height: 62vw; min-height: 240px; }
   .info, .story section { grid-template-columns: 1fr; }
   .facts { grid-template-columns: 1fr 1fr; }
   .pager { grid-template-columns: 1fr 1fr; }
