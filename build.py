@@ -323,7 +323,15 @@ def build_about():
     portrait = (f'<img src="{C.PORTRAIT}" alt="Portrait of {escape(C.NAME)}">' if C.PORTRAIT
                 else '<span class="empty">Add your photo</span>')
     bio = "".join(f"<p>{escape(t)}</p>" for t in C.ABOUT)
-    xp = "".join(f"<li><span>{escape(c)}</span><span>{escape(r)}</span><span>{escape(y)}</span></li>" for c, r, y in C.EXPERIENCE)
+    row = lambda a, b_, c: f"<li><span>{escape(a)}</span><span>{escape(b_)}</span><span>{escape(c)}</span></li>"
+    shown = "".join(row(c, r, y) for c, r, y, show in C.EXPERIENCE if show)
+    hidden = "".join(row(c, r, y) for c, r, y, show in C.EXPERIENCE if not show)
+    xp = f'<ul class="xp">{shown}</ul>'
+    if hidden:
+        xp += (f'<details class="more-xp"><summary><span class="when-closed">Show more</span>'
+               f'<span class="when-open">Show less</span></summary><ul class="xp">{hidden}</ul></details>')
+    awards = "".join(row(a, p, y) for a, p, y in C.AWARDS)
+    mentor = "".join(f"<li><span>{escape(m)}</span></li>" for m in C.MENTORSHIP)
     logos = "".join(f'<li><img src="{src}" alt="{escape(n)}"></li>' for n, src in C.LOGOS)
     hl = "".join(f"<li><span>{escape(h)}</span></li>" for h in C.HIGHLIGHTS)
     contact = [f'<a href="{C.LINKEDIN}">LinkedIn</a>', f'<a href="{C.DRIBBBLE}">Dribbble</a>']
@@ -343,8 +351,9 @@ def build_about():
   <div class="story" style="padding-top:24px">
     <section><h2>Bio</h2><div class="body">{bio}</div></section>
     <section><h2>Highlights</h2><div><ul class="xp hl">{hl}</ul></div></section>
-    <section><h2>Experience</h2><div><ul class="xp">{xp}</ul></div></section>
-    <section><h2>What I bring</h2><div class="body"><p>{escape(", ".join(C.SKILLS))}</p></div></section>
+    <section><h2>Experience</h2><div>{xp}</div></section>
+    <section><h2>Awards and recognition</h2><div><ul class="xp">{awards}</ul><p class="note-sm">American Advertising Federation (ADDY) awards</p></div></section>
+    <section><h2>Mentorship and leadership</h2><div><ul class="xp hl">{mentor}</ul></div></section>
     <section><h2>Contact</h2><div class="body"><p>{"<br>".join(contact)}</p></div></section>
   </div>
 </main>"""

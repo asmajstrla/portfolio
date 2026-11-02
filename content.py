@@ -19,9 +19,9 @@ PORTRAIT = "images/adam-smajstrla.webp"
 INTRO = "Creative director and product designer in Orlando. Currently a senior product designer at Disney, with a decade of brand and web work behind it."
 
 ABOUT = [
-    "I'm a creative director and product designer in Orlando with more than a decade of work across brand, web and product. I'm currently a senior product designer at The Walt Disney Company. In my earlier role there, I was part of the design systems team behind the websites and apps for Walt Disney World, Disney Cruise Line and Disneyland, building the shared components, patterns and guidelines that keep a large digital ecosystem consistent.",
-    "Before Disney, I led UX and visual design for Asbestos.com and its sister sites at Launch That, and built Red 6's brand and website from the ground up. I spent four and a half years at Hawkers Asian Street Food, first as senior art director and then as creative director, leading an in-house team of designers, photographers and videographers across 13 restaurants and painting murals in new locations myself.",
-    "My work sits where brand, UX and systems meet. I like giving teams the structure to ship good work at scale without losing the personality that makes a brand worth remembering.",
+    "I'm a visual problem solver: a creative director and product designer in Orlando, currently a senior product designer at The Walt Disney Company.",
+    "For 15 years I've designed across theme parks, hospitality, higher education, insurance and tech, from Disney's design systems to an award-winning restaurant brand at Hawkers.",
+    "I pair intuition with research and data, and I give teams the structure to ship great work without losing a brand's personality.",
 ]
 # Logos shown above "about", in this order (black PNGs in images/logos)
 LOGOS = [
@@ -36,22 +36,40 @@ HIGHLIGHTS = [
     "Produced the Hawkers 40-page brand guidelines, menus, packaging, interiors and murals",
     "Created new design systems for Asbestos.com that lifted many key search terms to the first or second Google result",
     "Designed and launched Red 6's website from concept to launch",
-    "Won 15+ AAF design awards for UCF's alumni magazine, Pegasus, including best breadth of work",
 ]
+# (company, role, years, shown before "Show more")
 EXPERIENCE = [
-    ("The Walt Disney Company", "Senior Product Designer (contract)", "2026–now"),
-    ("The Palm Medspa + Wellness", "Director of Brand & Operations", "2025–2026"),
-    ("The Walt Disney Company", "Product Designer, design systems", "2024–2025"),
-    ("Launch That (Asbestos.com)", "Senior Graphic and Web Designer", "2023–2024"),
-    ("Red 6", "Senior Graphic Designer", "2023"),
-    ("Hawkers Asian Street Food", "Creative Director", "2021–2022"),
-    ("Hawkers Asian Street Food", "Senior Art Director", "2018–2021"),
-    ("University of Central Florida", "Graphic Designer", "2015–2018"),
-    ("American Integrity Insurance", "Graphic Design and Marketing", "2013–2015"),
-    ("Tower Hill Insurance Group", "Graphic Designer", "2012–2013"),
-    ("Reynolds and Reynolds", "Graphic Designer", "2011–2012"),
+    ("The Walt Disney Company", "Senior Product Designer (contract)", "2026–now", True),
+    ("The Palm Medspa + Wellness", "Director of Brand & Operations", "2025–2026", True),
+    ("The Walt Disney Company", "Product Designer, design systems", "2024–2025", True),
+    ("Launch That (Asbestos.com)", "Senior Graphic and Web Designer", "2023–2024", True),
+    ("Red 6", "Senior Graphic Designer", "2023", True),
+    ("Hawkers Asian Street Food", "Creative Director", "2018–2022", True),
+    ("University of Central Florida", "Graphic Designer", "2015–2018", True),
+    ("American Integrity Insurance", "Graphic Design and Marketing", "2013–2015", False),
+    ("Tower Hill Insurance Group", "Graphic Designer", "2012–2013", False),
+    ("Reynolds and Reynolds", "Graphic Designer", "2011–2012", False),
 ]
-SKILLS = ["Product design", "Design systems", "UX and UI", "Mobile web design", "Design direction", "Brand identity", "Art direction", "Illustration and murals", "Photo and video direction", "Web development", "SEO and analytics"]
+# (award, project, year) — American Advertising Federation unless noted
+AWARDS = [
+    ("Art Direction of the Year", "Hawkers Asian Street Food", "2022"),
+    ("Gold ADDY", "Gan Bei takeout bag", "2022"),
+    ("Silver ADDY", "Hawkers brunch menu", "2022"),
+    ("Silver ADDY", "Dumplings and Dragons mural", "2022"),
+    ("Silver ADDY", "Hawkers 10th birthday campaign", "2022"),
+    ("Best of Show, Out of Home", "Gan Bei mural", "2021"),
+    ("Best Breadth of Work", "Hawkers Asian Street Food", "2021"),
+    ("Gold ADDY", "Gan Bei mural", "2021"),
+    ("Gold ADDY", "Hawkers noodle tiger shirt", "2021"),
+    ("District Silver ADDY", "Gan Bei takeout bag", "2021"),
+    ("15+ ADDY awards, incl. Best Breadth of Work", "UCF Pegasus magazine", "2015–2018"),
+]
+MENTORSHIP = [
+    "Led and developed an in-house team of designers, photographers and videographers at Hawkers, supporting 13 restaurants",
+    "Hired and trained the team at The Palm Medspa + Wellness while building its brand and operations",
+    "Contributed to Disney's shared design system, writing the patterns and guidelines other designers build from",
+    "Directed campus photoshoots and collaborated with a 20-person creative team at UCF",
+]
 
 # Prompts shown on a case study until its section is written.
 CASE_STUDY_PROMPTS = {
@@ -168,7 +186,8 @@ CLIENTS = [{'slug': 'hawkers',
                'hawkers-beverage-coasters',
                'foo-dog-drink-coaster',
                'daruma-lucky-cat-drink-coaster']),
-             ('Apparel', ['hawkers-tiger-trucker-cap', 'hawkers-noodle-tiger-shirt', 'hero-trainer-shirt'])]},
+             ('Apparel', ['hawkers-tiger-trucker-cap', 'hawkers-noodle-tiger-shirt', 'hero-trainer-shirt']),
+             ('Murals and signage', ['gan-bei-garden-mural', 'dumplings-and-dragons-mural', 'custom-neons'])]},
  {'slug': 'ucf',
   'title': 'UCF',
   'type': 'Environmental and print design',
