@@ -231,7 +231,7 @@ figure.brick { margin: 0 0 clamp(24px, 3vw, 40px); }
   list-style: none; margin: 0 0 clamp(28px, 4vw, 52px); padding: 0;
   display: flex; align-items: center; flex-wrap: wrap; gap: 18px clamp(18px, 2.6vw, 40px);
 }
-.logos img { height: clamp(16px, 1.75vw, 26px); width: auto; opacity: .85; }
+.logos img { height: clamp(20px, 2.6vw, 38px); width: auto; opacity: .85; }
 
 .about-portrait { width: clamp(270px, 36vw, 510px); aspect-ratio: 4 / 5; background: var(--tile-bg); overflow: hidden; }
 .about-portrait img { width: 100%; height: 100%; object-fit: cover; }

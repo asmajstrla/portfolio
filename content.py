@@ -25,11 +25,11 @@ ABOUT = [
 ]
 # Logos shown above "about", in this order (black PNGs in images/logos)
 LOGOS = [
-    ("The Walt Disney Company", "images/logos/disney.png"),
-    ("Launch That", "images/logos/launch-that.png"),
-    ("Red 6", "images/logos/red-6.png"),
-    ("Hawkers Asian Street Food", "images/logos/hawkers.png"),
+    ("Disney", "images/logos/disney.png"),
     ("University of Central Florida", "images/logos/ucf.png"),
+    ("Hawkers Asian Street Food", "images/logos/hawkers.png"),
+    ("Red 6", "images/logos/red-6.png"),
+    ("Launch That", "images/logos/launch-that.png"),
 ]
 HIGHLIGHTS = [
     "Built the Hawkers website in house, saving about $50K in agency fees, and grew its traffic 500% over three years",
