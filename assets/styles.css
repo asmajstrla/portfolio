@@ -259,6 +259,10 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 @media (max-width: 760px) {
   .stage-rail { grid-template-columns: 1fr; }
   .rail-wrap, .rail-wrap.spills { justify-self: stretch; width: auto; margin: 0 calc(-1 * var(--pad)); }
+  /* the slider pins under the header as the title scrolls away; the extra space below
+     gives the page just enough scroll for it to reach the top */
+  .rail-wrap { position: sticky; top: var(--header); align-self: start; z-index: 5; }
+  .stage-rail { padding-bottom: max(var(--pad), calc(100svh - var(--header) - 108vw - 10px - var(--foot))); }
   .rail { padding: 0 var(--pad) 10px; scroll-padding: 0 var(--pad); }
   .rail.fade-r { --fade-r: 48px; }
   .box { width: 66vw; height: auto; aspect-ratio: 66 / 108; }
