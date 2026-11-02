@@ -23,7 +23,7 @@
   <a class="brand" href="index.html">Adam Smajstrla</a>
   <span></span>
   <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-  <ul class="links" id="menu"><li><a href="index.html">Home</a></li><li><a href="ux.html">UX</a></li><li><a href="brand.html">Brand</a></li><li><a href="about.html" aria-current="page">About</a></li></ul></nav>
+  <ul class="links" id="menu"><li><a href="index.html">Home</a></li><li><a href="ux.html">Product design</a></li><li><a href="brand.html">Graphic design</a></li><li><a href="about.html" aria-current="page">About</a></li></ul></nav>
 </header>
 <main>
   <section class="stage">
@@ -71,6 +71,18 @@
       e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
     vids.forEach(v => io.observe(v));
   }
+
+  // box rails: mark which sides have more to scroll to, so the edges can fade
+  document.querySelectorAll('.rail').forEach(r => {
+    const wrap = r.parentElement;
+    wrap.classList.toggle('spills', r.children.length > 3);
+    const edges = () => {
+      const max = r.scrollWidth - r.clientWidth;
+      r.classList.toggle('fade-l', r.scrollLeft > 4);
+      r.classList.toggle('fade-r', max > 4 && r.scrollLeft < max - 4);
+    };
+    r.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges); edges();
+  });
 
   // project strip: starts tall, shrinks as you scroll, then the text slides underneath
   const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');

@@ -39,7 +39,7 @@
   
   <nav class="pager" aria-label="More projects">
     <a href="asian-food-illustrations.html"><strong>Asian food illustrations</strong><span>Previous project</span></a>
-    <div class="mid"><span>Brand, Illustration</span></div>
+    <div class="mid"><span>Graphic design, Illustration</span></div>
     <a class="next" href="main-street-bridge.html"><strong>Main Street Bridge</strong><span>Next project</span></a>
   </nav>
 </main>
@@ -77,6 +77,18 @@
       e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
     vids.forEach(v => io.observe(v));
   }
+
+  // box rails: mark which sides have more to scroll to, so the edges can fade
+  document.querySelectorAll('.rail').forEach(r => {
+    const wrap = r.parentElement;
+    wrap.classList.toggle('spills', r.children.length > 3);
+    const edges = () => {
+      const max = r.scrollWidth - r.clientWidth;
+      r.classList.toggle('fade-l', r.scrollLeft > 4);
+      r.classList.toggle('fade-r', max > 4 && r.scrollLeft < max - 4);
+    };
+    r.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges); edges();
+  });
 
   // project strip: starts tall, shrinks as you scroll, then the text slides underneath
   const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');

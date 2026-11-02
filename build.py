@@ -29,9 +29,9 @@ BRAND = C.CLIENTS + SELECTED
 
 SECTIONS = [
     # key, nav label, page, projects, intro
-    ("ux", "UX", "ux.html", C.UX,
+    ("ux", "Product design", "ux.html", C.UX,
      "Case studies covering research, interaction design and the outcomes of shipped work."),
-    ("brand", "Brand", "brand.html", BRAND,
+    ("brand", "Graphic design", "brand.html", BRAND,
      "Brand systems, illustration and graphic design for restaurants, universities and personal projects."),
 ]
 NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.html", "About")]
@@ -133,6 +133,18 @@ SCRIPT = """<script>
       e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
     vids.forEach(v => io.observe(v));
   }
+
+  // box rails: mark which sides have more to scroll to, so the edges can fade
+  document.querySelectorAll('.rail').forEach(r => {
+    const wrap = r.parentElement;
+    wrap.classList.toggle('spills', r.children.length > 3);
+    const edges = () => {
+      const max = r.scrollWidth - r.clientWidth;
+      r.classList.toggle('fade-l', r.scrollLeft > 4);
+      r.classList.toggle('fade-r', max > 4 && r.scrollLeft < max - 4);
+    };
+    r.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges); edges();
+  });
 
   // project strip: starts tall, shrinks as you scroll, then the text slides underneath
   const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');
@@ -297,7 +309,7 @@ def build_rail_page(label, pg, intro, items):
   <section class="stage stage-rail">
     <div>
       <p class="lede">{escape(intro)}</p>
-      <h1 class="word">{escape(label)}</h1>
+      <h1 class="word word-rail">{escape(label).replace(" ", "<br>")}</h1>
     </div>
     {rail(items)}
   </section>
@@ -320,7 +332,7 @@ def build_other():
 <main>
   <section class="stage stage-short">
     <div>
-      <p class="lede"><a href="brand.html">Brand</a> / Illustration, lettering, signage and personal projects.</p>
+      <p class="lede"><a href="brand.html">Graphic design</a> / Illustration, lettering, signage and personal projects.</p>
       <h1 class="word">other work</h1>
     </div>
   </section>
