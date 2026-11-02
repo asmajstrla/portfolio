@@ -16,18 +16,34 @@ EMAIL = ""      # add an email to show it on the site
 RESUME = ""     # e.g. "files/adam-smajstrla-resume.pdf"
 PORTRAIT = "images/adam-smajstrla.webp"
 
-INTRO = "Creative director and product designer in Orlando. I take products from research to launch, and keep a steady practice in illustration and graphic design."
+INTRO = "Creative director and product designer in Orlando. Currently a senior product designer at Disney, with a decade of brand and web work behind it."
 
 ABOUT = [
-    "I'm a creative director and product designer in Orlando, Florida. I lead product work from early research through launch, and I keep a steady practice in illustration and graphic design.",
-    "Draft bio: replace this paragraph with a few sentences on how you work, the teams you've led, and what you care about in a product.",
+    "I'm a creative director and product designer in Orlando with more than a decade of work across brand, web and product. I'm currently a senior product designer at The Walt Disney Company. In my earlier role there, I was part of the design systems team behind the websites and apps for Walt Disney World, Disney Cruise Line and Disneyland, building the shared components, patterns and guidelines that keep a large digital ecosystem consistent.",
+    "Before Disney, I led UX and visual design for Asbestos.com and its sister sites at Launch That, and built Red 6's brand and website from the ground up. I spent four and a half years at Hawkers Asian Street Food, first as senior art director and then as creative director, leading an in-house team of designers, photographers and videographers across 13 restaurants and painting murals in new locations myself.",
+    "My work sits where brand, UX and systems meet. I like giving teams the structure to ship good work at scale without losing the personality that makes a brand worth remembering.",
+]
+HIGHLIGHTS = [
+    "Built the Hawkers website in house, saving about $50K in agency fees, and grew its traffic 500% over three years",
+    "Produced the Hawkers 40-page brand guidelines, menus, packaging, interiors and murals",
+    "Created new design systems for Asbestos.com that lifted many key search terms to the first or second Google result",
+    "Designed and launched Red 6's website from concept to launch",
+    "Won 15+ AAF design awards for UCF's alumni magazine, Pegasus, including best breadth of work",
 ]
 EXPERIENCE = [
-    ("Company name", "Role", "Years"),
-    ("Company name", "Role", "Years"),
-    ("Company name", "Role", "Years"),
+    ("The Walt Disney Company", "Senior Product Designer (contract)", "2026–now"),
+    ("The Palm Medspa + Wellness", "Director of Brand & Operations", "2025–2026"),
+    ("The Walt Disney Company", "Product Designer, design systems", "2024–2025"),
+    ("Launch That (Asbestos.com)", "Senior Graphic and Web Designer", "2023–2024"),
+    ("Red 6", "Senior Graphic Designer", "2023"),
+    ("Hawkers Asian Street Food", "Creative Director", "2021–2022"),
+    ("Hawkers Asian Street Food", "Senior Art Director", "2018–2021"),
+    ("University of Central Florida", "Graphic Designer", "2015–2018"),
+    ("American Integrity Insurance", "Graphic Design and Marketing", "2013–2015"),
+    ("Tower Hill Insurance Group", "Graphic Designer", "2012–2013"),
+    ("Reynolds and Reynolds", "Graphic Designer", "2011–2012"),
 ]
-SKILLS = ["UX strategy", "Product design", "Design systems", "Prototyping", "User research", "Art direction", "Illustration", "Branding"]
+SKILLS = ["Product design", "Design systems", "UX and UI", "Mobile web design", "Design direction", "Brand identity", "Art direction", "Illustration and murals", "Photo and video direction", "Web development", "SEO and analytics"]
 
 # Prompts shown on a case study until its section is written.
 CASE_STUDY_PROMPTS = {
@@ -41,28 +57,28 @@ CASE_STUDY_PROMPTS = {
 UX = [{'slug': 'asbestos-com',
   'title': 'Asbestos.com',
   'type': 'Product design',
-  'client': '',
-  'year': '',
+  'client': 'Launch That',
+  'year': '2023–2024',
   'summary': 'Redesigning the homepage and mobile experience for a patient resource site.',
   'images': ['images/work/asbestos-com-homepage.webp', 'images/work/asbestos-com-mobile-homepage.webp'],
   'videos': {'images/work/asbestos-com-mobile-homepage.webp': 'images/work/asbestos-com-mobile-homepage.mp4',
              'images/work/asbestos-com-homepage.webp': 'images/work/asbestos-com-homepage.mp4'},
-  'role': '',
+  'role': 'Senior Graphic and Web Designer',
   'team': '',
-  'timeline': '',
+  'timeline': '2023–2024',
   'tools': '',
   'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
  {'slug': 'red-6-ar',
   'title': 'Red 6 AR',
   'type': 'Product design',
-  'client': '',
-  'year': '',
+  'client': 'Red 6',
+  'year': '2023',
   'summary': 'Marketing website for an augmented reality flight training company.',
   'images': ['images/work/red-6-ar-website.webp'],
   'videos': {'images/work/red-6-ar-website.webp': 'images/work/red-6-ar-website.mp4'},
-  'role': '',
+  'role': 'Senior Graphic Designer',
   'team': '',
-  'timeline': '',
+  'timeline': '2023',
   'tools': '',
   'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
  {'slug': 'case-study-3',
@@ -128,7 +144,7 @@ CLIENTS = [{'slug': 'hawkers',
   'title': 'Hawkers Asian Street Food',
   'type': 'Brand identity and creative direction',
   'client': 'Hawkers Asian Street Food',
-  'year': '',
+  'year': '2018–2022',
   'description': '',
   'sections': {'The brief': '', 'My role': '', 'The system': ''},
   'groups': [('Identity and mascot', ['hawkers-tiger', 'japanese-hero-mask-lockup', 'lapel-pins']),
@@ -149,7 +165,7 @@ CLIENTS = [{'slug': 'hawkers',
   'title': 'UCF',
   'type': 'Environmental and print design',
   'client': 'University of Central Florida',
-  'year': '',
+  'year': '2015–2018',
   'description': '',
   'sections': {'The brief': '', 'My role': '', 'The system': ''},
   'groups': [('Environmental graphics', ['ucf-mba-downtown-wall-wrap'])]}]

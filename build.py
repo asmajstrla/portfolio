@@ -324,6 +324,7 @@ def build_about():
                 else '<span class="empty">Add your photo</span>')
     bio = "".join(f"<p>{escape(t)}</p>" for t in C.ABOUT)
     xp = "".join(f"<li><span>{escape(c)}</span><span>{escape(r)}</span><span>{escape(y)}</span></li>" for c, r, y in C.EXPERIENCE)
+    hl = "".join(f"<li><span>{escape(h)}</span></li>" for h in C.HIGHLIGHTS)
     contact = [f'<a href="{C.LINKEDIN}">LinkedIn</a>', f'<a href="{C.DRIBBBLE}">Dribbble</a>']
     if C.EMAIL:
         contact.insert(0, f'<a href="mailto:{C.EMAIL}">{escape(C.EMAIL)}</a>')
@@ -340,6 +341,7 @@ def build_about():
   </section>
   <div class="story" style="padding-top:24px">
     <section><h2>Bio</h2><div class="body">{bio}</div></section>
+    <section><h2>Highlights</h2><div><ul class="xp hl">{hl}</ul></div></section>
     <section><h2>Experience</h2><div><ul class="xp">{xp}</ul></div></section>
     <section><h2>What I bring</h2><div class="body"><p>{escape(", ".join(C.SKILLS))}</p></div></section>
     <section><h2>Contact</h2><div class="body"><p>{"<br>".join(contact)}</p></div></section>
