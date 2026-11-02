@@ -324,6 +324,7 @@ def build_about():
                 else '<span class="empty">Add your photo</span>')
     bio = "".join(f"<p>{escape(t)}</p>" for t in C.ABOUT)
     xp = "".join(f"<li><span>{escape(c)}</span><span>{escape(r)}</span><span>{escape(y)}</span></li>" for c, r, y in C.EXPERIENCE)
+    logos = "".join(f'<li><img src="{src}" alt="{escape(n)}"></li>' for n, src in C.LOGOS)
     hl = "".join(f"<li><span>{escape(h)}</span></li>" for h in C.HIGHLIGHTS)
     contact = [f'<a href="{C.LINKEDIN}">LinkedIn</a>', f'<a href="{C.DRIBBBLE}">Dribbble</a>']
     if C.EMAIL:
@@ -334,7 +335,7 @@ def build_about():
 <main>
   <section class="stage">
     <div>
-      <p class="lede">{escape(C.TITLE)}<br>{escape(C.LOCATION)}</p>
+      <ul class="logos" aria-label="Companies I've worked with">{logos}</ul>
       <h1 class="word">About</h1>
     </div>
     <div class="about-portrait">{portrait}</div>

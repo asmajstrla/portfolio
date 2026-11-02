@@ -23,6 +23,14 @@ ABOUT = [
     "Before Disney, I led UX and visual design for Asbestos.com and its sister sites at Launch That, and built Red 6's brand and website from the ground up. I spent four and a half years at Hawkers Asian Street Food, first as senior art director and then as creative director, leading an in-house team of designers, photographers and videographers across 13 restaurants and painting murals in new locations myself.",
     "My work sits where brand, UX and systems meet. I like giving teams the structure to ship good work at scale without losing the personality that makes a brand worth remembering.",
 ]
+# Logos shown above "about", in this order (black PNGs in images/logos)
+LOGOS = [
+    ("The Walt Disney Company", "images/logos/disney.png"),
+    ("Launch That", "images/logos/launch-that.png"),
+    ("Red 6", "images/logos/red-6.png"),
+    ("Hawkers Asian Street Food", "images/logos/hawkers.png"),
+    ("University of Central Florida", "images/logos/ucf.png"),
+]
 HIGHLIGHTS = [
     "Built the Hawkers website in house, saving about $50K in agency fees, and grew its traffic 500% over three years",
     "Produced the Hawkers 40-page brand guidelines, menus, packaging, interiors and murals",

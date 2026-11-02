@@ -60,6 +60,7 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 760px) {
   .top { grid-template-columns: 1fr auto; }
+  .top > span:empty { display: none; }
   .views { grid-column: 1 / -1; grid-row: 2; justify-content: center; padding-bottom: 10px; }
   .top:has(.views) { height: auto; padding-top: 16px; }
   .menu-btn { display: block; grid-column: 2; grid-row: 1; justify-self: end; }
@@ -226,6 +227,12 @@ figure.brick { margin: 0 0 clamp(24px, 3vw, 40px); }
 .lightbox .frame img, .lightbox .frame video { max-width: 100%; max-height: 100%; object-fit: contain; }
 
 /* ---------- about ---------- */
+.logos {
+  list-style: none; margin: 0 0 clamp(28px, 4vw, 52px); padding: 0;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 18px clamp(18px, 2.6vw, 40px);
+}
+.logos img { height: clamp(16px, 1.75vw, 26px); width: auto; opacity: .85; }
+
 .about-portrait { width: clamp(270px, 36vw, 510px); aspect-ratio: 4 / 5; background: var(--tile-bg); overflow: hidden; }
 .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
 .about-portrait .empty { display: grid; place-items: center; height: 100%; color: var(--muted); font-size: 12px; }
