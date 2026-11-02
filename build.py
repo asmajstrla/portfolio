@@ -27,7 +27,7 @@ NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.htm
 
 # Tiles featured on the home page, after the UX case studies.
 HOME_PICKS = ["project-hail-mary-patch", "kabuki-mask", "nice-buns-neon", "ucf-mba-downtown-wall-wrap",
-              "geisha-and-koi", "hawkers-tiger"]
+              "geisha-and-koi", "hawkers-tiger", "spicy-smile-neon-sign", "streets-of-asia"]
 
 for key, label, page_name, projects, *_ in SECTIONS:
     for p in projects:
@@ -149,9 +149,12 @@ def page(title, body, prefix="", view=None):
     return f"{head(title, prefix)}\n<body{attr}>\n{body}\n{footer()}\n{SCRIPT}\n</body>\n</html>\n"
 
 
+GRID_MAX = 10  # 4 across the bottom, 4 above, 2 on top; the List view shows everything
+
+
 def tiles(projects, prefix="", cols=4):
     out = []
-    for i, p in enumerate(projects):
+    for i, p in enumerate(projects[:GRID_MAX]):
         inner = (f'<img src="{prefix}{p["images"][0]}" alt="" loading="lazy">' if p["images"]
                  else f'<span class="empty">{escape(p["title"])}</span>')
         out.append(f'<li style="--i:{i}"><a href="{prefix}work/{p["slug"]}.html">{inner}'
@@ -221,7 +224,7 @@ def build_index(key, label, pg, projects, cols, intro):
       <p class="lede">{escape(intro)}</p>
       <h1 class="word{long}">{escape(label)}</h1>
     </div>
-    {tiles(projects, cols=cols)}
+    {tiles(projects)}
   </section>
   {masonry(projects)}
 </main>"""
