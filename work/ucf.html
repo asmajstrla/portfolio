@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCF | Adam Smajstrla</title>
+<meta name="description" content="Adam Smajstrla, Creative Director &amp; Product Design. UX case studies, illustration and graphic design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317181A'/%3E%3Ctext x='16' y='22' font-family='Helvetica' font-weight='700' font-size='15' fill='%23F5F5F3' text-anchor='middle'%3Eas%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html">Adam Smajstrla</a>
+  <span></span>
+  <a class="close" href="../brand.html">Close</a>
+</header>
+<main>
+  <div class="gallery"><button class="shot" type="button" aria-label="View larger"><img src="../images/work/ucf-mba-downtown-wall-wrap.webp" alt="UCF" loading="lazy"></button><a class="next-panel" href="project-hail-mary-patch.html"><img src="../images/work/project-hail-mary-patch.webp" alt=""><div><strong>Next: Project Hail Mary patch</strong><span>Patch</span></div></a></div>
+  <div class="info">
+    <div class="left"><div><span class="muted">Designed for</span><br>University of Central Florida</div></div>
+    <div>
+      <h1>UCF</h1>
+      <div class="type">Environmental and print design</div>
+      <div class="desc"><p class="prompt">Add a short description of this project.</p></div>
+      
+    </div>
+  </div>
+  <div class="story"><section><h2>The brief</h2><div class="body"><p class="prompt">What the client needed and the problem the brand had to solve.</p></div></section><section><h2>My role</h2><div class="body"><p class="prompt">What you owned: creative direction, illustration, design, production partners.</p></div></section><section><h2>The system</h2><div class="body"><p class="prompt">How the pieces work together: mascot, type, color, voice, and where it shows up.</p></div></section></div>
+  <div class="groups"><section class="group"><h2>Environmental graphics</h2><div class="masonry"><figure class="brick"><button class="shot" type="button" aria-label="View UCF MBA downtown wall wrap larger"><img src="../images/work/ucf-mba-downtown-wall-wrap.webp" alt="UCF MBA downtown wall wrap" loading="lazy"></button><figcaption><h3>UCF MBA downtown wall wrap</h3><p>Environmental graphics</p></figcaption></figure></div></section></div>
+  <nav class="pager" aria-label="More projects">
+    <a href="hawkers.html"><strong>Hawkers Asian Street Food</strong><span>Previous project</span></a>
+    <div class="mid"><span>Brand, Environmental and print design</span></div>
+    <a class="next" href="project-hail-mary-patch.html"><strong>Project Hail Mary patch</strong><span>Next project</span></a>
+  </nav>
+</main>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="UCF">
+  <div class="bar"><span>UCF</span><button type="button">Close</button></div>
+  <div class="frame"></div>
+</div>
+<footer class="foot"><span>Adam Smajstrla, Orlando, FL</span><nav aria-label="Elsewhere"><a href="https://www.linkedin.com/in/adam-smajstrla/">LinkedIn</a><a href="https://dribbble.com/smaj">Dribbble</a></nav></footer>
+<script>
+(() => {
+  // mobile menu
+  const mb = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  mb && mb.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
+  });
+
+  // list / grid toggle, remembered per page
+  const key = 'view:' + location.pathname;
+  const setView = v => {
+    document.body.dataset.view = v;
+    document.querySelectorAll('.views button').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === v));
+    try { localStorage.setItem(key, v); } catch (e) {}
+  };
+  if (document.querySelector('.views')) {
+    let saved = null; try { saved = localStorage.getItem(key); } catch (e) {}
+    if (saved) setView(saved);
+    document.querySelectorAll('.views button').forEach(b => b.addEventListener('click', () => setView(b.dataset.set)));
+  }
+
+  // looping videos play only while visible, and never for reduced motion
+  const vids = document.querySelectorAll('video[data-autoplay]');
+  if (vids.length && !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e =>
+      e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
+    vids.forEach(v => io.observe(v));
+  }
+
+  // lightbox
+  const lb = document.querySelector('.lightbox');
+  if (lb) {
+    const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
+    let last = null;
+    const close = () => { lb.classList.remove('open'); frame.innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
+    document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
+      last = b;
+      const m = b.querySelector('img, video').cloneNode(true);
+      m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
+      frame.innerHTML = ''; frame.appendChild(m);
+      if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
+      lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
+    }));
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  }
+})();
+</script>
+</body>
+</html>

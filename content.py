@@ -114,7 +114,48 @@ UX = [{'slug': 'asbestos-com',
   'tools': '',
   'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}}]
 
-ILLUSTRATION = [{'slug': 'project-hail-mary-patch',
+# ---------------------------------------------------------------------------
+# Brand section. Client pages group pieces (by slug from PIECES) under
+# headings; selected work is everything shown as its own page.
+# ---------------------------------------------------------------------------
+BRAND_PROMPTS = {
+    "The brief": "What the client needed and the problem the brand had to solve.",
+    "My role": "What you owned: creative direction, illustration, design, production partners.",
+    "The system": "How the pieces work together: mascot, type, color, voice, and where it shows up.",
+}
+
+CLIENTS = [{'slug': 'hawkers',
+  'title': 'Hawkers Asian Street Food',
+  'type': 'Brand identity and creative direction',
+  'client': 'Hawkers Asian Street Food',
+  'year': '',
+  'description': '',
+  'sections': {'The brief': '', 'My role': '', 'The system': ''},
+  'groups': [('Identity and mascot', ['hawkers-tiger', 'japanese-hero-mask-lockup', 'lapel-pins']),
+             ('Lunar New Year and anniversaries',
+              ['lunar-new-year-year-of-the-tiger',
+               'happy-new-year-2020-year-of-the-rat',
+               'year-of-the-ox',
+               'luck-cat-anniversary-pin']),
+             ('Menus and packaging',
+              ['hawkers-brunch-menu',
+               'hawkers-takeout-bag',
+               'hawkers-to-go-cup',
+               'hawkers-beverage-coasters',
+               'foo-dog-drink-coaster',
+               'daruma-lucky-cat-drink-coaster']),
+             ('Apparel', ['hawkers-tiger-trucker-cap', 'hawkers-noodle-tiger-shirt', 'hero-trainer-shirt'])]},
+ {'slug': 'ucf',
+  'title': 'UCF',
+  'type': 'Environmental and print design',
+  'client': 'University of Central Florida',
+  'year': '',
+  'description': '',
+  'sections': {'The brief': '', 'My role': '', 'The system': ''},
+  'groups': [('Environmental graphics', ['ucf-mba-downtown-wall-wrap'])]}]
+
+# Every individual piece. Pieces used in a client page above don't get their own page.
+PIECES = [{'slug': 'project-hail-mary-patch',
   'title': 'Project Hail Mary patch',
   'type': 'Patch',
   'client': '',
@@ -255,9 +296,8 @@ ILLUSTRATION = [{'slug': 'project-hail-mary-patch',
   'client': '',
   'year': '',
   'description': '',
-  'images': ['images/work/fu-lion-playing-with-noodles.webp']}]
-
-GRAPHIC = [{'slug': 'ucf-mba-downtown-wall-wrap',
+  'images': ['images/work/fu-lion-playing-with-noodles.webp']},
+ {'slug': 'ucf-mba-downtown-wall-wrap',
   'title': 'UCF MBA downtown wall wrap',
   'type': 'Environmental graphics',
   'client': 'UCF',

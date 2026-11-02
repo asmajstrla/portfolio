@@ -130,6 +130,13 @@ p { margin: 0 0 1em; }
 .row p { margin: 0; font-size: 12px; color: var(--muted); }
 .row:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
+/* client pages: pieces grouped under headings */
+.groups { padding: clamp(48px, 7vw, 96px) 0 0; }
+.group h2 { margin: 0; padding: 24px var(--pad) 18px; font-size: 13px; font-weight: 500; border-top: 1px solid var(--line); margin-inline: var(--pad); padding-inline: 0; }
+.group .masonry { padding-top: 0; }
+figure.brick { margin: 0 0 clamp(24px, 3vw, 40px); }
+.brick button.shot { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+
 /* masonry ("List" in the header) */
 .masonry { columns: 3 300px; column-gap: var(--pad); padding: 8px var(--pad) 56px; }
 .brick { display: block; break-inside: avoid; margin-bottom: clamp(24px, 3vw, 40px); }

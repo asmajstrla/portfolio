@@ -14,22 +14,32 @@ import content as C
 
 ROOT = Path(__file__).parent
 
+PIECES = {p["slug"]: p for p in C.PIECES}
+IN_CLIENT = {slug: c for c in C.CLIENTS for _, slugs in c["groups"] for slug in slugs}
+for c in C.CLIENTS:
+    # a client page's covers: the first piece from each group
+    c["images"] = [PIECES[g[1][0]]["images"][0] for g in c["groups"] if g[1]][:4]
+    c.setdefault("videos", {})
+    for _, slugs in c["groups"]:
+        for slug in slugs:
+            c["videos"].update(PIECES[slug].get("videos", {}))
+SELECTED = [p for p in C.PIECES if p["slug"] not in IN_CLIENT]
+BRAND = C.CLIENTS + SELECTED
+
 SECTIONS = [
-    # key, nav label, page, projects, tile columns, intro
-    ("ux", "UX", "ux.html", C.UX, 3,
+    # key, nav label, page, projects, intro
+    ("ux", "UX", "ux.html", C.UX,
      "Case studies covering research, interaction design and the outcomes of shipped work."),
-    ("illustration", "Illustration", "illustration.html", C.ILLUSTRATION, 5,
-     "Patches, murals, characters and lettering for restaurants, brands and personal projects."),
-    ("graphic", "Graphic design", "graphic-design.html", C.GRAPHIC, 5,
-     "Brand identity, menus, packaging, signage and environmental graphics."),
+    ("brand", "Brand", "brand.html", BRAND,
+     "Brand systems, illustration and graphic design for restaurants, universities and personal projects."),
 ]
 NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.html", "About")]
 
 # Tiles featured on the home page, after the UX case studies.
-HOME_PICKS = ["project-hail-mary-patch", "kabuki-mask", "nice-buns-neon", "ucf-mba-downtown-wall-wrap",
-              "geisha-and-koi", "hawkers-tiger", "spicy-smile-neon-sign", "streets-of-asia"]
+HOME_PICKS = ["hawkers", "ucf", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
+              "geisha-and-koi", "spicy-smile-neon-sign", "streets-of-asia"]
 
-for key, label, page_name, projects, *_ in SECTIONS:
+for key, label, page_name, projects, _ in SECTIONS:
     for p in projects:
         p["section"], p["section_label"], p["section_page"] = key, label, page_name
 ALL = {p["slug"]: p for s in SECTIONS for p in s[3]}
@@ -191,7 +201,7 @@ def build_home():
     featured = ready + [ALL[s] for s in HOME_PICKS if s in ALL]
     sections = "".join(
         f'<li><a href="{pg}">{escape(label)}<span>{len(projs)} {"case studies" if key == "ux" else "projects"}</span></a></li>'
-        for key, label, pg, projs, *_ in SECTIONS
+        for key, label, pg, projs, _ in SECTIONS
     ) + '<li><a href="about.html">About<span>Bio, experience and contact</span></a></li>'
     first, last = C.NAME.split(" ", 1)
     body = f"""{header("index.html")}
@@ -215,7 +225,7 @@ def build_home():
     return page("", body)
 
 
-def build_index(key, label, pg, projects, cols, intro):
+def build_index(key, label, pg, projects, intro):
     long = " long" if len(label) > 10 else ""
     body = f"""{header(pg, views=True)}
 <main>
@@ -254,7 +264,22 @@ def build_project(p):
     text = p.get("description") or p.get("summary") or ""
     desc = f"<p>{escape(text)}</p>" if text else '<p class="prompt">Add a short description of this project.</p>'
 
-    facts = story = ""
+    facts = story = groups = ""
+    if p.get("groups"):
+        secs = ""
+        for name, prompt in C.BRAND_PROMPTS.items():
+            txt = p.get("sections", {}).get(name, "")
+            paras = "".join(f"<p>{escape(t)}</p>" for t in txt.split("\n\n")) if txt else f'<p class="prompt">{escape(prompt)}</p>'
+            secs += f'<section><h2>{escape(name)}</h2><div class="body">{paras}</div></section>'
+        story = f'<div class="story">{secs}</div>'
+        for heading, slugs in p["groups"]:
+            bricks = "".join(
+                f'<figure class="brick"><button class="shot" type="button" aria-label="View {escape(PIECES[s]["title"])} larger">'
+                f'{media(PIECES[s]["images"][0], PIECES[s]["title"], PIECES[s].get("videos"), pre)}</button>'
+                f'<figcaption><h3>{escape(PIECES[s]["title"])}</h3><p>{escape(PIECES[s]["type"])}</p></figcaption></figure>'
+                for s in slugs)
+            groups += f'<section class="group"><h2>{escape(heading)}</h2><div class="masonry">{bricks}</div></section>'
+        groups = f'<div class="groups">{groups}</div>'
     if p["section"] == "ux":
         facts = '<dl class="facts">' + "".join(
             f'<div><dt>{k.title()}</dt><dd>{escape(p.get(k) or "—")}</dd></div>' for k in ("role", "team", "timeline", "tools")
@@ -280,6 +305,7 @@ def build_project(p):
     </div>
   </div>
   {story}
+  {groups}
   <nav class="pager" aria-label="More projects">
     <a href="{prev["slug"]}.html"><strong>{escape(prev["title"])}</strong><span>Previous project</span></a>
     <div class="mid"><span>{year}{escape(p["section_label"])}, {escape(p["type"])}</span></div>
@@ -331,6 +357,13 @@ def main():
         files[s[2]] = build_index(*s)
     for p in ALL.values():
         files[f"work/{p['slug']}.html"] = build_project(p)
+    # old addresses keep working
+    def redirect(to):
+        return f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={to}"><link rel="canonical" href="{to}"><a href="{to}">Moved here</a>'
+    files["illustration.html"] = redirect("brand.html")
+    files["graphic-design.html"] = redirect("brand.html")
+    for slug, c in IN_CLIENT.items():
+        files[f"work/{slug}.html"] = redirect(f"{c['slug']}.html")
     for name, html in files.items():
         (ROOT / name).write_text(html, encoding="utf-8")
     print(f"Built {len(files)} pages")
