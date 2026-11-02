@@ -31,7 +31,7 @@
   --head-bg: rgba(19, 20, 22, .92); --head-hi: rgba(255, 255, 255, .06); --head-shadow: rgba(0, 0, 0, .6);
   --next-ink-2: #C9C6CF;
   --next-bg: linear-gradient(180deg, #24303A 0%, #2D2D3D 38%, #3A2C36 66%, #43302C 86%, #453526 100%);
-  --glow: rgba(80, 120, 215, .16);
+  --glow: rgba(70, 105, 200, .09);
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -40,7 +40,7 @@
     --head-bg: rgba(19, 20, 22, .92); --head-hi: rgba(255, 255, 255, .06); --head-shadow: rgba(0, 0, 0, .6);
     --next-ink-2: #C9C6CF;
     --next-bg: linear-gradient(180deg, #24303A 0%, #2D2D3D 38%, #3A2C36 66%, #43302C 86%, #453526 100%);
-    --glow: rgba(80, 120, 215, .16);
+    --glow: rgba(70, 105, 200, .09);
     color-scheme: dark;
   }
 }
