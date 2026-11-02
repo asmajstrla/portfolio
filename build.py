@@ -248,30 +248,46 @@ for p in SELECTED:
 # the three boxes on the Brand page: (title, subtitle, link, cover image)
 BRAND_BOXES = [
     ("Hawkers Asian Street Food", "Brand identity and creative direction", "work/hawkers.html",
-     "images/work/hawkers-tiger.webp"),
+     "images/work/hawkers-noodle-tiger-shirt.webp"),
     ("UCF", "Environmental and print design", "work/ucf.html",
      "images/work/ucf-mba-downtown-wall-wrap.webp"),
-    ("Other work", "Illustration, lettering, signage and personal projects", OTHER_PAGE,
+    ("Other work", "Illustration, signage and more", OTHER_PAGE,
      "images/work/kabuki-mask.webp"),
 ]
 
 
-def build_brand(key, label, pg, projects, intro):
-    boxes = "".join(
-        f'<li><a class="box" href="{href}"><img src="{img}" alt="" loading="lazy">'
-        f'<span class="box-text"><strong>{escape(t)}</strong><span>{escape(sub)}</span></span></a></li>'
-        for t, sub, href, img in BRAND_BOXES)
+def rail(items, prefix=""):
+    """Tall boxes to the right of the big word; scrolls sideways when there are more than fit."""
+    out = []
+    for t, sub, href, img in items:
+        pic = f'<img src="{prefix}{img}" alt="" loading="lazy">' if img else '<span class="box-empty">Add a cover image</span>'
+        out.append(f'<li><a class="box" href="{prefix}{href}">{pic}'
+                   f'<span class="box-text"><strong>{escape(t)}</strong><span>{escape(sub)}</span></span></a></li>')
+    return f'<div class="rail-wrap"><ul class="rail" tabindex="0" aria-label="Projects">{"".join(out)}</ul></div>'
+
+
+def build_rail_page(label, pg, intro, items):
     body = f"""{header(pg)}
 <main>
-  <section class="stage stage-short">
+  <section class="stage stage-rail">
     <div>
       <p class="lede">{escape(intro)}</p>
       <h1 class="word">{escape(label)}</h1>
     </div>
+    {rail(items)}
   </section>
-  <ul class="boxes">{boxes}</ul>
 </main>"""
     return page(label, body)
+
+
+def build_brand(key, label, pg, projects, intro):
+    return build_rail_page(label, pg, intro, BRAND_BOXES)
+
+
+def build_ux(key, label, pg, projects, intro):
+    items = [(p["title"], " · ".join(x for x in [p.get("client"), p.get("year")] if x) or p["type"],
+              f'work/{p["slug"]}.html', p["images"][0] if p["images"] else "") for p in projects]
+    return build_rail_page(label, pg, intro, items)
 
 
 def build_other():
@@ -417,7 +433,7 @@ def main():
         old.unlink()
     files = {"index.html": build_home(), "about.html": build_about()}
     for s in SECTIONS:
-        files[s[2]] = build_brand(*s) if s[0] == "brand" else build_index(*s)
+        files[s[2]] = {"brand": build_brand, "ux": build_ux}.get(s[0], build_index)(*s)
     files[OTHER_PAGE] = build_other()
     for p in ALL.values():
         files[f"work/{p['slug']}.html"] = build_project(p)
