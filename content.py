@@ -14,7 +14,7 @@ LINKEDIN = "https://www.linkedin.com/in/adam-smajstrla/"
 DRIBBBLE = "https://dribbble.com/smaj"
 EMAIL = ""      # add an email to show it on the site
 RESUME = ""     # e.g. "files/adam-smajstrla-resume.pdf"
-PORTRAIT = ""   # e.g. "images/adam.jpg"
+PORTRAIT = "images/adam-smajstrla.webp"
 
 INTRO = "Creative director and product designer in Orlando. I take products from research to launch, and keep a steady practice in illustration and graphic design."
 

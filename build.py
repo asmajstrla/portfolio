@@ -293,7 +293,7 @@ def build_about():
 <main>
   <section class="stage">
     <div>
-      <p class="lede">{escape(C.TITLE)}, {escape(C.LOCATION)}</p>
+      <p class="lede">{escape(C.TITLE)}<br>{escape(C.LOCATION)}</p>
       <h1 class="word">About</h1>
     </div>
     <div class="about-portrait">{portrait}</div>
