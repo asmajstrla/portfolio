@@ -201,7 +201,7 @@ def page(title, body, current, prefix="", description=""):
         for href, label in NAV
     )
     favicon = (SPARK.replace('class="spark"', 'xmlns="http://www.w3.org/2000/svg"')
-               .replace("currentColor", "%239BCB3C").replace('"', "'")
+               .replace("currentColor", "%23FF7A2F").replace('"', "'")
                .replace("<", "%3C").replace(">", "%3E"))
     desc = escape(description or f"{NAME_FIRST} {NAME_LAST}, {TITLE}. UX case studies, illustration and graphic design.")
     full_title = f"{title} | {NAME_FIRST} {NAME_LAST}" if title else f"{NAME_FIRST} {NAME_LAST} | {TITLE}"
@@ -296,7 +296,7 @@ def cta(prefix=""):
 
 
 def build_home():
-    portrait = art(PORTRAIT, f"Portrait of {NAME_FIRST} {NAME_LAST}", "Add your photo", "#F7C9A0")
+    portrait = art(PORTRAIT, f"Portrait of {NAME_FIRST} {NAME_LAST}", "Add your photo", "#FFB27F")
     resume_btn = f'<a class="btn" href="{RESUME}">Download résumé</a>' if RESUME else f'<a class="btn" href="{LINKEDIN}">View LinkedIn</a>'
     thumbs = {"UX & product design": "images/work/asbestos-com-homepage.webp", "Illustration": "images/work/lunar-new-year-year-of-the-tiger.webp", "Graphic design": "images/work/nice-buns-neon.webp"}
     disciplines = [
@@ -364,7 +364,7 @@ def build_gallery(title, intro, items, current):
 
 
 def build_about():
-    portrait = art(PORTRAIT, f"Portrait of {NAME_FIRST} {NAME_LAST}", "Add your photo", "#F7C9A0")
+    portrait = art(PORTRAIT, f"Portrait of {NAME_FIRST} {NAME_LAST}", "Add your photo", "#FFB27F")
     bio = "".join(f"<p>{escape(p)}</p>" for p in ABOUT_BIO)
     xp = "".join(f"<li><span>{escape(c)}</span><span>{escape(r)}</span></li>" for c, r in EXPERIENCE)
     body = f"""<section class="wrap about">
