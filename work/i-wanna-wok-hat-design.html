@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I Wanna Wok hat | Adam Smajstrla</title>
+<meta name="description" content="Adam Smajstrla, Creative Director &amp; Product Design. UX case studies, illustration and graphic design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317181A'/%3E%3Ctext x='16' y='22' font-family='Helvetica' font-weight='700' font-size='15' fill='%23F5F5F3' text-anchor='middle'%3Eas%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../index.html">Adam Smajstrla</a>
+  <span></span>
+  <a class="close" href="../graphic-design.html">Close</a>
+</header>
+<main>
+  <div class="gallery"><button class="shot" type="button" aria-label="View larger"><img src="../images/work/i-wanna-wok-hat-design.webp" alt="I Wanna Wok hat" loading="lazy"></button><a class="next-panel" href="cocktails.html"><img src="../images/work/cocktails.webp" alt=""><div><strong>Next: Cocktail icons</strong><span>Illustration</span></div></a></div>
+  <div class="info">
+    <div class="left"></div>
+    <div>
+      <h1>I Wanna Wok hat</h1>
+      <div class="type">Apparel</div>
+      <div class="desc"><p class="prompt">Add a short description of this project.</p></div>
+      
+    </div>
+  </div>
+  
+  <nav class="pager" aria-label="More projects">
+    <a href="ghost-chicken.html"><strong>Ghost Chicken logo</strong><span>Previous project</span></a>
+    <div class="mid"><span>Graphic design, Apparel</span></div>
+    <a class="next" href="cocktails.html"><strong>Cocktail icons</strong><span>Next project</span></a>
+  </nav>
+</main>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="I Wanna Wok hat">
+  <div class="bar"><span>I Wanna Wok hat</span><button type="button">Close</button></div>
+  <div class="frame"></div>
+</div>
+<footer class="foot"><span>Adam Smajstrla, Orlando, FL</span><nav aria-label="Elsewhere"><a href="https://www.linkedin.com/in/adam-smajstrla/">LinkedIn</a><a href="https://dribbble.com/smaj">Dribbble</a></nav></footer>
+<script>
+(() => {
+  // mobile menu
+  const mb = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  mb && mb.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
+  });
+
+  // list / grid toggle, remembered per page
+  const key = 'view:' + location.pathname;
+  const setView = v => {
+    document.body.dataset.view = v;
+    document.querySelectorAll('.views button').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === v));
+    try { localStorage.setItem(key, v); } catch (e) {}
+  };
+  if (document.querySelector('.views')) {
+    let saved = null; try { saved = localStorage.getItem(key); } catch (e) {}
+    if (saved) setView(saved);
+    document.querySelectorAll('.views button').forEach(b => b.addEventListener('click', () => setView(b.dataset.set)));
+  }
+
+  // looping videos play only while visible, and never for reduced motion
+  const vids = document.querySelectorAll('video[data-autoplay]');
+  if (vids.length && !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e =>
+      e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: 0.25 });
+    vids.forEach(v => io.observe(v));
+  }
+
+  // lightbox
+  const lb = document.querySelector('.lightbox');
+  if (lb) {
+    const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
+    let last = null;
+    const close = () => { lb.classList.remove('open'); frame.innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
+    document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
+      last = b;
+      const m = b.querySelector('img, video').cloneNode(true);
+      m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
+      frame.innerHTML = ''; frame.appendChild(m);
+      if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
+      lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
+    }));
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  }
+})();
+</script>
+</body>
+</html>
