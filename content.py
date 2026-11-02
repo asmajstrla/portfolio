@@ -174,7 +174,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'year': '',
   'description': '',
   'cover': 'images/work/hawkers-brunch-cover.webp',
-  'crop': '64% center',
+  'box_cover': 'images/work/hawkers-brunch-box.webp',
   'sections': {'The brief': '', 'My role': '', 'The system': ''},
   'groups': [('Menu', ['hawkers-brunch-menu']), ('Photography', ['brunch-photoshoot'])]},
  {'slug': 'hawkers',
@@ -209,7 +209,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'sections': {'The brief': '', 'My role': '', 'The system': ''},
   'groups': [('Environmental graphics', ['ucf-mba-downtown-wall-wrap'])],
   'cover': 'images/work/ucf-cover.webp',
-  'crop': '66% center'}]
+  'box_cover': 'images/work/ucf-box.webp'}]
 
 # Every individual piece. Pieces used in a client page above don't get their own page.
 PIECES = [{'slug': 'project-hail-mary-patch',

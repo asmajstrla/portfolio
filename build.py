@@ -248,7 +248,8 @@ for p in SELECTED:
 
 # the three boxes on the Brand page: (title, subtitle, link, cover image)
 BRAND_BOXES = [  # (title, subtitle, link, cover, crop position)
-    (c["title"], c["type"], f'work/{c["slug"]}.html', c.get("cover") or c["images"][0], c.get("crop", "center"))
+    (c["title"], c["type"], f'work/{c["slug"]}.html',
+     c.get("box_cover") or c.get("cover") or c["images"][0], c.get("crop", "center"))
     for c in C.CLIENTS
 ]
 
