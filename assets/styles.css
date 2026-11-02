@@ -128,7 +128,17 @@ p { margin: 0 0 1em; }
 .row p { margin: 0; font-size: 12px; color: var(--muted); }
 .row:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
-[data-view="grid"] .list.switchable { display: none; }
+/* masonry ("List" in the header) */
+.masonry { columns: 3 300px; column-gap: var(--pad); padding: 8px var(--pad) 56px; }
+.brick { display: block; break-inside: avoid; margin-bottom: clamp(24px, 3vw, 40px); }
+.brick img, .brick video { width: 100%; height: auto; background: var(--tile-bg); }
+.brick .empty { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--tile-bg); color: var(--muted); font-size: 13px; }
+.brick h3 { margin: 10px 0 0; font-size: 14px; font-weight: 500; }
+.brick p { margin: 0; font-size: 12px; color: var(--muted); }
+.brick:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) { .masonry { columns: 2; column-gap: 10px; } }
+
+[data-view="grid"] .switchable { display: none; }
 [data-view="list"] .tiles { display: none; }
 [data-view="list"] .stage { min-height: 0; padding-top: 16vh; }
 

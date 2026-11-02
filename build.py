@@ -169,6 +169,17 @@ def rows(projects, prefix="", switchable=True):
     return f'<div class="list{" switchable" if switchable else ""}">{"".join(out)}</div>'
 
 
+def masonry(projects, prefix=""):
+    """The "List" view on section pages: every piece at its natural shape."""
+    out = []
+    for p in projects:
+        pic = (media(p["images"][0], p["title"], p.get("videos"), prefix) if p["images"]
+               else '<span class="empty">Add images</span>')
+        out.append(f'<a class="brick" href="{prefix}work/{p["slug"]}.html">{pic}'
+                   f'<h3>{escape(p["title"])}</h3><p>{escape(p["type"])}</p></a>')
+    return f'<div class="masonry switchable">{"".join(out)}</div>'
+
+
 # ---------------------------------------------------------------- pages
 
 def build_home():
@@ -212,7 +223,7 @@ def build_index(key, label, pg, projects, cols, intro):
     </div>
     {tiles(projects, cols=cols)}
   </section>
-  {rows(projects)}
+  {masonry(projects)}
 </main>"""
     return page(label, body, view="grid")
 
