@@ -82,8 +82,8 @@ THEME_TOGGLE = (
     '<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">'
     '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button>')
 
-# set the saved theme before the page paints, so there's no flash
-THEME_BOOT = """<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"""
+# set the theme before the page paints (dark unless the visitor chose light), so there's no flash
+THEME_BOOT = """<script>var t='dark';try{t=localStorage.getItem('theme')||t}catch(e){}document.documentElement.dataset.theme=t</script>"""
 
 
 def header(current, prefix="", views=False):

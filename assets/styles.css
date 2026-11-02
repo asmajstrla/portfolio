@@ -94,9 +94,13 @@ p { margin: 0 0 1em; }
 .theme-toggle {
   grid-column: 3; justify-self: end; display: grid; place-items: center;
   width: 32px; height: 32px; margin-left: 14px; padding: 0; border: 0; border-radius: 50%;
-  background: none; color: var(--muted); cursor: pointer;
+  background: var(--tile-bg); color: var(--ink); cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
 }
-.theme-toggle:hover { color: var(--ink); background: var(--tile-bg); }
+.theme-toggle:hover { background: var(--ink); color: var(--bg); }
+.theme-toggle svg { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.theme-toggle:hover svg { transform: rotate(-20deg); }
+@media (prefers-reduced-motion: reduce) { .theme-toggle:hover svg { transform: none; } }
 .theme-toggle svg { width: 18px; height: 18px; }
 .theme-toggle .moon, :root[data-theme="dark"] .theme-toggle .sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .moon { display: block; }
