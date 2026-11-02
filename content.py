@@ -40,10 +40,10 @@ HIGHLIGHTS = [
 # (company, role, years, shown before "Show more")
 EXPERIENCE = [
     ("The Walt Disney Company", "Senior Product Designer (contract)", "2026–now", True),
-    ("The Palm Medspa + Wellness", "Director of Brand & Operations", "2025–2026", True),
+    ("The Palm Medspa + Wellness", "Director of Brand & Operations (consultant)", "2025–2026", True),
     ("The Walt Disney Company", "Product Designer, design systems", "2024–2025", True),
-    ("Launch That (Asbestos.com)", "Senior Graphic and Web Designer", "2023–2024", True),
-    ("Red 6", "Senior Graphic Designer", "2023", True),
+    ("Launch That (Asbestos.com)", "Senior Product Designer", "2023–2024", True),
+    ("Red 6", "Senior Graphic and Web Designer", "2023", True),
     ("Hawkers Asian Street Food", "Creative Director", "2018–2022", True),
     ("University of Central Florida", "Graphic Designer", "2015–2018", True),
     ("American Integrity Insurance", "Graphic Design and Marketing", "2013–2015", False),
@@ -52,7 +52,7 @@ EXPERIENCE = [
 ]
 # (award, project, year) — American Advertising Federation unless noted
 AWARDS = [
-    ("Art Direction of the Year", "Hawkers Asian Street Food", "2022"),
+    ("Central Florida Art Director of the Year", "American Advertising Federation", "2022"),
     ("Gold ADDY", "Gan Bei takeout bag", "2022"),
     ("Silver ADDY", "Hawkers brunch menu", "2022"),
     ("Silver ADDY", "Dumplings and Dragons mural", "2022"),
@@ -62,7 +62,16 @@ AWARDS = [
     ("Gold ADDY", "Gan Bei mural", "2021"),
     ("Gold ADDY", "Hawkers noodle tiger shirt", "2021"),
     ("District Silver ADDY", "Gan Bei takeout bag", "2021"),
-    ("15+ ADDY awards, incl. Best Breadth of Work", "UCF Pegasus magazine", "2015–2018"),
+    ("Gold Circle of Excellence", "CASE", "2018"),
+    ("5 Awards of Excellence", "UCDA", ""),
+    ("40+ ADDY awards in total", "Hawkers, UCF and more", "2015–2022"),
+]
+AWARDS_NOTE = "ADDY: American Advertising Federation. CASE: Council for Advancement and Support of Education. UCDA: University and College Designers Association."
+# (what, where, years)
+EDUCATION = [
+    ("MBA", "University of Central Florida", "2020"),
+    ("BFA, Graphic Design", "University of Central Florida", "2011"),
+    ("AIGA Mentor", "University of Central Florida", "2019–2023"),
 ]
 MENTORSHIP = [
     "Led and developed an in-house team of designers, photographers and videographers at Hawkers, supporting 13 restaurants",
@@ -89,7 +98,7 @@ UX = [{'slug': 'asbestos-com',
   'images': ['images/work/asbestos-com-homepage.webp', 'images/work/asbestos-com-mobile-homepage.webp'],
   'videos': {'images/work/asbestos-com-mobile-homepage.webp': 'images/work/asbestos-com-mobile-homepage.mp4',
              'images/work/asbestos-com-homepage.webp': 'images/work/asbestos-com-homepage.mp4'},
-  'role': 'Senior Graphic and Web Designer',
+  'role': 'Senior Product Designer',
   'team': '',
   'timeline': '2023–2024',
   'tools': '',
@@ -102,7 +111,7 @@ UX = [{'slug': 'asbestos-com',
   'summary': 'Marketing website for an augmented reality flight training company.',
   'images': ['images/work/red-6-ar-website.webp'],
   'videos': {'images/work/red-6-ar-website.webp': 'images/work/red-6-ar-website.mp4'},
-  'role': 'Senior Graphic Designer',
+  'role': 'Senior Graphic and Web Designer',
   'team': '',
   'timeline': '2023',
   'tools': '',

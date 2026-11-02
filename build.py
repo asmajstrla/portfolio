@@ -330,6 +330,7 @@ def build_about():
     if hidden:
         xp += (f'<details class="more-xp"><summary><span class="when-closed">Show more</span>'
                f'<span class="when-open">Show less</span></summary><ul class="xp">{hidden}</ul></details>')
+    edu = "".join(row(a, p, y) for a, p, y in C.EDUCATION)
     awards = "".join(row(a, p, y) for a, p, y in C.AWARDS)
     mentor = "".join(f"<li><span>{escape(m)}</span></li>" for m in C.MENTORSHIP)
     logos = "".join(f'<li><img src="{src}" alt="{escape(n)}"></li>' for n, src in C.LOGOS)
@@ -351,7 +352,8 @@ def build_about():
   <div class="story" style="padding-top:24px">
     <section><h2>Bio</h2><div class="body">{bio}</div></section>
     <section><h2>Experience</h2><div>{xp}</div></section>
-    <section><h2>Awards and recognition</h2><div><ul class="xp">{awards}</ul><p class="note-sm">American Advertising Federation (ADDY) awards</p></div></section>
+    <section><h2>Awards and recognition</h2><div><ul class="xp">{awards}</ul><p class="note-sm">{escape(C.AWARDS_NOTE)}</p></div></section>
+    <section><h2>Education and mentoring</h2><div><ul class="xp">{edu}</ul></div></section>
     <section><h2>Contact</h2><div class="body"><p>{"<br>".join(contact)}</p></div></section>
   </div>
 </main>"""
