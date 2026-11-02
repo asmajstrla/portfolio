@@ -333,7 +333,6 @@ def build_about():
     edu = "".join(row(a, p, y) for a, p, y in C.EDUCATION)
     awards = "".join(row(a, p, y) for a, p, y in C.AWARDS)
     mentor = "".join(f"<li><span>{escape(m)}</span></li>" for m in C.MENTORSHIP)
-    logos = "".join(f'<li><img src="{src}" alt="{escape(n)}"></li>' for n, src in C.LOGOS)
     hl = "".join(f"<li><span>{escape(h)}</span></li>" for h in C.HIGHLIGHTS)
     contact = [f'<a href="{C.LINKEDIN}">LinkedIn</a>', f'<a href="{C.DRIBBBLE}">Dribbble</a>']
     if C.EMAIL:
@@ -344,7 +343,7 @@ def build_about():
 <main>
   <section class="stage">
     <div>
-      <ul class="logos" aria-label="Companies I've worked with">{logos}</ul>
+      <p class="lede">{escape(C.TITLE)}<br>{escape(C.LOCATION)}</p>
       <h1 class="word">About</h1>
     </div>
     <div class="about-portrait">{portrait}</div>

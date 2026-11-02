@@ -23,14 +23,6 @@ ABOUT = [
     "For 15 years I've designed across theme parks, hospitality, higher education, insurance and tech, from Disney's design systems to an award-winning restaurant brand at Hawkers.",
     "I pair intuition with research and data, and I give teams the structure to ship great work without losing a brand's personality.",
 ]
-# Logos shown above "about", in this order (black PNGs in images/logos)
-LOGOS = [
-    ("Disney", "images/logos/disney.png"),
-    ("University of Central Florida", "images/logos/ucf.png"),
-    ("Hawkers Asian Street Food", "images/logos/hawkers.png"),
-    ("Red 6", "images/logos/red-6.png"),
-    ("Launch That", "images/logos/launch-that.png"),
-]
 HIGHLIGHTS = [
     "Built the Hawkers website in house, saving about $50K in agency fees, and grew its traffic 500% over three years",
     "Produced the Hawkers 40-page brand guidelines, menus, packaging, interiors and murals",
