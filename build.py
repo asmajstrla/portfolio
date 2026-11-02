@@ -324,9 +324,15 @@ def build_project(p):
     i = projs.index(p)
     prev, nxt = projs[i - 1], projs[(i + 1) % len(projs)]
 
+    # every image for the project sits in the strip at the top; client pages add all their pieces
+    strip = [(src, p["title"], p.get("videos")) for src in p["images"]]
+    if p.get("groups"):
+        strip = ([(p["cover"], p["title"], None)] if p.get("cover") else []) + [
+            (PIECES[s]["images"][0], PIECES[s]["title"], PIECES[s].get("videos"))
+            for _, slugs in p["groups"] for s in slugs]
     shots = "".join(
-        f'<button class="shot" type="button" aria-label="View larger">{media(src, p["title"], p.get("videos"), pre)}</button>'
-        for src in p["images"]
+        f'<button class="shot" type="button" aria-label="View {escape(alt)} larger">{media(src, alt, vids, pre)}</button>'
+        for src, alt, vids in strip
     ) or '<div class="empty">Add images for this project</div>'
     nimg = f'<img src="{pre}{nxt["images"][0]}" alt="">' if nxt["images"] else ""
     next_panel = (f'<a class="next-panel" href="{nxt["slug"]}.html">{nimg}'
@@ -349,14 +355,6 @@ def build_project(p):
             paras = "".join(f"<p>{escape(t)}</p>" for t in txt.split("\n\n")) if txt else f'<p class="prompt">{escape(prompt)}</p>'
             secs += f'<section><h2>{escape(name)}</h2><div class="body">{paras}</div></section>'
         story = f'<div class="story">{secs}</div>'
-        for heading, slugs in p["groups"]:
-            bricks = "".join(
-                f'<figure class="brick"><button class="shot" type="button" aria-label="View {escape(PIECES[s]["title"])} larger">'
-                f'{media(PIECES[s]["images"][0], PIECES[s]["title"], PIECES[s].get("videos"), pre)}</button>'
-                f'<figcaption><h3>{escape(PIECES[s]["title"])}</h3><p>{escape(PIECES[s]["type"])}</p></figcaption></figure>'
-                for s in slugs)
-            groups += f'<section class="group"><h2>{escape(heading)}</h2><div class="masonry">{bricks}</div></section>'
-        groups = f'<div class="groups">{groups}</div>'
     if p["section"] == "ux":
         facts = '<dl class="facts">' + "".join(
             f'<div><dt>{k.title()}</dt><dd>{escape(p.get(k) or "—")}</dd></div>' for k in ("role", "team", "timeline", "tools")
