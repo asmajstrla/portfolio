@@ -15,6 +15,7 @@
 
   --pad: clamp(16px, 2.2vw, 28px);
   --header: 56px;
+  --foot: 66px;   /* footer height; the first screen leaves room for it */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -74,7 +75,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- index stage: huge word bottom-left, tiles bottom-right ---------- */
 .stage {
-  min-height: calc(100svh - var(--header));
+  min-height: calc(100svh - var(--header) - var(--foot));
   display: grid; grid-template-columns: 1fr auto; align-items: end; gap: var(--pad);
   padding: 0 var(--pad) var(--pad);
 }
@@ -216,8 +217,9 @@ p { margin: 0 0 1em; }
 
 /* ---------- footer ---------- */
 .foot {
+  min-height: var(--foot); align-items: center;
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  padding: 18px var(--pad) 28px; font-size: 12px; color: var(--muted);
+  padding: 0 var(--pad); font-size: 12px; color: var(--muted);
   border-top: 1px solid var(--line);
 }
 .foot nav { display: flex; gap: 18px; }
