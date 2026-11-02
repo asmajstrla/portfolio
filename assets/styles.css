@@ -283,7 +283,13 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .lightbox .bar { display: flex; justify-content: space-between; align-items: center; padding: 0 var(--pad); font-size: 13px; }
 .lightbox .bar button { font: inherit; background: none; border: 0; cursor: pointer; padding: 4px 0; }
 .lightbox .frame { display: grid; place-items: center; padding: 0 var(--pad) var(--pad); min-height: 0; }
-.lightbox .frame img, .lightbox .frame video { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox .frame img, .lightbox .frame video {
+  /* always fit the whole image on screen, edges included */
+  width: auto; height: auto;
+  max-width: calc(100vw - 2 * var(--pad));
+  max-height: calc(100svh - var(--header) - var(--pad));
+  object-fit: contain; transform: none;
+}
 
 /* ---------- about ---------- */
 

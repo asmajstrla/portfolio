@@ -160,6 +160,7 @@ SCRIPT = """<script>
       const m = b.querySelector('img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       frame.innerHTML = ''; frame.appendChild(m);
+      lb.querySelector('.bar span').textContent = m.getAttribute('alt') || m.getAttribute('aria-label') || '';
       if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
     }));
