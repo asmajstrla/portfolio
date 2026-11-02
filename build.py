@@ -33,6 +33,9 @@ CASE_STUDIES = [
         "meta": "Add role and year",
         "color": "var(--c1)",
         "cover": "images/work/asbestos-com-homepage.webp",
+        "video": "images/work/asbestos-com-homepage.mp4",
+        # images or videos for sections of the case study page, by section name
+        "media": {"The solution": ("images/work/asbestos-com-mobile-homepage.webp", "images/work/asbestos-com-mobile-homepage.mp4")},
         "facts": {"Role": "", "Team": "", "Timeline": "", "Tools": ""},
     },
     {
@@ -42,6 +45,7 @@ CASE_STUDIES = [
         "meta": "Add role and year",
         "color": "var(--c2)",
         "cover": "images/work/red-6-ar-website.webp",
+        "video": "images/work/red-6-ar-website.mp4",
         "facts": {"Role": "", "Team": "", "Timeline": "", "Tools": ""},
     },
     {
@@ -152,6 +156,7 @@ GRAPHIC = [
 # The still image is shown first and to anyone who prefers reduced motion.
 GALLERY_VIDEOS = {
     "Nom Com movie night": "images/work/nom-com-movie-night.mp4",
+    "Mother's Day nesting dolls": "images/work/happy-mother-s-day-nesting-dolls.mp4",
 }
 
 TILE_COLORS = ["var(--c1)", "var(--c3)", "var(--c5)", "var(--c4)", "var(--c6)", "var(--c2)"]
@@ -251,7 +256,11 @@ def page(title, body, current, prefix="", description=""):
 """
 
 
-def art(src, alt, label, color, prefix=""):
+def art(src, alt, label, color, prefix="", video=""):
+    """An image, a looping video (with the image as its still), or a placeholder."""
+    if src and video:
+        return (f'<video src="{prefix}{video}" poster="{prefix}{src}" muted loop playsinline '
+                f'preload="metadata" aria-label="{escape(alt)}, animated" data-autoplay></video>')
     if src:
         return f'<img src="{prefix}{src}" alt="{escape(alt)}" loading="lazy">'
     return f'<div class="ph" style="--ph:{color}">{escape(label)}</div>'
@@ -263,7 +272,7 @@ def panels(prefix=""):
         href = f"{prefix}work/{cs['slug']}.html"
         out.append(f"""<section class="panel" style="--bg:{cs['color']}">
   <div class="wrap">
-    <div class="art">{art(cs['cover'], cs['title'] + ' cover', 'Add a cover image for ' + cs['title'], cs['color'], prefix)}</div>
+    <div class="art">{art(cs['cover'], cs['title'] + ' cover', 'Add a cover image for ' + cs['title'], cs['color'], prefix, cs.get('video', ''))}</div>
     <div>
       <div class="meta">{escape(cs['meta'])}</div>
       <h3>{escape(cs['title'])}</h3>
@@ -343,10 +352,7 @@ def build_gallery(title, intro, items, current):
     tiles = []
     for i, (name, link, img, ar) in enumerate(items):
         color = TILE_COLORS[i % len(TILE_COLORS)]
-        inner = art(img, name, "Add image", color)
-        if name in GALLERY_VIDEOS:
-            inner = (f'<video src="{GALLERY_VIDEOS[name]}" poster="{img}" muted loop playsinline '
-                     f'preload="metadata" aria-label="{escape(name)}, animated" data-autoplay></video>')
+        inner = art(img, name, "Add image", color, video=GALLERY_VIDEOS.get(name, ""))
         tiles.append(f'<a class="tile" href="{link}" style="--ar:{ar}"><figure style="margin:0">{inner}<figcaption>{escape(name)}</figcaption></figure></a>')
     body = f"""<section class="page-head wrap">
   <h1>{escape(title)}</h1>
@@ -376,11 +382,16 @@ def build_about():
     return page("About", body, "about.html")
 
 
+def section_media(cs, section, prefix):
+    img, video = cs.get("media", {}).get(section, ("", ""))
+    return art(img, f'{cs["title"]}: {section.lower()}', "Add an image", cs["color"], prefix, video)
+
+
 def build_case_study(i, cs):
     p = "../"
     facts = "".join(f"<div><dt>{k}</dt><dd>{escape(v) if v else '—'}</dd></div>" for k, v in cs["facts"].items())
     sections = "".join(
-        f'<section><h2>{t}</h2><div><p class="note">{escape(prompt)}</p><div class="ph" style="--ph:{cs["color"]}">Add an image</div></div></section>'
+        f'<section><h2>{t}</h2><div><p class="note">{escape(prompt)}</p><div class="media">{section_media(cs, t, p)}</div></div></section>'
         for t, prompt in CS_SECTIONS
     )
     nxt = CASE_STUDIES[(i + 1) % len(CASE_STUDIES)]
@@ -389,7 +400,7 @@ def build_case_study(i, cs):
     <a class="back" href="{p}ux.html">All case studies</a>
     <h1>{escape(cs['title'])}</h1>
     <p class="lede">{escape(cs['summary'])}</p>
-    <div class="cs-cover">{art(cs['cover'], cs['title'] + ' cover', 'Add a cover image', cs['color'], p)}</div>
+    <div class="cs-cover">{art(cs['cover'], cs['title'] + ' cover', 'Add a cover image', cs['color'], p, cs.get('video', ''))}</div>
   </div>
 </section>
 <div class="wrap">
