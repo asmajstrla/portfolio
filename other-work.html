@@ -48,6 +48,21 @@
     mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
   });
 
+  // background glow follows the cursor, easing in behind it
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const rs = document.documentElement.style;
+    let tx = 70, ty = 30, x = 70, y = 30, raf = 0;
+    const step = () => {
+      x += (tx - x) * 0.045; y += (ty - y) * 0.045;
+      rs.setProperty('--mx', x.toFixed(2) + '%'); rs.setProperty('--my', y.toFixed(2) + '%');
+      raf = (Math.abs(tx - x) + Math.abs(ty - y) > 0.05) ? requestAnimationFrame(step) : 0;
+    };
+    addEventListener('pointermove', e => {
+      tx = e.clientX / innerWidth * 100; ty = e.clientY / innerHeight * 100;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+  }
+
   // light / dark toggle
   const tt = document.querySelector('.theme-toggle');
   if (tt) {

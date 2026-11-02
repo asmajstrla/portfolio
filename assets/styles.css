@@ -15,6 +15,7 @@
   --head-shadow: rgba(23, 24, 26, .25);
   --next-ink-2: #4A4B50;
   --next-bg: linear-gradient(180deg, #C9D8E0 0%, #D6D6E4 38%, #EBD6DF 66%, #F5DCD2 86%, #F8E2CC 100%);
+  --glow: rgba(110, 150, 225, .16);
   color-scheme: light;
 
   --font: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -30,6 +31,7 @@
   --head-bg: rgba(19, 20, 22, .92); --head-hi: rgba(255, 255, 255, .06); --head-shadow: rgba(0, 0, 0, .6);
   --next-ink-2: #C9C6CF;
   --next-bg: linear-gradient(180deg, #24303A 0%, #2D2D3D 38%, #3A2C36 66%, #43302C 86%, #453526 100%);
+  --glow: rgba(80, 120, 215, .16);
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -38,6 +40,7 @@
     --head-bg: rgba(19, 20, 22, .92); --head-hi: rgba(255, 255, 255, .06); --head-shadow: rgba(0, 0, 0, .6);
     --next-ink-2: #C9C6CF;
     --next-bg: linear-gradient(180deg, #24303A 0%, #2D2D3D 38%, #3A2C36 66%, #43302C 86%, #453526 100%);
+    --glow: rgba(80, 120, 215, .16);
     color-scheme: dark;
   }
 }
@@ -57,6 +60,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, video { display: block; max-width: 100%; }
+
+/* soft blue glow behind everything; drifts toward the cursor on a delay (see script) */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(70vmax 60vmax at var(--mx, 70%) var(--my, 30%), var(--glow), transparent 70%),
+    radial-gradient(60vmax 50vmax at calc(100% - var(--mx, 70%)) calc(100% - var(--my, 30%)), color-mix(in srgb, var(--glow) 45%, transparent), transparent 70%);
+}
 a { color: inherit; text-decoration: none; }
 p { margin: 0 0 1em; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
