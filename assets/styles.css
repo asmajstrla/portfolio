@@ -244,13 +244,13 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 
 /* ---------- rail: tall boxes beside the big word (Brand, UX) ---------- */
 .stage-rail {
-  --box-h: min(calc(clamp(270px, 36vw, 510px) * 1.25), calc(100svh - var(--header) - var(--foot) - 2 * var(--pad)));
-  --box-w: calc(var(--box-h) * .4);
+  --box-h: min(calc(clamp(270px, 36vw, 510px) * 1.1), calc(100svh - var(--header) - var(--foot) - 2 * var(--pad) - 60px));
+  --box-w: calc(var(--box-h) * .52);
   grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(24px, 4vw, 64px);
 }
 /* the rail is always three boxes wide and right-aligned, so boxes start at the same spot on every page;
    when there are more, it bleeds off the right edge and scrolls */
-.word-rail { font-size: clamp(56px, 9.5vw, 170px); line-height: .86; }
+.word-rail { font-size: clamp(52px, 8.4vw, 170px); line-height: .86; }
 .rail-wrap { min-width: 0; justify-self: end; width: calc(3 * var(--box-w) + 2 * 12px); }
 .rail-wrap.spills { width: calc(3 * var(--box-w) + 2 * 12px + var(--pad)); margin-right: calc(-1 * var(--pad)); }
 .rail {
