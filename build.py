@@ -431,10 +431,11 @@ def build_project(p):
         for s in slugs:
             piece = PIECES[s]
             notes.setdefault(piece["images"][0], (piece["title"], piece.get("description") or piece["type"]))
+    # any image without its own write-up shows the project's
+    fallback = (p["title"], p.get("description") or p.get("summary") or p["type"])
+
     def note_html(src):
-        if src not in notes:
-            return ""
-        title, txt = notes[src]
+        title, txt = notes.get(src, fallback)
         return f'<span class="note" hidden><strong>{escape(title)}</strong>{body_html(txt)}</span>'
 
     shots = "".join(
@@ -449,7 +450,10 @@ def build_project(p):
 
     left = ""
     if p.get("client"):
-        left += f'<div><span class="muted">Designed for</span><br>{escape(p["client"])}</div>'
+        client = escape(p["client"])
+        if p.get("client_url"):
+            client = f'<a class="ext" href="{p["client_url"]}" target="_blank" rel="noopener">{client}</a>'
+        left += f'<div><span class="muted">Designed for</span><br>{client}</div>'
     if p.get("date") or p.get("year"):
         left += f'<div><span class="muted">Date</span><br>{escape(p.get("date") or p["year"])}</div>'
     if p.get("role"):

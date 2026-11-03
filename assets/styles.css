@@ -453,3 +453,8 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .tiles a:hover, .tiles a:focus-visible,
 .box:hover, .box:focus-visible,
 a.brick:hover .pic, a.brick:focus-visible .pic { border-radius: 32px; }
+
+/* links to a client's live site */
+a.ext { text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
+a.ext:hover { text-decoration-color: currentColor; }
+a.ext::after { content: " \2197"; font-size: .9em; }
