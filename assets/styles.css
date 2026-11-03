@@ -405,3 +405,10 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) {
   .tiles img, .box img, .brick img, .brick video { transition: none; transform: none !important; }
 }
+
+/* clickable images round further on hover */
+.tiles a, .box, .brick .pic, .row .strip { transition: border-radius .35s cubic-bezier(.2,.7,.2,1); }
+.tiles a:hover, .tiles a:focus-visible,
+.box:hover, .box:focus-visible,
+a.brick:hover .pic, a.brick:focus-visible .pic,
+.row:hover .strip, .row:focus-visible .strip { border-radius: 32px; }
