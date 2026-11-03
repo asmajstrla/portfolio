@@ -381,7 +381,7 @@ def build_brand(key, label, pg, projects, intro):
 
 def build_ux(key, label, pg, projects, intro):
     items = [(p["title"], " · ".join(x for x in [p.get("client"), p.get("year")] if x) or p["type"],
-              f'work/{p["slug"]}.html', p["images"][0] if p["images"] else "") for p in projects]
+              f'work/{p["slug"]}.html', p.get("box_cover") or (p["images"][0] if p["images"] else "")) for p in projects]
     return build_rail_page(label, pg, intro, items)
 
 
