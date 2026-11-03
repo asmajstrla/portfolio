@@ -399,7 +399,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                'laser-cut-wood-press-poster',
                'ucf-student-id-concept'])],
   'cover': 'images/work/ucf-cover.webp',
-  'box_cover': 'images/work/ucf-box.webp'}]
+  'box_cover': 'images/site/ucf-viewbook-box.webp'}]
 
 # Pieces covered by a client page in another form, kept off Other work
 HIDDEN = ['hawkers-noodle-tiger-shirt', 'hero-trainer-shirt']
