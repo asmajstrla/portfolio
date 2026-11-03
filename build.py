@@ -253,16 +253,16 @@ GRID_MAX = 10  # 4 across the bottom, 4 above, 2 on top; the List view shows eve
 
 
 def tiles(projects, prefix="", cols=4, stair=False):
-    """stair=True: 3 tiles on the bottom row, 2 above, 1 on top, stepped up to the right."""
+    """stair=True: 4 tiles on the bottom row, 3 above, 2 on top, stepped up to the right."""
     out = []
-    limit = 6 if stair else GRID_MAX
+    limit = 9 if stair else GRID_MAX
     for i, p in enumerate(projects[:limit]):
         inner = (f'<img src="{prefix}{p["images"][0]}" alt="" loading="lazy">' if p["images"]
                  else f'<span class="empty">{escape(p["title"])}</span>')
         out.append(f'<li style="--i:{i}"><a href="{prefix}work/{p["slug"]}.html">{inner}'
                    f'<span class="cap">{escape(p["title"])}<span>{escape(p["type"])}</span></span></a></li>')
     cls = "tiles tiles-stair" if stair else "tiles"
-    return f'<ul class="{cls}" style="--cols:{3 if stair else cols}">{"".join(out)}</ul>'
+    return f'<ul class="{cls}" style="--cols:{4 if stair else cols}">{"".join(out)}</ul>'
 
 
 def rows(projects, prefix="", switchable=True):
