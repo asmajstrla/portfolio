@@ -208,7 +208,7 @@ p { margin: 0 0 1em; }
 /* ---------- list view ---------- */
 .list { padding: 8px var(--pad) 40px; }
 .row { display: block; margin-bottom: clamp(36px, 5vw, 64px); }
-.strip { display: flex; gap: 2px; height: clamp(160px, 24vw, 360px); overflow: hidden; border-radius: var(--radius); isolation: isolate; }
+.strip { display: flex; gap: 2px; height: clamp(160px, 24vw, 360px); overflow: hidden; }
 .strip img, .strip video { height: 100%; width: auto; max-width: none; flex: none; }
 .strip .empty { display: grid; place-items: center; width: 100%; color: var(--muted); font-size: 13px; background: var(--tile-bg); }
 .row h3 { margin: 12px 0 0; font-size: 15px; font-weight: 500; }
@@ -422,8 +422,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 }
 
 /* clickable images round further on hover */
-.tiles a, .box, .brick .pic, .row .strip { transition: border-radius .35s cubic-bezier(.2,.7,.2,1); }
+.tiles a, .box, .brick .pic { transition: border-radius .35s cubic-bezier(.2,.7,.2,1); }
 .tiles a:hover, .tiles a:focus-visible,
 .box:hover, .box:focus-visible,
-a.brick:hover .pic, a.brick:focus-visible .pic,
-.row:hover .strip, .row:focus-visible .strip { border-radius: 32px; }
+a.brick:hover .pic, a.brick:focus-visible .pic { border-radius: 32px; }
