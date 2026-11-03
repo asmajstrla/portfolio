@@ -16,7 +16,7 @@ EMAIL = ""      # add an email to show it on the site
 RESUME = ""     # e.g. "files/adam-smajstrla-resume.pdf"
 PORTRAIT = "images/adam-smajstrla.webp"
 
-INTRO = "Creative director and product designer in Orlando. Currently a senior product designer at Disney, with a decade of brand and web work behind it."
+INTRO = "Merging data, graphic design and creative storytelling to enhance the user experience."
 
 ABOUT = [
     "I'm a visual problem solver: a creative director and product designer in Orlando, currently a senior product designer at The Walt Disney Company.",
