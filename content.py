@@ -82,7 +82,7 @@ CASE_STUDY_PROMPTS = {
 }
 
 UX = [{'slug': 'asbestos-com',
-  'title': 'Asbestos.com homepage refresh',
+  'title': 'Asbestos.com homepage',
   'type': 'UX and web design',
   'client': 'Asbestos.com',
   'client_url': 'https://www.asbestos.com/',
