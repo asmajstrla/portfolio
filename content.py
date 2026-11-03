@@ -100,22 +100,7 @@ UX = [{'slug': 'asbestos-com',
              "- A more visible call to action for the free guide, the site's highest-converting element.\n"
              '- Entry points for patients, caregivers and medical professionals, so each group finds '
              'relevant content fast.\n'
-             "- Better search, for information that doesn't live in the top navigation."),
-            ('Before and after',
-             '- Blue reserved for calls to action.\n'
-             '- Custom video content in place of stock imagery.\n'
-             '- New components to guide visitors, below.'),
-            ('New navigation component',
-             '- More emphasis on search.\n'
-             '- Most-visited pages grouped by audience.\n'
-             '- Friendlier, more engaging heading copy.'),
-            ('New comparison component',
-             'Many visitors find a doctor or lawyer on Asbestos.com and contact them directly. The '
-             "comparison tool shows the benefits of working with the site's patient advocates instead, which "
-             'led to more case signings.'),
-            ('Mobile',
-             'The existing site was static, so I added motion to make the mobile experience more dynamic and '
-             'engaging.')],
+             "- Better search, for information that doesn't live in the top navigation.")],
   'images': ['images/site/hero3.webp',
              'images/site/Before-and-After.webp',
              'images/site/on-screen-asbestos.webp',
@@ -127,7 +112,27 @@ UX = [{'slug': 'asbestos-com',
              'images/site/full-homepage.webp'],
   'videos': {'images/site/homepage-3.webp': 'images/site/homepage-3.mp4',
              'images/site/nav-comp.webp': 'images/site/nav-comp.mp4',
-             'images/site/video-5.webp': 'images/site/video-5.mp4'}},
+             'images/site/video-5.webp': 'images/site/video-5.mp4'},
+  'notes': {'images/site/Before-and-After.webp': ['Before and after',
+                                                  'The old layout on the left, the new design on the right.\n'
+                                                  '\n'
+                                                  '- Blue reserved for calls to action.\n'
+                                                  '- Custom video content in place of stock imagery.\n'
+                                                  '- New components to guide visitors, below.'],
+            'images/site/nav-comp.webp': ['New navigation component',
+                                          '- More emphasis on search.\n'
+                                          '- Most-visited pages grouped by audience.\n'
+                                          '- Friendlier, more engaging heading copy.'],
+            'images/site/homepage-2.webp': ['New comparison component',
+                                            'Many visitors find a doctor or lawyer on Asbestos.com and '
+                                            'contact them directly. The comparison tool shows the benefits '
+                                            "of working with the site's patient advocates instead, which led "
+                                            'to more case signings.'],
+            'images/site/homepage-6.webp': ['Mobile mockups', 'The redesigned homepage on mobile.'],
+            'images/site/video-5.webp': ['Mobile functionality',
+                                         'The existing site was static, so I added motion to make the mobile '
+                                         'experience more dynamic and engaging.'],
+            'images/site/full-homepage.webp': ['Full page', 'The complete redesigned homepage.']}},
  {'slug': 'asbestos-com-back-page',
   'title': 'Asbestos.com back page template',
   'type': 'UX and web design',
@@ -148,25 +153,7 @@ UX = [{'slug': 'asbestos-com',
              '- Stronger separation between the hero and the rest of the page.\n'
              '- A smaller video, with trust signals and authorship moved up.\n'
              '- A sticky side navigation that shows more content without distracting readers.\n'
-             '- Higher contrast on the table of contents for easier navigation.'),
-            ('Before and after',
-             '- Videos had a low click-through rate, so shrinking them made the primary call to action more '
-             'visible.\n'
-             '- A new dark header and a more visible fact-checked box build trust.\n'
-             '- Related articles moved from the bottom of the page to the sidebar.\n'
-             "- A table of contents bar that's easier to see."),
-            ('Sidebar',
-             'The original template used a single column. A sticky side navigation fits more content above '
-             'the fold, moves recommended reading higher, and keeps the call to action visible while '
-             'reading. It also fixed an issue where the call to action overlapped text on some screen '
-             'sizes.'),
-            ('Profile pages',
-             'The old profile layout was cluttered and short on white space. The new template moves key '
-             'content above the fold and uses collapsible sections to cut visual noise.'),
-            ('Sticky navigation',
-             'On the old template, readers had to scroll back to the top to reach the main navigation. The '
-             'new navigation reappears as you scroll up, and the updated table of contents no longer gets '
-             'lost white-on-white.')],
+             '- Higher contrast on the table of contents for easier navigation.')],
   'images': ['images/site/template-featured.webp',
              'images/site/before-after-ux-test.webp',
              'images/site/Full-template.webp',
@@ -175,7 +162,40 @@ UX = [{'slug': 'asbestos-com',
              'images/site/mobile.webp',
              'images/site/pull-quote.webp'],
   'videos': {'images/site/Full-template.webp': 'images/site/Full-template.mp4',
-             'images/site/Typography-Update-New-remix-1.webp': 'images/site/Typography-Update-New-remix-1.mp4'}},
+             'images/site/Typography-Update-New-remix-1.webp': 'images/site/Typography-Update-New-remix-1.mp4'},
+  'notes': {'images/site/before-after-ux-test.webp': ['Before and after',
+                                                      'The old layout on the left, the new design on the '
+                                                      'right.\n'
+                                                      '\n'
+                                                      '- Videos had a low click-through rate, so shrinking '
+                                                      'them made the primary call to action more visible.\n'
+                                                      '- A new dark header and a more visible fact-checked '
+                                                      'box build trust.\n'
+                                                      '- Related articles moved from the bottom of the page '
+                                                      'to the sidebar.\n'
+                                                      "- A table of contents bar that's easier to see."],
+            'images/site/Full-template.webp': ['Sidebar',
+                                               'The original template used a single column. A sticky side '
+                                               'navigation fits more content above the fold, moves '
+                                               'recommended reading higher, and keeps the call to action '
+                                               'visible while reading. It also fixed an issue where the call '
+                                               'to action overlapped text on some screen sizes.'],
+            'images/site/before-and-after-1.webp': ['Profile pages',
+                                                    'The old profile layout was cluttered and short on white '
+                                                    'space. The new template moves key content above the '
+                                                    'fold and uses collapsible sections to cut visual '
+                                                    'noise.'],
+            'images/site/Typography-Update-New-remix-1.webp': ['Sticky navigation',
+                                                               'On the old template, readers had to scroll '
+                                                               'back to the top to reach the main '
+                                                               'navigation. The new navigation reappears as '
+                                                               'you scroll up, and the updated table of '
+                                                               'contents no longer gets lost '
+                                                               'white-on-white.'],
+            'images/site/mobile.webp': ['Mobile mockups', 'The new template on mobile.'],
+            'images/site/pull-quote.webp': ['New pull quote style',
+                                            'A more distinct pull quote style for highlighting key '
+                                            'statements.']}},
  {'slug': 'red-6-ar',
   'title': 'Red 6 AR website',
   'type': 'Web design',
@@ -194,15 +214,23 @@ UX = [{'slug': 'asbestos-com',
              'I worked with Red 6 to build a site that pairs a sleek look with straightforward navigation. '
              "It reflects the company's forward-thinking culture and tells a clear story about its augmented "
              'reality products, turning complex technology into something visually striking and easy to '
-             'follow.'),
-            ('Layout',
-             'Dark colors, impactful imagery and video, and clear calls to action guided the design, from '
-             'the homepage through the full product pages.')],
+             'follow.')],
   'images': ['images/site/Untitled-1.webp',
              'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp',
              'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp',
              'images/site/ATARS-Red-6.webp'],
-  'videos': {'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': 'images/site/original-a848813faa7e65c0ed97d736165d2ad2.mp4'}}]
+  'videos': {'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': 'images/site/original-a848813faa7e65c0ed97d736165d2ad2.mp4'},
+  'notes': {'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp': ['Layout',
+                                                                           'Dark colors, impactful imagery '
+                                                                           'and video, and clear calls to '
+                                                                           'action guided the design, from '
+                                                                           'the homepage through the full '
+                                                                           'product pages.'],
+            'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': ['Homepage',
+                                                                           'The homepage hero, with video '
+                                                                           'front and center.'],
+            'images/site/ATARS-Red-6.webp': ['Full product page',
+                                             'The ATARS product page from top to bottom.']}}]
 
 # ---------------------------------------------------------------------------
 # Brand section. Client pages group pieces (by slug from PIECES) under
@@ -281,8 +309,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'description': 'Shirts, masks, uniforms and merch designed for Hawkers Asian Street Food, from Lunar New '
                  'Year drops to charity collaborations.',
   'cover': 'images/site/Hawkers-Apparel.webp',
-  'gallery': [
-              'images/site/Other-Illos.webp',
+  'gallery': ['images/site/Other-Illos.webp',
               'images/site/Certified-Trainer-Shirt-Mockup-scaled.webp',
               'images/site/Dribbble-Mockup-2.webp',
               'images/site/Hawkers-Apparel.webp',
@@ -292,17 +319,34 @@ CLIENTS = [{'slug': 'hawkers-brunch',
               'images/site/hawkers_80851540.webp',
               'images/site/hawkers_14456072.webp',
               'images/site/Geisha.webp'],
-  'story': [('Year of the Tiger',
-             'A Lunar New Year 2022 shirt. All proceeds went to Asian Americans Advancing Justice (AAJC).'),
-            ('Certified trainer shirt', 'A shirt for Hawkers certified trainers.'),
-            ('Panda COVID mask', 'A branded face mask for staff and guests.'),
-            ("Feelin' saucy", 'Merch and uniforms built around the Hawkers voice.'),
-            ('Noodle tiger',
-             'Made for the Orlando Merch Store to raise money for charity and local businesses.'),
-            ('Spice shirt', 'Part of the Hawkers spice campaign, hand-dyed in turmeric.'),
-            ('Seasoned perfectly', 'Another piece from the spice campaign.'),
-            ('Hawkers + DoorDash', 'A T-shirt designed in partnership with DoorDash.')],
-  'groups': [('More apparel', ['hawkers-tiger-trucker-cap'])]},
+  'story': [],
+  'groups': [('More apparel', ['hawkers-tiger-trucker-cap'])],
+  'notes': {'images/site/Other-Illos.webp': ['Year of the Tiger',
+                                             'A Lunar New Year 2022 shirt. All proceeds went to Asian '
+                                             'Americans Advancing Justice (AAJC).'],
+            'images/site/Certified-Trainer-Shirt-Mockup-scaled.webp': ['Certified trainer shirt',
+                                                                       'A shirt for Hawkers certified '
+                                                                       'trainers.'],
+            'images/site/Dribbble-Mockup-2.webp': ['Certified trainer shirt',
+                                                   'The character artwork for the certified trainer shirt.'],
+            'images/site/Hawkers-Apparel.webp': ['Certified trainer shirt',
+                                                 'The shirt in use at a Hawkers restaurant.'],
+            'images/site/02-Mask-Mockup-Perspective-View2.webp': ['Panda COVID mask',
+                                                                  'A branded face mask for staff and '
+                                                                  'guests.'],
+            'images/site/Commissary-Uniform-Grid-Mock-up-01.webp': ["Feelin' saucy",
+                                                                    'Merch and uniforms built around the '
+                                                                    'Hawkers voice.'],
+            'images/site/b34ffe5b35e4c396d4f7445bf05cc38c.webp': ['Noodle tiger',
+                                                                  'Made for the Orlando Merch Store to raise '
+                                                                  'money for charity and local businesses.'],
+            'images/site/hawkers_80851540.webp': ['Spice shirt',
+                                                  'Part of the Hawkers spice campaign, hand-dyed in '
+                                                  'turmeric.'],
+            'images/site/hawkers_14456072.webp': ['Seasoned perfectly',
+                                                  'Another piece from the spice campaign.'],
+            'images/site/Geisha.webp': ['Hawkers + DoorDash',
+                                        'A T-shirt designed in partnership with DoorDash.']}},
  {'slug': 'ucf',
   'title': 'UCF branding',
   'type': 'Environmental and print design',

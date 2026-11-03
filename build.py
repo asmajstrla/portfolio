@@ -212,13 +212,16 @@ SCRIPT = """<script>
   if (lb) {
     const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
     let last = null;
-    const close = () => { lb.classList.remove('open'); frame.innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
+    const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
     document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
       last = b;
       const m = b.querySelector('img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
-      frame.innerHTML = ''; frame.appendChild(m);
-      lb.querySelector('.bar span').textContent = m.getAttribute('alt') || m.getAttribute('aria-label') || '';
+      const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
+      pic.innerHTML = ''; pic.appendChild(m);
+      aside.innerHTML = note ? note.innerHTML : '';
+      lb.classList.toggle('has-note', !!note);
+      lb.querySelector('.bar span').textContent = note ? lb.getAttribute('aria-label') : (m.getAttribute('alt') || m.getAttribute('aria-label') || '');
       if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
     }));
@@ -410,8 +413,33 @@ def build_project(p):
     # every image for the project sits in the strip at the top
     titles = {PIECES[s]["images"][0]: PIECES[s]["title"] for _, slugs in p.get("groups", []) for s in slugs}
     strip = [(src, titles.get(src, p["title"]), p.get("videos")) for src in p["images"]]
+
+    def body_html(txt):
+        """Paragraphs separated by blank lines; lines starting with "- " become a list."""
+        out = ""
+        for block in txt.split("\n\n"):
+            lines = block.split("\n")
+            if all(l.startswith("- ") for l in lines):
+                out += "<ul>" + "".join(f"<li>{escape(l[2:])}</li>" for l in lines) + "</ul>"
+            else:
+                out += f"<p>{escape(block)}</p>"
+        return out
+
+    # the write-up shown beside an image when it's opened full screen
+    notes = {src: tuple(n) for src, n in p.get("notes", {}).items()}
+    for _, slugs in p.get("groups", []):
+        for s in slugs:
+            piece = PIECES[s]
+            notes.setdefault(piece["images"][0], (piece["title"], piece.get("description") or piece["type"]))
+    def note_html(src):
+        if src not in notes:
+            return ""
+        title, txt = notes[src]
+        return f'<span class="note" hidden><strong>{escape(title)}</strong>{body_html(txt)}</span>'
+
     shots = "".join(
-        f'<button class="shot" type="button" aria-label="View {escape(alt)} larger">{media(src, alt, vids, pre)}</button>'
+        f'<button class="shot" type="button" aria-label="View {escape(notes.get(src, (alt,))[0])} larger">'
+        f'{media(src, alt, vids, pre)}{note_html(src)}</button>'
         for src, alt, vids in strip
     ) or '<div class="empty">Add images for this project</div>'
     next_panel = (f'<a class="next-panel" href="{nxt["slug"]}.html">'
@@ -431,17 +459,6 @@ def build_project(p):
 
     text = p.get("description") or p.get("summary") or ""
     desc = f"<p>{escape(text)}</p>" if text else '<p class="prompt">Add a short description of this project.</p>'
-
-    def body_html(txt):
-        """Paragraphs separated by blank lines; lines starting with "- " become a list."""
-        out = ""
-        for block in txt.split("\n\n"):
-            lines = block.split("\n")
-            if all(l.startswith("- ") for l in lines):
-                out += "<ul>" + "".join(f"<li>{escape(l[2:])}</li>" for l in lines) + "</ul>"
-            else:
-                out += f"<p>{escape(block)}</p>"
-        return out
 
     facts = story = groups = ""
     if p.get("story"):
@@ -483,7 +500,7 @@ def build_project(p):
 </main>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="{escape(p["title"])}">
   <div class="bar"><span>{escape(p["title"])}</span><button type="button">Close</button></div>
-  <div class="frame"></div>
+  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
 </div>"""
     return page(p["title"], body, prefix=pre)
 

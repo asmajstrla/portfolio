@@ -46,7 +46,7 @@
 </main>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="Asian food illustrations">
   <div class="bar"><span>Asian food illustrations</span><button type="button">Close</button></div>
-  <div class="frame"></div>
+  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
 </div>
 <footer class="foot"><span>Adam Smajstrla, Orlando, FL</span><nav aria-label="Elsewhere"><a href="https://www.linkedin.com/in/adam-smajstrla/">LinkedIn</a><a href="https://dribbble.com/smaj">Dribbble</a></nav></footer>
 <script>
@@ -141,13 +141,16 @@
   if (lb) {
     const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
     let last = null;
-    const close = () => { lb.classList.remove('open'); frame.innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
+    const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
     document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
       last = b;
       const m = b.querySelector('img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
-      frame.innerHTML = ''; frame.appendChild(m);
-      lb.querySelector('.bar span').textContent = m.getAttribute('alt') || m.getAttribute('aria-label') || '';
+      const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
+      pic.innerHTML = ''; pic.appendChild(m);
+      aside.innerHTML = note ? note.innerHTML : '';
+      lb.classList.toggle('has-note', !!note);
+      lb.querySelector('.bar span').textContent = note ? lb.getAttribute('aria-label') : (m.getAttribute('alt') || m.getAttribute('aria-label') || '');
       if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
     }));
