@@ -81,7 +81,102 @@ CASE_STUDY_PROMPTS = {
     "Outcome": "Results with numbers where you have them, and what you'd do next.",
 }
 
-UX = [{'slug': 'asbestos-com',
+UX = [{'slug': 'disney-dark-mode',
+  'title': 'Disney parks app dark mode',
+  'type': 'Product design and design systems',
+  'client': 'The Walt Disney Company',
+  'year': '2026',
+  'date': '2026',
+  'role': 'Senior Product Designer',
+  'result': 'Design system exploration',
+  'summary': "Exploring a dark theme for Disney's parks app, built into the Vista design system so every "
+             'screen and component can switch with its tokens.',
+  'box_cover': 'images/disney/dark-mode-box.webp',
+  'images': ['images/disney/dark-mode-triphome.webp',
+             'images/disney/dark-mode-explore.webp',
+             'images/disney/dark-mode-checklist.webp',
+             'images/disney/dark-mode-scope.webp',
+             'images/disney/dark-mode-audit.webp',
+             'images/disney/dark-mode-toasts.webp',
+             'images/disney/dark-mode-fam.webp',
+             'images/disney/dark-mode-mappin.webp',
+             'images/disney/dark-mode-cards.webp'],
+  'story': [('The problem',
+             'Guests lean on the parks app all day, often where a bright white screen works against them: '
+             'watching fireworks and nighttime shows, waiting in dark ride queues, inside attractions, and '
+             'late in a long day when the battery is running low. The app had no dark theme.'),
+            ('Why dark mode',
+             '- Save battery. Dark surfaces draw less power on OLED phones over a full park day.\n'
+             "- Easier viewing at night. A dimmer screen is easier on the eyes in a dark park and doesn't "
+             'light up the people around you.\n'
+             '- A dark variation for indoor spaces and queue lines for dark rides, where a bright screen is '
+             'a distraction.'),
+            ('The approach',
+             'I built dark mode as a theme inside the Vista UI kit rather than as one-off screens, so '
+             'components switch through design tokens. I audited every component side by side in light and '
+             'dark, sorted them into Approved and Needs revisions, then tested the theme on real parks app '
+             'screens: trip home, the trip checklist, Explore, account settings, parking vouchers and resort '
+             'details.'),
+            ('Concerns and open questions',
+             '- The "inverse" token does two jobs. In light mode, inverse text is white, which happens to be '
+             'right both for text on fixed brand colors (buttons, destructive actions, map pins, anything '
+             'over a photo) and for text on true inverse surfaces like tooltips and snackbars. In dark mode '
+             'they need to split: text on fixed colors stays white, while inverse surfaces should flip.\n'
+             '- All 128 component bindings to inverse turned out to be the fixed-color case. I proposed '
+             'renaming them to "on-color" and adding a true inverse set. That\'s a breaking token-name '
+             'change for engineering, so it was tried and rolled back in October 2026 while the team weighs '
+             'the cost.\n'
+             "- Fixed brand fills can't get lighter than the point where white text still clears 4.5:1 "
+             'contrast.\n'
+             '- Warning toasts use white text while the others use color-specific text, which needs a closer '
+             'look.\n'
+             '- Disabled states are moving to percentage-based fills.\n'
+             '- Map pins and floating action menus need higher-contrast hover states on a dark map.')],
+  'notes': {'images/disney/dark-mode-triphome.webp': ['Trip home, light and dark',
+                                                      'The same screen in both themes. Hero imagery keeps '
+                                                      'its full color; surfaces, cards and type shift to the '
+                                                      'dark palette, while fixed brand colors like the red '
+                                                      'toast and Cancel My Trip button keep white text.'],
+            'images/disney/dark-mode-explore.webp': ['Explore, a first pass',
+                                                     'Dropping a dark theme onto existing screens exposed '
+                                                     'problems: section headings and card copy that stayed '
+                                                     'dark on a dark background, and text over images that '
+                                                     'lost contrast. Each one went on the list of components '
+                                                     'to fix.'],
+            'images/disney/dark-mode-checklist.webp': ['Trip checklist',
+                                                       'A dense, task-heavy screen. In dark mode, cards '
+                                                       'separate from the background with lighter surfaces '
+                                                       'instead of shadows, which disappear on dark '
+                                                       'backgrounds.'],
+            'images/disney/dark-mode-scope.webp': ['Parks app scope',
+                                                   'The screens in scope for the exploration, each shown in '
+                                                   'light and dark: trip home, the trip checklist, Explore, '
+                                                   'account and settings, parking vouchers and resort '
+                                                   'details.'],
+            'images/disney/dark-mode-audit.webp': ['Component audit',
+                                                   'Every component in the Vista UI kit compared side by '
+                                                   'side in light and dark, then sorted into Approved and '
+                                                   'Needs revisions.'],
+            'images/disney/dark-mode-toasts.webp': ['Toast messaging',
+                                                    'Status colors become deep tinted fills, so info, '
+                                                    'success, warning and error stay distinct without '
+                                                    'glowing in a dark room. Warning uses white text while '
+                                                    'the others use color-specific text, which is flagged '
+                                                    'for review.'],
+            'images/disney/dark-mode-fam.webp': ['Floating action menu',
+                                                 'Interactive states were rebuilt for dark: hover and '
+                                                 'pressed get lighter instead of darker, and the selected '
+                                                 'state moves to a tinted surface.'],
+            'images/disney/dark-mode-mappin.webp': ['Map pins',
+                                                    'Pins need to stay easy to find on a dark map. Hover and '
+                                                    'pressed states flip to lighter fills, and both pins and '
+                                                    'floating action menus were flagged for higher-contrast '
+                                                    'hover states.'],
+            'images/disney/dark-mode-cards.webp': ['Large cards across themes',
+                                                   'The same attraction card in Parks light, Cruise light '
+                                                   'and dark. One set of tokens drives each brand and '
+                                                   'theme.']}},
+ {'slug': 'asbestos-com',
   'title': 'Asbestos.com homepage',
   'type': 'UX and web design',
   'client': 'Asbestos.com',
