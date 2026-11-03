@@ -22,6 +22,8 @@
 
   --pad: clamp(16px, 2.2vw, 28px);
   --header: 56px;
+  --radius: 16px;     /* rounded corners on images everywhere except the project page strip */
+  --tile-gap: 12px;
   --foot: 66px;   /* footer height; the first screen leaves room for it */
 }
 
@@ -162,11 +164,12 @@ p { margin: 0 0 1em; }
   --cols: 4;
   --tile: clamp(96px, 11.5vw, 200px);
   display: flex; flex-wrap: wrap-reverse; justify-content: flex-end; align-content: flex-start;
-  width: calc(var(--tile) * var(--cols));
+  gap: var(--tile-gap);
+  width: calc(var(--tile) * var(--cols) + var(--tile-gap) * (var(--cols) - 1));
   list-style: none; margin: 0; padding: 0;
 }
 .tiles li { width: var(--tile); height: var(--tile); }
-.tiles a { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--tile-bg); }
+.tiles a { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--tile-bg); border-radius: var(--radius); isolation: isolate; }
 .tiles img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .tiles a:hover img, .tiles a:focus-visible img { transform: scale(1.06); }
 .tiles .cap {
@@ -181,7 +184,8 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 760px) {
   .stage { grid-template-columns: 1fr; min-height: 0; padding-top: 32px; }
-  .tiles { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .tiles { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); --tile-gap: 8px; }
+  .tiles a { border-radius: 12px; }
   .tiles li { width: auto; height: auto; aspect-ratio: 1; }
   .tiles .cap { display: none; }
 }
@@ -189,7 +193,7 @@ p { margin: 0 0 1em; }
 /* ---------- list view ---------- */
 .list { padding: 8px var(--pad) 40px; }
 .row { display: block; margin-bottom: clamp(36px, 5vw, 64px); }
-.strip { display: flex; gap: 2px; height: clamp(160px, 24vw, 360px); overflow: hidden; }
+.strip { display: flex; gap: 2px; height: clamp(160px, 24vw, 360px); overflow: hidden; border-radius: var(--radius); isolation: isolate; }
 .strip img, .strip video { height: 100%; width: auto; max-width: none; flex: none; }
 .strip .empty { display: grid; place-items: center; width: 100%; color: var(--muted); font-size: 13px; background: var(--tile-bg); }
 .row h3 { margin: 12px 0 0; font-size: 15px; font-weight: 500; }
@@ -206,10 +210,10 @@ figure.brick { margin: 0 0 clamp(24px, 3vw, 40px); }
 /* masonry ("List" in the header) */
 .masonry { columns: 3 300px; column-gap: var(--pad); padding: 8px var(--pad) 56px; }
 .brick { display: block; break-inside: avoid; margin-bottom: clamp(24px, 3vw, 40px); }
+.brick .pic { display: block; overflow: hidden; border-radius: var(--radius); isolation: isolate; }
 .brick img, .brick video { width: 100%; height: auto; background: var(--tile-bg); transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.brick { overflow: hidden; }
 a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
-.brick .empty { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--tile-bg); color: var(--muted); font-size: 13px; }
+.brick .empty { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: var(--radius); background: var(--tile-bg); color: var(--muted); font-size: 13px; }
 .brick h3 { margin: 10px 0 0; font-size: 14px; font-weight: 500; }
 .brick p { margin: 0; font-size: 12px; color: var(--muted); }
 .brick:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
@@ -243,7 +247,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .rail.fade-r { --fade-r: 96px; }
 .rail > li { flex: none; scroll-snap-align: start; }
 .box {
-  position: relative; display: block; overflow: hidden; background: var(--tile-bg);
+  position: relative; display: block; overflow: hidden; background: var(--tile-bg); border-radius: var(--radius); isolation: isolate;
   height: var(--box-h); width: var(--box-w);
 }
 .box img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -360,7 +364,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 
 /* ---------- about ---------- */
 
-.about-portrait { width: clamp(270px, 36vw, 510px); aspect-ratio: 4 / 5; background: var(--tile-bg); overflow: hidden; }
+.about-portrait { width: clamp(270px, 36vw, 510px); aspect-ratio: 4 / 5; background: var(--tile-bg); overflow: hidden; border-radius: var(--radius); }
 .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
 .about-portrait .empty { display: grid; place-items: center; height: 100%; color: var(--muted); font-size: 12px; }
 .xp { list-style: none; margin: 0; padding: 0; max-width: 640px; }

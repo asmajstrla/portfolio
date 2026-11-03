@@ -278,7 +278,7 @@ def masonry(projects, prefix=""):
     for p in projects:
         pic = (media(p["images"][0], p["title"], p.get("videos"), prefix) if p["images"]
                else '<span class="empty">Add images</span>')
-        out.append(f'<a class="brick" href="{prefix}work/{p["slug"]}.html">{pic}'
+        out.append(f'<a class="brick" href="{prefix}work/{p["slug"]}.html"><span class="pic">{pic}</span>'
                    f'<h3>{escape(p["title"])}</h3><p>{escape(p["type"])}</p></a>')
     return f'<div class="masonry switchable">{"".join(out)}</div>'
 
