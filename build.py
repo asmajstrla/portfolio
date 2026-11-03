@@ -299,7 +299,7 @@ def build_home():
     first, last = C.NAME.split(" ", 1)
     body = f"""{header("index.html")}
 <main>
-  <section class="stage">
+  <section class="stage stage-home">
     <div>
       <p class="lede">{escape(C.INTRO)}</p>
       <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>

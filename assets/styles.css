@@ -190,9 +190,10 @@ p { margin: 0 0 1em; }
   .tiles .cap { display: none; }
 }
 
-/* home: a 4-3-2 staircase of larger tiles */
+/* home: a 4-3-2 staircase of larger tiles, held well clear of the name */
+.stage-home { column-gap: calc(3 * var(--pad) + 24px); }
 .tiles-stair {
-  --tile: clamp(96px, 12vw, 210px);
+  --tile: clamp(90px, 10.4vw, 200px);
   display: grid; grid-template-columns: repeat(4, var(--tile)); grid-auto-rows: var(--tile);
 }
 .tiles-stair li:nth-child(1) { grid-area: 3 / 1; }
