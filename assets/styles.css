@@ -264,6 +264,8 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
   mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent 100%);
 }
 .rail.fade-r { --fade-r: 96px; }
+/* when the rail runs off the edge, leave a gutter after the last box */
+.rail-wrap.spills .rail { padding-right: var(--pad); scroll-padding-right: var(--pad); }
 .rail > li { flex: none; scroll-snap-align: start; }
 .box {
   position: relative; display: block; overflow: hidden; background: var(--tile-bg); border-radius: var(--radius); isolation: isolate;
