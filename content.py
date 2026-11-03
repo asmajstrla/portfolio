@@ -312,6 +312,8 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'description': 'Shirts, masks, uniforms and merch designed for Hawkers Asian Street Food, from Lunar New '
                  'Year drops to charity collaborations.',
   'cover': 'images/site/Hawkers-Apparel.webp',
+  'box_cover': 'images/site/hawkers-spice-shirt-photo.webp',
+  'crop': '58% center',
   'gallery': ['images/site/Other-Illos.webp',
               'images/site/Certified-Trainer-Shirt-Mockup-scaled.webp',
               'images/site/Dribbble-Mockup-2.webp',
