@@ -15,16 +15,17 @@ import content as C
 ROOT = Path(__file__).parent
 
 PIECES = {p["slug"]: p for p in C.PIECES}
-IN_CLIENT = {slug: c for c in C.CLIENTS for _, slugs in c["groups"] for slug in slugs}
+IN_CLIENT = {slug: c for c in C.CLIENTS for _, slugs in c.get("groups", []) for slug in slugs}
 for c in C.CLIENTS:
-    # a client page's covers: the first piece from each group
+    # a client page's strip: its cover, its own gallery, then every grouped piece
     c["images"] = ([c["cover"]] if c.get("cover") else []) + \
-        [PIECES[g[1][0]]["images"][0] for g in c["groups"] if g[1]][:4]
+        [g for g in c.get("gallery", []) if g != c.get("cover")] + \
+        [PIECES[s]["images"][0] for _, slugs in c.get("groups", []) for s in slugs]
     c.setdefault("videos", {})
-    for _, slugs in c["groups"]:
+    for _, slugs in c.get("groups", []):
         for slug in slugs:
             c["videos"].update(PIECES[slug].get("videos", {}))
-SELECTED = [p for p in C.PIECES if p["slug"] not in IN_CLIENT]
+SELECTED = [p for p in C.PIECES if p["slug"] not in IN_CLIENT and p["slug"] not in C.HIDDEN]
 BRAND = C.CLIENTS + SELECTED
 
 SECTIONS = [
@@ -37,7 +38,7 @@ SECTIONS = [
 NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.html", "About")]
 
 # Tiles featured on the home page, after the UX case studies.
-HOME_PICKS = ["hawkers", "ucf", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
+HOME_PICKS = ["hawkers", "hawkers-apparel", "ucf", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
               "geisha-and-koi", "spicy-smile-neon-sign", "streets-of-asia"]
 
 for key, label, page_name, projects, _ in SECTIONS:
@@ -406,12 +407,9 @@ def build_project(p):
     i = projs.index(p)
     prev, nxt = projs[i - 1], projs[(i + 1) % len(projs)]
 
-    # every image for the project sits in the strip at the top; client pages add all their pieces
-    strip = [(src, p["title"], p.get("videos")) for src in p["images"]]
-    if p.get("groups"):
-        strip = ([(p["cover"], p["title"], None)] if p.get("cover") else []) + [
-            (PIECES[s]["images"][0], PIECES[s]["title"], PIECES[s].get("videos"))
-            for _, slugs in p["groups"] for s in slugs]
+    # every image for the project sits in the strip at the top
+    titles = {PIECES[s]["images"][0]: PIECES[s]["title"] for _, slugs in p.get("groups", []) for s in slugs}
+    strip = [(src, titles.get(src, p["title"]), p.get("videos")) for src in p["images"]]
     shots = "".join(
         f'<button class="shot" type="button" aria-label="View {escape(alt)} larger">{media(src, alt, vids, pre)}</button>'
         for src, alt, vids in strip
@@ -424,29 +422,42 @@ def build_project(p):
     left = ""
     if p.get("client"):
         left += f'<div><span class="muted">Designed for</span><br>{escape(p["client"])}</div>'
-    if p.get("year"):
-        left += f'<div><span class="muted">Year</span><br>{escape(p["year"])}</div>'
+    if p.get("date") or p.get("year"):
+        left += f'<div><span class="muted">Date</span><br>{escape(p.get("date") or p["year"])}</div>'
+    if p.get("role"):
+        left += f'<div><span class="muted">Role</span><br>{escape(p["role"])}</div>'
+    if p.get("result"):
+        left += f'<div><span class="muted">Result</span><br>{escape(p["result"])}</div>'
 
     text = p.get("description") or p.get("summary") or ""
     desc = f"<p>{escape(text)}</p>" if text else '<p class="prompt">Add a short description of this project.</p>'
 
+    def body_html(txt):
+        """Paragraphs separated by blank lines; lines starting with "- " become a list."""
+        out = ""
+        for block in txt.split("\n\n"):
+            lines = block.split("\n")
+            if all(l.startswith("- ") for l in lines):
+                out += "<ul>" + "".join(f"<li>{escape(l[2:])}</li>" for l in lines) + "</ul>"
+            else:
+                out += f"<p>{escape(block)}</p>"
+        return out
+
     facts = story = groups = ""
-    if p.get("groups"):
-        secs = ""
-        for name, prompt in C.BRAND_PROMPTS.items():
-            txt = p.get("sections", {}).get(name, "")
-            paras = "".join(f"<p>{escape(t)}</p>" for t in txt.split("\n\n")) if txt else f'<p class="prompt">{escape(prompt)}</p>'
-            secs += f'<section><h2>{escape(name)}</h2><div class="body">{paras}</div></section>'
-        story = f'<div class="story">{secs}</div>'
-    if p["section"] == "ux":
-        facts = '<dl class="facts">' + "".join(
-            f'<div><dt>{k.title()}</dt><dd>{escape(p.get(k) or "—")}</dd></div>' for k in ("role", "team", "timeline", "tools")
-        ) + "</dl>"
-        secs = ""
-        for name, prompt in C.CASE_STUDY_PROMPTS.items():
-            txt = p.get("sections", {}).get(name, "")
-            paras = "".join(f"<p>{escape(t)}</p>" for t in txt.split("\n\n")) if txt else f'<p class="prompt">{escape(prompt)}</p>'
-            secs += f'<section><h2>{escape(name)}</h2><div class="body">{paras}</div></section>'
+    if p.get("story"):
+        sections = list(p["story"])
+    elif p["section"] == "ux":
+        sections = [(n, p.get("sections", {}).get(n, "") or None, pr) for n, pr in C.CASE_STUDY_PROMPTS.items()]
+    elif p.get("groups") or p.get("gallery"):
+        sections = [(n, p.get("sections", {}).get(n, "") or None, pr) for n, pr in C.BRAND_PROMPTS.items()]
+    else:
+        sections = []
+    secs = ""
+    for sec in sections:
+        name, txt = sec[0], sec[1]
+        inner = body_html(txt) if txt else f'<p class="prompt">{escape(sec[2])}</p>'
+        secs += f'<section><h2>{escape(name)}</h2><div class="body">{inner}</div></section>'
+    if secs:
         story = f'<div class="story">{secs}</div>'
 
     year = (escape(p["year"]) + "<br>") if p.get("year") else ""

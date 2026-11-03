@@ -82,80 +82,127 @@ CASE_STUDY_PROMPTS = {
 }
 
 UX = [{'slug': 'asbestos-com',
-  'title': 'Asbestos.com',
-  'type': 'Product design',
-  'client': 'Launch That',
-  'year': '2023–2024',
-  'summary': 'Redesigning the homepage and mobile experience for a patient resource site.',
-  'images': ['images/work/asbestos-com-homepage.webp', 'images/work/asbestos-com-mobile-homepage.webp'],
-  'videos': {'images/work/asbestos-com-mobile-homepage.webp': 'images/work/asbestos-com-mobile-homepage.mp4',
-             'images/work/asbestos-com-homepage.webp': 'images/work/asbestos-com-homepage.mp4'},
-  'role': 'Senior Product Designer',
-  'team': '',
-  'timeline': '2023–2024',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
+  'title': 'Asbestos.com homepage refresh',
+  'type': 'UX and web design',
+  'client': 'Asbestos.com',
+  'year': '2024',
+  'date': 'February 2024',
+  'role': 'UX and web design',
+  'result': 'Creating frictionless conversions',
+  'summary': 'A homepage redesign to build trust, simplify navigation and use real imagery so visitors can '
+             'picture themselves using the service.',
+  'story': [('The problem',
+             'Asbestos.com is a deep, knowledge-based resource, similar to WebMD or Wikipedia. For most of '
+             'its audience, people 65 and older, the sheer amount of information can be overwhelming, and '
+             'the site struggled to guide visitors to the content they needed.'),
+            ('The solution',
+             '- Clear trust signals near the top to build confidence quickly.\n'
+             "- A more visible call to action for the free guide, the site's highest-converting element.\n"
+             '- Entry points for patients, caregivers and medical professionals, so each group finds '
+             'relevant content fast.\n'
+             "- Better search, for information that doesn't live in the top navigation."),
+            ('Before and after',
+             '- Blue reserved for calls to action.\n'
+             '- Custom video content in place of stock imagery.\n'
+             '- New components to guide visitors, below.'),
+            ('New navigation component',
+             '- More emphasis on search.\n'
+             '- Most-visited pages grouped by audience.\n'
+             '- Friendlier, more engaging heading copy.'),
+            ('New comparison component',
+             'Many visitors find a doctor or lawyer on Asbestos.com and contact them directly. The '
+             "comparison tool shows the benefits of working with the site's patient advocates instead, which "
+             'led to more case signings.'),
+            ('Mobile',
+             'The existing site was static, so I added motion to make the mobile experience more dynamic and '
+             'engaging.')],
+  'images': ['images/site/hero3.webp',
+             'images/site/Before-and-After.webp',
+             'images/site/on-screen-asbestos.webp',
+             'images/site/homepage-3.webp',
+             'images/site/nav-comp.webp',
+             'images/site/homepage-2.webp',
+             'images/site/homepage-6.webp',
+             'images/site/video-5.webp',
+             'images/site/full-homepage.webp'],
+  'videos': {'images/site/homepage-3.webp': 'images/site/homepage-3.mp4',
+             'images/site/nav-comp.webp': 'images/site/nav-comp.mp4',
+             'images/site/video-5.webp': 'images/site/video-5.mp4'}},
+ {'slug': 'asbestos-com-back-page',
+  'title': 'Asbestos.com back page template',
+  'type': 'UX and web design',
+  'client': 'Asbestos.com',
+  'year': '2024',
+  'date': 'July 2024',
+  'role': 'UX and web design',
+  'result': 'Conversions up 17%, Google ranking up 2 points on average',
+  'summary': 'A new article template that puts more of the most important content above the fold without '
+             'hurting design or readability.',
+  'story': [('The problem',
+             "- The layout couldn't fit all the content stakeholders wanted higher on the page.\n"
+             "- Videos took up a lot of space and weren't getting much engagement.\n"
+             "- The primary call to action wasn't as prominent as it could be.\n"
+             '- The page felt flat and hard to read.'),
+            ('The solution',
+             '- More legible typography.\n'
+             '- Stronger separation between the hero and the rest of the page.\n'
+             '- A smaller video, with trust signals and authorship moved up.\n'
+             '- A sticky side navigation that shows more content without distracting readers.\n'
+             '- Higher contrast on the table of contents for easier navigation.'),
+            ('Before and after',
+             '- Videos had a low click-through rate, so shrinking them made the primary call to action more '
+             'visible.\n'
+             '- A new dark header and a more visible fact-checked box build trust.\n'
+             '- Related articles moved from the bottom of the page to the sidebar.\n'
+             "- A table of contents bar that's easier to see."),
+            ('Sidebar',
+             'The original template used a single column. A sticky side navigation fits more content above '
+             'the fold, moves recommended reading higher, and keeps the call to action visible while '
+             'reading. It also fixed an issue where the call to action overlapped text on some screen '
+             'sizes.'),
+            ('Profile pages',
+             'The old profile layout was cluttered and short on white space. The new template moves key '
+             'content above the fold and uses collapsible sections to cut visual noise.'),
+            ('Sticky navigation',
+             'On the old template, readers had to scroll back to the top to reach the main navigation. The '
+             'new navigation reappears as you scroll up, and the updated table of contents no longer gets '
+             'lost white-on-white.')],
+  'images': ['images/site/template-featured.webp',
+             'images/site/before-after-ux-test.webp',
+             'images/site/Full-template.webp',
+             'images/site/before-and-after-1.webp',
+             'images/site/Typography-Update-New-remix-1.webp',
+             'images/site/mobile.webp',
+             'images/site/pull-quote.webp'],
+  'videos': {'images/site/Full-template.webp': 'images/site/Full-template.mp4',
+             'images/site/Typography-Update-New-remix-1.webp': 'images/site/Typography-Update-New-remix-1.mp4'}},
  {'slug': 'red-6-ar',
-  'title': 'Red 6 AR',
-  'type': 'Product design',
+  'title': 'Red 6 AR website',
+  'type': 'Web design',
   'client': 'Red 6',
   'year': '2023',
-  'summary': 'Marketing website for an augmented reality flight training company.',
-  'images': ['images/work/red-6-ar-website.webp'],
-  'videos': {'images/work/red-6-ar-website.webp': 'images/work/red-6-ar-website.mp4'},
-  'role': 'Senior Graphic and Web Designer',
-  'team': '',
-  'timeline': '2023',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
- {'slug': 'case-study-3',
-  'title': 'Case study three',
-  'type': 'Product design',
-  'client': '',
-  'year': '',
-  'summary': 'One sentence on the problem and what changed because of your work.',
-  'images': [],
-  'role': '',
-  'team': '',
-  'timeline': '',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
- {'slug': 'case-study-4',
-  'title': 'Case study four',
-  'type': 'Product design',
-  'client': '',
-  'year': '',
-  'summary': 'One sentence on the problem and what changed because of your work.',
-  'images': [],
-  'role': '',
-  'team': '',
-  'timeline': '',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
- {'slug': 'case-study-5',
-  'title': 'Case study five',
-  'type': 'Product design',
-  'client': '',
-  'year': '',
-  'summary': 'One sentence on the problem and what changed because of your work.',
-  'images': [],
-  'role': '',
-  'team': '',
-  'timeline': '',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}},
- {'slug': 'case-study-6',
-  'title': 'Case study six',
-  'type': 'Product design',
-  'client': '',
-  'year': '',
-  'summary': 'One sentence on the problem and what changed because of your work.',
-  'images': [],
-  'role': '',
-  'team': '',
-  'timeline': '',
-  'tools': '',
-  'sections': {'The problem': '', 'Research': '', 'Process': '', 'The solution': '', 'Outcome': ''}}]
+  'date': 'January 2023',
+  'role': 'Web design and development',
+  'result': '',
+  'summary': 'A minimal, modern website for an augmented reality company that builds hardware and software '
+             'for fighter pilot training.',
+  'story': [('The problem',
+             'Red 6 needed a minimal, modern website that would act as a visual gateway into its work. The '
+             'challenge was to deliver a seamless experience while showcasing striking imagery of its '
+             'technology.'),
+            ('The solution',
+             'I worked with Red 6 to build a site that pairs a sleek look with straightforward navigation. '
+             "It reflects the company's forward-thinking culture and tells a clear story about its augmented "
+             'reality products, turning complex technology into something visually striking and easy to '
+             'follow.'),
+            ('Layout',
+             'Dark colors, impactful imagery and video, and clear calls to action guided the design, from '
+             'the homepage through the full product pages.')],
+  'images': ['images/site/Untitled-1.webp',
+             'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp',
+             'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp',
+             'images/site/ATARS-Red-6.webp'],
+  'videos': {'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': 'images/site/original-a848813faa7e65c0ed97d736165d2ad2.mp4'}}]
 
 # ---------------------------------------------------------------------------
 # Brand section. Client pages group pieces (by slug from PIECES) under
@@ -182,11 +229,33 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'type': 'Brand identity and creative direction',
   'client': 'Hawkers Asian Street Food',
   'year': '2018–2022',
-  'description': 'A brand system for a fast-growing Asian street food restaurant group, built to feel as loud, warm and hand-made as the food, and to scale from 4 to 15 locations across the country.',
-  'sections': {'The brief': 'Hawkers started as a single Orlando restaurant serving the dishes its founders grew up with at street stalls across Asia. As the group expanded, the brand had to travel to new cities without losing the energy of the original: every location needed to feel local and lived-in, not like a chain.\n\nThe challenge was to build one system flexible enough for menus, packaging, apparel, signage and full-wall murals, while giving each new restaurant its own personality.',
-               'My role': 'I joined as senior art director and later became creative director, leading an in-house team of designers, photographers and videographers.\n\nI owned the brand end to end: the 40-page brand guidelines, the menu suite, takeout packaging, uniforms and merch, neon signage and seasonal campaigns. I also traveled to new locations to design and paint the murals myself.',
-               'The system': 'The tiger mascot is the anchor. It shows up as a full illustration on murals and Lunar New Year pieces, simplified on packaging, and as a single-line mark on pins and caps. Around it sits a tight palette of tiger orange, deep green and cream, a bold sans for headlines and hand lettering for moments that need personality.\n\nEvery year the zodiac animal becomes a new campaign, which keeps the brand fresh while reinforcing the tiger. The work earned Central Florida Art Director of the Year and a string of ADDY awards.'},  # draft copy, replace with your own
-'groups': [('Identity and mascot', ['hawkers-tiger', 'japanese-hero-mask-lockup', 'lapel-pins']),
+  'description': 'A brand system for a fast-growing Asian street food restaurant group, built to feel as '
+                 'loud, warm and hand-made as the food, and to scale from 4 to 15 locations across the '
+                 'country.',
+  'sections': {'The brief': 'Hawkers started as a single Orlando restaurant serving the dishes its founders '
+                            'grew up with at street stalls across Asia. As the group expanded, the brand had '
+                            'to travel to new cities without losing the energy of the original: every '
+                            'location needed to feel local and lived-in, not like a chain.\n'
+                            '\n'
+                            'The challenge was to build one system flexible enough for menus, packaging, '
+                            'apparel, signage and full-wall murals, while giving each new restaurant its own '
+                            'personality.',
+               'My role': 'I joined as senior art director and later became creative director, leading an '
+                          'in-house team of designers, photographers and videographers.\n'
+                          '\n'
+                          'I owned the brand end to end: the 40-page brand guidelines, the menu suite, '
+                          'takeout packaging, uniforms and merch, neon signage and seasonal campaigns. I '
+                          'also traveled to new locations to design and paint the murals myself.',
+               'The system': 'The tiger mascot is the anchor. It shows up as a full illustration on murals '
+                             'and Lunar New Year pieces, simplified on packaging, and as a single-line mark '
+                             'on pins and caps. Around it sits a tight palette of tiger orange, deep green '
+                             'and cream, a bold sans for headlines and hand lettering for moments that need '
+                             'personality.\n'
+                             '\n'
+                             'Every year the zodiac animal becomes a new campaign, which keeps the brand '
+                             'fresh while reinforcing the tiger. The work earned Central Florida Art '
+                             'Director of the Year and a string of ADDY awards.'},
+  'groups': [('Identity and mascot', ['hawkers-tiger', 'japanese-hero-mask-lockup', 'lapel-pins']),
              ('Lunar New Year and anniversaries',
               ['lunar-new-year-year-of-the-tiger',
                'happy-new-year-2020-year-of-the-rat',
@@ -198,10 +267,42 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                'hawkers-beverage-coasters',
                'foo-dog-drink-coaster',
                'daruma-lucky-cat-drink-coaster']),
-             ('Apparel', ['hawkers-tiger-trucker-cap', 'hawkers-noodle-tiger-shirt', 'hero-trainer-shirt']),
              ('Murals and signage', ['gan-bei-garden-mural', 'dumplings-and-dragons-mural', 'custom-neons'])],
   'cover': 'images/work/hawkers-tiger-cover.webp',
   'crop': 'right center'},
+ {'slug': 'hawkers-apparel',
+  'title': 'Hawkers apparel',
+  'type': 'Apparel and merch design',
+  'client': 'Hawkers Asian Street Food',
+  'year': '2021',
+  'date': 'October 2021',
+  'role': 'Brand identity',
+  'result': 'ADDY Award winner',
+  'description': 'Shirts, masks, uniforms and merch designed for Hawkers Asian Street Food, from Lunar New '
+                 'Year drops to charity collaborations.',
+  'cover': 'images/site/Hawkers-Apparel.webp',
+  'gallery': ['images/site/Tiger-2.webp',
+              'images/site/Other-Illos.webp',
+              'images/site/Certified-Trainer-Shirt-Mockup-scaled.webp',
+              'images/site/Dribbble-Mockup-2.webp',
+              'images/site/Hawkers-Apparel.webp',
+              'images/site/02-Mask-Mockup-Perspective-View2.webp',
+              'images/site/Commissary-Uniform-Grid-Mock-up-01.webp',
+              'images/site/b34ffe5b35e4c396d4f7445bf05cc38c.webp',
+              'images/site/hawkers_80851540.webp',
+              'images/site/hawkers_14456072.webp',
+              'images/site/Geisha.webp'],
+  'story': [('Year of the Tiger',
+             'A Lunar New Year 2022 shirt. All proceeds went to Asian Americans Advancing Justice (AAJC).'),
+            ('Certified trainer shirt', 'A shirt for Hawkers certified trainers.'),
+            ('Panda COVID mask', 'A branded face mask for staff and guests.'),
+            ("Feelin' saucy", 'Merch and uniforms built around the Hawkers voice.'),
+            ('Noodle tiger',
+             'Made for the Orlando Merch Store to raise money for charity and local businesses.'),
+            ('Spice shirt', 'Part of the Hawkers spice campaign, hand-dyed in turmeric.'),
+            ('Seasoned perfectly', 'Another piece from the spice campaign.'),
+            ('Hawkers + DoorDash', 'A T-shirt designed in partnership with DoorDash.')],
+  'groups': [('More apparel', ['hawkers-tiger-trucker-cap'])]},
  {'slug': 'ucf',
   'title': 'UCF branding',
   'type': 'Environmental and print design',
@@ -212,6 +313,9 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'groups': [('Environmental graphics', ['ucf-mba-downtown-wall-wrap'])],
   'cover': 'images/work/ucf-cover.webp',
   'box_cover': 'images/work/ucf-box.webp'}]
+
+# Pieces covered by a client page in another form, kept off Other work
+HIDDEN = ['hawkers-noodle-tiger-shirt', 'hero-trainer-shirt']
 
 # Every individual piece. Pieces used in a client page above don't get their own page.
 PIECES = [{'slug': 'project-hail-mary-patch',
