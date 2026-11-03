@@ -252,14 +252,17 @@ def page(title, body, prefix="", view=None):
 GRID_MAX = 10  # 4 across the bottom, 4 above, 2 on top; the List view shows everything
 
 
-def tiles(projects, prefix="", cols=4):
+def tiles(projects, prefix="", cols=4, stair=False):
+    """stair=True: 3 tiles on the bottom row, 2 above, 1 on top, stepped up to the right."""
     out = []
-    for i, p in enumerate(projects[:GRID_MAX]):
+    limit = 6 if stair else GRID_MAX
+    for i, p in enumerate(projects[:limit]):
         inner = (f'<img src="{prefix}{p["images"][0]}" alt="" loading="lazy">' if p["images"]
                  else f'<span class="empty">{escape(p["title"])}</span>')
         out.append(f'<li style="--i:{i}"><a href="{prefix}work/{p["slug"]}.html">{inner}'
                    f'<span class="cap">{escape(p["title"])}<span>{escape(p["type"])}</span></span></a></li>')
-    return f'<ul class="tiles" style="--cols:{cols}">{"".join(out)}</ul>'
+    cls = "tiles tiles-stair" if stair else "tiles"
+    return f'<ul class="{cls}" style="--cols:{3 if stair else cols}">{"".join(out)}</ul>'
 
 
 def rows(projects, prefix="", switchable=True):
@@ -301,7 +304,7 @@ def build_home():
       <p class="lede">{escape(C.INTRO)}</p>
       <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>
     </div>
-    {tiles(featured, cols=4)}
+    {tiles(featured, stair=True)}
   </section>
   <section class="home-list" aria-labelledby="cs">
     <h2 class="label" id="cs">Case studies</h2>

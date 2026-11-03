@@ -190,6 +190,21 @@ p { margin: 0 0 1em; }
   .tiles .cap { display: none; }
 }
 
+/* home: a 3-2-1 staircase of larger tiles */
+.tiles-stair {
+  --tile: clamp(108px, 13vw, 226px);
+  display: grid; grid-template-columns: repeat(3, var(--tile)); grid-auto-rows: var(--tile);
+}
+.tiles-stair li:nth-child(1) { grid-area: 3 / 1; }
+.tiles-stair li:nth-child(2) { grid-area: 3 / 2; }
+.tiles-stair li:nth-child(3) { grid-area: 3 / 3; }
+.tiles-stair li:nth-child(4) { grid-area: 2 / 2; }
+.tiles-stair li:nth-child(5) { grid-area: 2 / 3; }
+.tiles-stair li:nth-child(6) { grid-area: 1 / 3; }
+@media (max-width: 760px) {
+  .tiles-stair { grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
+}
+
 /* ---------- list view ---------- */
 .list { padding: 8px var(--pad) 40px; }
 .row { display: block; margin-bottom: clamp(36px, 5vw, 64px); }
