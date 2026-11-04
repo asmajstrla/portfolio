@@ -303,13 +303,20 @@ def masonry(projects, prefix=""):
 # ---------------------------------------------------------------- pages
 
 def build_home():
-    # same layout as Product design and Graphic design: the name, then every project as a tall box
-    ux = [(p["title"], " · ".join(x for x in [p.get("client"), p.get("year")] if x) or p["type"],
-           f'work/{p["slug"]}.html', p.get("box_cover") or (p["images"][0] if p["images"] else ""))
-          for p in C.UX]
-    return build_rail_page(C.NAME, "index.html", C.INTRO, ux + BRAND_BOXES).replace(
-        "<title>Adam Smajstrla | Adam Smajstrla</title>", f"<title>{escape(C.NAME)} | {escape(C.TITLE)}</title>").replace(
-        'class="word word-rail"', 'class="word word-rail word-name"')
+    # the name with a 4-3-2 staircase of square tiles; no lists below
+    featured = [p for p in C.UX if p["images"]] + [ALL[s] for s in HOME_PICKS if s in ALL]
+    first, last = C.NAME.split(" ", 1)
+    body = f"""{header("index.html")}
+<main>
+  <section class="stage stage-home">
+    <div>
+      <p class="lede">{escape(C.INTRO)}</p>
+      <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>
+    </div>
+    {tiles(featured, stair=True)}
+  </section>
+</main>"""
+    return page("", body)
 
 
 def build_index(key, label, pg, projects, intro):
