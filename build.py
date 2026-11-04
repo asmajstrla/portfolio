@@ -40,7 +40,7 @@ NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.htm
 
 # Tiles featured on the home page, after the UX case studies.
 HOME_PICKS = ["hawkers", "hawkers-apparel", "ucf", "other-works", "hawkers-brunch", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
-              "geisha-and-koi", "spicy-smile-neon-sign", "streets-of-asia"]
+              "spicy-smile-neon-sign", "streets-of-asia"]
 
 for key, label, page_name, projects, _ in SECTIONS:
     for p in projects:
