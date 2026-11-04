@@ -120,11 +120,21 @@
   document.querySelectorAll('.rail').forEach(r => {
     const wrap = r.parentElement;
     wrap.classList.toggle('spills', r.children.length > 3);
+    const prev = wrap.querySelector('.rail-btn.prev'), next = wrap.querySelector('.rail-btn.next');
     const edges = () => {
       const max = r.scrollWidth - r.clientWidth;
       r.classList.toggle('fade-l', r.scrollLeft > 4);
       r.classList.toggle('fade-r', max > 4 && r.scrollLeft < max - 4);
+      wrap.classList.toggle('scrolls', max > 4);
+      if (prev) { prev.disabled = r.scrollLeft <= 4; next.disabled = r.scrollLeft >= max - 4; }
     };
+    const step = dir => {
+      const box = r.querySelector('li');
+      const w = box ? box.getBoundingClientRect().width + 12 : r.clientWidth * .8;
+      r.scrollBy({ left: dir * w, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    prev && prev.addEventListener('click', () => step(-1));
+    next && next.addEventListener('click', () => step(1));
     r.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges); edges();
   });
 

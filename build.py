@@ -184,11 +184,21 @@ SCRIPT = """<script>
   document.querySelectorAll('.rail').forEach(r => {
     const wrap = r.parentElement;
     wrap.classList.toggle('spills', r.children.length > 3);
+    const prev = wrap.querySelector('.rail-btn.prev'), next = wrap.querySelector('.rail-btn.next');
     const edges = () => {
       const max = r.scrollWidth - r.clientWidth;
       r.classList.toggle('fade-l', r.scrollLeft > 4);
       r.classList.toggle('fade-r', max > 4 && r.scrollLeft < max - 4);
+      wrap.classList.toggle('scrolls', max > 4);
+      if (prev) { prev.disabled = r.scrollLeft <= 4; next.disabled = r.scrollLeft >= max - 4; }
     };
+    const step = dir => {
+      const box = r.querySelector('li');
+      const w = box ? box.getBoundingClientRect().width + 12 : r.clientWidth * .8;
+      r.scrollBy({ left: dir * w, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    prev && prev.addEventListener('click', () => step(-1));
+    next && next.addEventListener('click', () => step(1));
     r.addEventListener('scroll', edges, { passive: true }); addEventListener('resize', edges); edges();
   });
 
@@ -338,7 +348,12 @@ def rail(items, prefix=""):
         pic = f'<img src="{prefix}{img}" alt=""{style} loading="lazy">' if img else '<span class="box-empty">Add a cover image</span>'
         out.append(f'<li><a class="box" href="{prefix}{href}">{pic}'
                    f'<span class="box-text"><strong>{escape(t)}</strong><span>{escape(sub)}</span></span></a></li>')
-    return f'<div class="rail-wrap"><ul class="rail" tabindex="0" aria-label="Projects">{"".join(out)}</ul></div>'
+    arrow = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" '
+             'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+    nav = ('<div class="rail-nav">'
+           f'<button class="rail-btn prev" type="button" aria-label="Scroll projects left" disabled>{arrow}</button>'
+           f'<button class="rail-btn next" type="button" aria-label="Scroll projects right">{arrow}</button></div>')
+    return f'<div class="rail-wrap">{nav}<ul class="rail" tabindex="0" aria-label="Projects">{"".join(out)}</ul></div>'
 
 
 def build_rail_page(label, pg, intro, items):

@@ -497,3 +497,17 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .cs-media .shot:not(.long) img, .cs-media .shot:not(.long) video { max-height: none; }
   .cs-meta { grid-template-columns: 1fr 1fr; }
 }
+
+/* arrows above the project rows, shown only when the row scrolls */
+.rail-nav { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 12px; visibility: hidden; }
+.rail-wrap.scrolls .rail-nav { visibility: visible; }
+.rail-wrap.spills .rail-nav { padding-right: var(--pad); }
+.rail-btn {
+  display: grid; place-items: center; width: 36px; height: 36px; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%; background: var(--tile-bg); color: var(--ink); cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.rail-btn svg { width: 16px; height: 16px; }
+.rail-btn.prev svg { transform: rotate(180deg); }
+.rail-btn:hover:not(:disabled) { background: var(--ink); color: var(--bg); }
+.rail-btn:disabled { opacity: .35; cursor: default; }
