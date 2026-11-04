@@ -21,6 +21,7 @@ for c in C.CLIENTS:
     c["images"] = ([c["cover"]] if c.get("cover") else []) + \
         [g for g in c.get("gallery", []) if g != c.get("cover")] + \
         [PIECES[s]["images"][0] for _, slugs in c.get("groups", []) for s in slugs]
+    c["images"] = list(dict.fromkeys(c["images"]))  # no image twice
     c.setdefault("videos", {})
     for _, slugs in c.get("groups", []):
         for slug in slugs:
@@ -38,7 +39,7 @@ SECTIONS = [
 NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.html", "About")]
 
 # Tiles featured on the home page, after the UX case studies.
-HOME_PICKS = ["hawkers", "hawkers-apparel", "ucf", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
+HOME_PICKS = ["hawkers", "hawkers-apparel", "ucf", "other-works", "hawkers-brunch", "project-hail-mary-patch", "kabuki-mask", "nice-buns-neon",
               "geisha-and-koi", "spicy-smile-neon-sign", "streets-of-asia"]
 
 for key, label, page_name, projects, _ in SECTIONS:
@@ -335,9 +336,6 @@ def build_index(key, label, pg, projects, intro):
     return page(label, body, view="grid")
 
 
-OTHER_PAGE = "other-work.html"
-for p in SELECTED:
-    p["section_page"] = OTHER_PAGE
 
 # the three boxes on the Brand page: (title, subtitle, link, cover image)
 BRAND_BOXES = [  # (title, subtitle, link, cover, crop position)
@@ -385,20 +383,6 @@ def build_ux(key, label, pg, projects, intro):
     items = [(p["title"], " · ".join(x for x in [p.get("client"), p.get("year")] if x) or p["type"],
               f'work/{p["slug"]}.html', p.get("box_cover") or (p["images"][0] if p["images"] else "")) for p in projects]
     return build_rail_page(label, pg, intro, items)
-
-
-def build_other():
-    body = f"""{header("brand.html")}
-<main>
-  <section class="stage stage-short">
-    <div>
-      <p class="lede"><a href="brand.html">Graphic design</a> / Illustration, lettering, signage and personal projects.</p>
-      <h1 class="word">other work</h1>
-    </div>
-  </section>
-  {masonry(SELECTED).replace(' switchable', '')}
-</main>"""
-    return page("Other work", body)
 
 
 def build_project(p):
@@ -624,13 +608,13 @@ def main():
     files = {"index.html": build_home(), "about.html": build_about()}
     for s in SECTIONS:
         files[s[2]] = {"brand": build_brand, "ux": build_ux}.get(s[0], build_index)(*s)
-    files[OTHER_PAGE] = build_other()
     for p in ALL.values():
         files[f"work/{p['slug']}.html"] = build_project(p)
     # old addresses keep working
     def redirect(to):
         return f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={to}"><link rel="canonical" href="{to}"><a href="{to}">Moved here</a>'
     files["illustration.html"] = redirect("brand.html")
+    files["other-work.html"] = redirect("work/other-works.html")
     files["graphic-design.html"] = redirect("brand.html")
     for slug, c in IN_CLIENT.items():
         files[f"work/{slug}.html"] = redirect(f"{c['slug']}.html")
