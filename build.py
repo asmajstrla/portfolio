@@ -312,7 +312,7 @@ def build_home():
     # the name with a 4-3-2 staircase of square tiles; no lists below
     # square tiles made for the home page: (project, image). Bottom row first, then middle, then top.
     picks = [("hawkers-brunch", "brunch"), ("disney-dark-mode", "disney"), ("hawkers-apparel", "apparel"), ("red-6-ar", "red-6"),
-             ("hawkers", "branding"), ("other-works", "hail-mary"), ("ucf", "ucf"),
+             ("environmental-design", "branding"), ("other-works", "hail-mary"), ("ucf", "ucf"),
              ("asbestos-com", "asbestos-home"), ("hawkers", "year-of-the-pig")]
     files = {"brunch": "hawkers-brunch", "apparel": "hawkers-apparel", "branding": "hawkers-branding"}
     featured = [dict(ALL[slug], images=[f"images/home/{files.get(img, img)}.webp"]) for slug, img in picks if slug in ALL]
