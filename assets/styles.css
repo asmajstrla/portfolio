@@ -316,9 +316,9 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 /* the slot holds the strip's full height in the page; the strip itself is pinned
    under the header and shrinks from 62% to 34% of the screen as you scroll (see script) */
 .gallery-slot { height: min(62svh, 50vw); }
+.gallery-frame { position: fixed; top: var(--header); left: 0; right: 0; z-index: 20; background: var(--bg); height: min(62svh, 50vw); }
 .gallery {
-  position: fixed; top: var(--header); left: 0; right: 0; z-index: 20; background: var(--bg);
-  display: flex; gap: 2px; height: min(62svh, 50vw);
+  display: flex; gap: 2px; height: 100%;
   overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: thin;
 }
 .gallery > * { flex: none; height: 100%; scroll-snap-align: start; }
@@ -368,7 +368,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 @media (max-width: 760px) {
   /* phones: the image strip pins under the header while the details scroll beneath it */
   .gallery-slot { display: contents; }
-  .gallery { position: sticky; top: var(--header); height: 62vw; min-height: 240px; }
+  .gallery-frame { position: sticky; top: var(--header); height: 62vw; min-height: 240px; }
   .info, .story section { grid-template-columns: 1fr; }
   .facts { grid-template-columns: 1fr 1fr; }
   .pager { grid-template-columns: 1fr 1fr; }
@@ -599,4 +599,25 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 @media (max-width: 760px) {
   .stage-about { row-gap: 40px; }
   .stage-about .word { font-size: 83px; }
+}
+
+/* arrows over the project image strip */
+.g-btn {
+  position: absolute; top: 50%; z-index: 2; transform: translateY(-50%);
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / .18); background: rgb(14 15 20 / .55); color: #fff; cursor: pointer;
+  -webkit-backdrop-filter: blur(10px) saturate(1.2); backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: 0 4px 18px rgb(0 0 0 / .25);
+  transition: opacity .2s ease, background-color .2s ease, color .2s ease;
+}
+.g-btn.prev { left: var(--pad); }
+.g-btn.next { right: var(--pad); }
+.g-btn svg { width: 18px; height: 18px; }
+.g-btn.prev svg { transform: rotate(180deg); }
+.g-btn:hover:not(:disabled) { background: #fff; color: #111; }
+.g-btn:disabled { opacity: 0; pointer-events: none; }
+@media (max-width: 760px) {
+  .g-btn { width: 36px; height: 36px; }
+  .g-btn svg { width: 16px; height: 16px; }
+  .g-btn.prev { left: 10px; } .g-btn.next { right: 10px; }
 }

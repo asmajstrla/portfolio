@@ -207,8 +207,23 @@ SCRIPT = """<script>
   });
 
   // project strip: starts tall, shrinks as you scroll, then the text slides underneath
-  const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery');
+  const slot = document.querySelector('.gallery-slot'), strip = slot && slot.querySelector('.gallery-frame');
   if (strip) {
+    // arrows: step one image at a time, hidden at either end
+    const g = strip.querySelector('.gallery'), gp = strip.querySelector('.g-btn.prev'), gn = strip.querySelector('.g-btn.next');
+    const ends = () => {
+      const max = g.scrollWidth - g.clientWidth;
+      gp.disabled = g.scrollLeft <= 4; gn.disabled = g.scrollLeft >= max - 4;
+    };
+    const go = dir => {
+      const x = g.scrollLeft, kids = [...g.children].map(k => k.offsetLeft - g.offsetLeft);
+      const to = dir > 0 ? kids.find(l => l > x + 4) : kids.filter(l => l < x - 4).pop();
+      g.scrollTo({ left: to === undefined ? (dir > 0 ? g.scrollWidth : 0) : to,
+                   behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    gp.addEventListener('click', () => go(-1)); gn.addEventListener('click', () => go(1));
+    g.addEventListener('scroll', ends, { passive: true }); addEventListener('resize', ends); addEventListener('load', ends); ends();
+
     const wide = matchMedia('(min-width: 761px)');
     let ticking = false;
     const fit = () => {
@@ -244,6 +259,12 @@ SCRIPT = """<script>
   }
 })();
 </script>"""
+
+
+GALLERY_ARROW = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" '
+                 'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+GALLERY_NAV = (f'<button class="g-btn prev" type="button" aria-label="Previous image" disabled>{GALLERY_ARROW}</button>'
+               f'<button class="g-btn next" type="button" aria-label="Next image">{GALLERY_ARROW}</button>')
 
 
 # Adam's mark (from images/logo.svg), drawn in the ink colour
@@ -548,7 +569,7 @@ def build_project(p):
 
     body = f"""{project_header(p, pre)}
 <main>
-  <div class="gallery-slot"><div class="gallery">{shots}{next_panel}</div></div>
+  <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
   <div class="info info-stack">
     <h1>{escape(p["title"])}</h1>
     <div class="lead">{desc}</div>
