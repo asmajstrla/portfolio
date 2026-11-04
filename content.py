@@ -9,7 +9,7 @@ Edit this file, then run `python3 build.py` to rebuild the pages.
 
 NAME = "Adam Smajstrla"
 TITLE = "Creative Director & Product Design"
-LOCATION = "Orlando, FL"
+LOCATION = "Central Florida"
 LINKEDIN = "https://www.linkedin.com/in/adam-smajstrla/"
 DRIBBBLE = "https://dribbble.com/smaj"
 EMAIL = "adamsmajstrla@gmail.com"      # add an email to show it on the site
