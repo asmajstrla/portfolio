@@ -590,7 +590,7 @@ def build_about():
         contact.append(f'<a href="{C.RESUME}">Résumé (PDF)</a>')
     body = f"""{header("about.html")}
 <main>
-  <section class="stage">
+  <section class="stage stage-about">
     <div>
       <p class="lede">{escape(C.TITLE)}<br>{escape(C.LOCATION)}</p>
       <h1 class="word">About</h1>

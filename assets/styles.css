@@ -592,3 +592,11 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   :root { --foot: 76px; }
   .foot { padding-top: 22px; padding-bottom: calc(30px + env(safe-area-inset-bottom)); align-items: flex-start; }
 }
+
+/* About: more room between the heading and the portrait, a touch more leading */
+.stage-about { column-gap: calc(2 * var(--pad) + 32px); }
+.stage-about .word { line-height: calc(0.8em + 3px); }
+@media (max-width: 760px) {
+  .stage-about { row-gap: 40px; }
+  .stage-about .word { font-size: 83px; }
+}
