@@ -6,17 +6,17 @@
 
 :root[data-theme="dark"],
 :root:not([data-theme]) {
-  --bg: #5A0E14;            /* burgundy */
+  --bg: #200305;            /* deep burgundy */
   --ink: #F0E295;           /* butter */
-  --muted: #C9A57A;         /* 6.1:1 on burgundy */
-  --line: rgba(240, 226, 149, .16);
-  --tile-bg: #681A1F;
-  --head-bg: rgba(90, 14, 20, .92);
+  --muted: #C9A57A;         /* 9.4:1 on deep burgundy */
+  --line: rgba(240, 226, 149, .14);
+  --tile-bg: #33090D;
+  --head-bg: rgba(32, 3, 5, .92);
   --head-hi: rgba(240, 226, 149, .08);
-  --head-shadow: rgba(30, 0, 4, .55);
+  --head-shadow: rgba(0, 0, 0, .6);
   --next-ink-2: #E2CF8A;
-  --next-bg: linear-gradient(180deg, #741C22 0%, #6A161C 50%, #5E1017 100%);
-  --glow: rgba(240, 190, 120, .07);
+  --next-bg: linear-gradient(180deg, #4A1016 0%, #3A0A0F 50%, #2A0508 100%);
+  --glow: rgba(150, 30, 40, .22);
   color-scheme: dark;
 }
 
