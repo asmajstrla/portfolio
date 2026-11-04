@@ -92,7 +92,8 @@ UX = [{'slug': 'disney-dark-mode',
   'summary': "Exploring a dark theme for Disney's parks app, built into the Vista design system so every "
              'screen and component can switch with its tokens.',
   'box_cover': 'images/disney/dark-mode-box.webp',
-  'images': ['images/disney/dark-mode-triphome.webp',
+  'images': ['images/disney/dark-mode-phones.webp',
+             'images/disney/dark-mode-triphome.webp',
              'images/disney/dark-mode-explore.webp',
              'images/disney/dark-mode-checklist.webp',
              'images/disney/dark-mode-scope.webp',
@@ -175,7 +176,13 @@ UX = [{'slug': 'disney-dark-mode',
             'images/disney/dark-mode-cards.webp': ['Large cards across themes',
                                                    'The same attraction card in Parks light, Cruise light '
                                                    'and dark. One set of tokens drives each brand and '
-                                                   'theme.']}},
+                                                   'theme.'],
+            'images/disney/dark-mode-phones.webp': ['Light and dark, side by side',
+                                                    'The trip home and trip checklist screens in both '
+                                                    'themes, scrolling together so you can compare how '
+                                                    'surfaces, cards, type and brand colors carry over from '
+                                                    'light to dark.']},
+  'videos': {'images/disney/dark-mode-phones.webp': 'images/disney/dark-mode-phones.mp4'}},
  {'slug': 'asbestos-com',
   'title': 'Asbestos.com homepage',
   'type': 'UX and web design',
