@@ -552,3 +552,19 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 @media (prefers-reduced-motion: reduce) { .screen .scroll { animation: none; } }
 .lightbox .pic .phones { --ph-h: calc(100svh - var(--header) - 2 * var(--pad) - 40px); }
 @media (max-width: 760px) { .phones { --ph-h: 88vw; gap: 18px; } }
+
+/* graphic design work pages: title and summary left, facts right in a 2x2 grid */
+.info-stack {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 0 clamp(32px, 5vw, 80px);
+  align-items: start; max-width: none;
+}
+.info-stack h1 { grid-column: 1; }
+.info-stack .lead { grid-column: 1; }
+.info-stack .cs-meta {
+  grid-column: 2; grid-row: 1 / span 2; align-self: start;
+  grid-template-columns: 1fr 1fr; column-gap: 32px; margin: 8px 0 0; padding: 0; border-top: 0;
+}
+@media (max-width: 760px) {
+  .info-stack { grid-template-columns: 1fr; }
+  .info-stack .cs-meta { grid-column: 1; grid-row: auto; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+}
