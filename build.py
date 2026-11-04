@@ -293,33 +293,13 @@ def masonry(projects, prefix=""):
 # ---------------------------------------------------------------- pages
 
 def build_home():
-    # the home page only shows work that has images; empty case studies still appear on the UX page
-    ready = [p for p in C.UX if p["images"]]
-    featured = ready + [ALL[s] for s in HOME_PICKS if s in ALL]
-    sections = "".join(
-        f'<li><a href="{pg}">{escape(label)}<span>{len(projs)} {"case studies" if key == "ux" else "projects"}</span></a></li>'
-        for key, label, pg, projs, _ in SECTIONS
-    ) + '<li><a href="about.html">About<span>Bio, experience and contact</span></a></li>'
-    first, last = C.NAME.split(" ", 1)
-    body = f"""{header("index.html")}
-<main>
-  <section class="stage stage-home">
-    <div>
-      <p class="lede">{escape(C.INTRO)}</p>
-      <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>
-    </div>
-    {tiles(featured, stair=True)}
-  </section>
-  <section class="home-list" aria-labelledby="cs">
-    <h2 class="label" id="cs">Case studies</h2>
-    {rows(ready, switchable=False)}
-  </section>
-  <section class="more" aria-labelledby="all">
-    <h2 class="label" id="all">All work</h2>
-    <ul>{sections}</ul>
-  </section>
-</main>"""
-    return page("", body)
+    # same layout as Product design and Graphic design: the name, then every project as a tall box
+    ux = [(p["title"], " · ".join(x for x in [p.get("client"), p.get("year")] if x) or p["type"],
+           f'work/{p["slug"]}.html', p.get("box_cover") or (p["images"][0] if p["images"] else ""))
+          for p in C.UX]
+    return build_rail_page(C.NAME, "index.html", C.INTRO, ux + BRAND_BOXES).replace(
+        "<title>Adam Smajstrla | Adam Smajstrla</title>", f"<title>{escape(C.NAME)} | {escape(C.TITLE)}</title>").replace(
+        'class="word word-rail"', 'class="word word-rail word-name"')
 
 
 def build_index(key, label, pg, projects, intro):

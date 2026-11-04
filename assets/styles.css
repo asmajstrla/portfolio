@@ -251,6 +251,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 /* the rail is always three boxes wide and right-aligned, so boxes start at the same spot on every page;
    when there are more, it bleeds off the right edge and scrolls */
 .word-rail { font-size: clamp(52px, 8.4vw, 170px); line-height: .86; }
+.word-rail.word-name { font-size: clamp(46px, 7.2vw, 150px); }
 .rail-wrap { min-width: 0; justify-self: end; width: calc(3 * var(--box-w) + 2 * 12px); }
 .rail-wrap.spills { width: calc(3 * var(--box-w) + 2 * 12px + var(--pad)); margin-right: calc(-1 * var(--pad)); }
 .rail {

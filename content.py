@@ -12,7 +12,7 @@ TITLE = "Creative Director & Product Design"
 LOCATION = "Orlando, FL"
 LINKEDIN = "https://www.linkedin.com/in/adam-smajstrla/"
 DRIBBBLE = "https://dribbble.com/smaj"
-EMAIL = ""      # add an email to show it on the site
+EMAIL = "adamsmajstrla@gmail.com"      # add an email to show it on the site
 RESUME = ""     # e.g. "files/adam-smajstrla-resume.pdf"
 PORTRAIT = "images/adam-smajstrla.webp"
 
