@@ -537,6 +537,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'description': 'Patches, logos and illustration for clients and personal projects outside of Hawkers and '
                  'UCF.',
   'cover': 'images/work/project-hail-mary-patch.webp',
+  'box_cover': 'images/work/other-works-box.webp',
   'sections': {'The brief': '', 'My role': '', 'The system': ''},
   'groups': [('Selected pieces',
               ['project-hail-mary-patch', 'ghost-chicken', 'main-street-bridge', 'hutch-studio-logo'])]}]
