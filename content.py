@@ -479,7 +479,9 @@ CLIENTS = [{'slug': 'hawkers-brunch',
               'images/site/gan-bei-neon-wall.webp',
               'images/site/gan-bei-garden-mural-photo.webp',
               'images/site/year-of-the-pig-2019.webp',
-              'images/site/hawkers-doordash-send-noods.webp'],
+              'images/site/hawkers-doordash-send-noods.webp',
+              'images/site/hawkers-brand-book.webp',
+              'images/site/hawkers-business-cards.webp'],
   'notes': {'images/site/hawkers-interior-masks.webp': ['Restaurant interior',
                                                         'A Hawkers dining room: hand-painted mask mural, '
                                                         "custom neon and the brand's colors carried through "
@@ -498,7 +500,16 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/hawkers-doordash-send-noods.webp': ['Send Noods Plz.',
                                                              'A Hawkers + DoorDash delivery campaign, built '
                                                              'around an illustrated plate of noodles and a '
-                                                             'cheeky headline.']}},
+                                                             'cheeky headline.'],
+            'images/site/hawkers-brand-book.webp': ['Brand book',
+                                                    'The cover of the Hawkers brand book, second edition: '
+                                                    "Food. Service. Vibe. The guide covers the brand's "
+                                                    'voice, photography, type, color and how they come '
+                                                    'together across every location.'],
+            'images/site/hawkers-business-cards.webp': ['Business cards',
+                                                        'Business cards with a collage back built from the '
+                                                        "brand's poster style, mascots and street-food "
+                                                        'photography.']}},
  {'slug': 'hawkers-apparel',
   'title': 'Hawkers apparel',
   'type': 'Apparel and merch design',
