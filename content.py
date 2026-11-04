@@ -16,6 +16,9 @@ EMAIL = "adamsmajstrla@gmail.com"      # add an email to show it on the site
 RESUME = ""     # e.g. "files/adam-smajstrla-resume.pdf"
 PORTRAIT = "images/adam-smajstrla.webp"
 
+# Color palette trial. "burgundy" loads assets/palette-burgundy.css; set to "" for the original colors.
+PALETTE = "burgundy"
+
 INTRO = "Merging data, graphic design and creative storytelling to enhance the user experience."
 
 ABOUT = [

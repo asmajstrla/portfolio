@@ -1,0 +1,36 @@
+/* ==========================================================
+   Burgundy + butter palette (trial).
+   To go back to the original colors, set PALETTE = "" in
+   content.py and run build.py. This file can then be deleted.
+   ========================================================== */
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg: #5A0E14;            /* burgundy */
+  --ink: #F0E295;           /* butter */
+  --muted: #C9A57A;         /* 6.1:1 on burgundy */
+  --line: rgba(240, 226, 149, .16);
+  --tile-bg: #681A1F;
+  --head-bg: rgba(90, 14, 20, .92);
+  --head-hi: rgba(240, 226, 149, .08);
+  --head-shadow: rgba(30, 0, 4, .55);
+  --next-ink-2: #E2CF8A;
+  --next-bg: linear-gradient(180deg, #741C22 0%, #6A161C 50%, #5E1017 100%);
+  --glow: rgba(240, 190, 120, .07);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #F0E295;            /* butter */
+  --ink: #5A0E14;           /* burgundy */
+  --muted: #8A4B3A;         /* 5.1:1 on butter */
+  --line: rgba(90, 14, 20, .16);
+  --tile-bg: #E6D486;
+  --head-bg: rgba(240, 226, 149, .92);
+  --head-hi: rgba(255, 250, 220, .6);
+  --head-shadow: rgba(90, 14, 20, .2);
+  --next-ink-2: #6E2A24;
+  --next-bg: linear-gradient(180deg, #F6EAAE 0%, #EED98A 55%, #E7CF7C 100%);
+  --glow: rgba(200, 80, 60, .08);
+  color-scheme: light;
+}
