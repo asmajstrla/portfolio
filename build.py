@@ -482,6 +482,56 @@ def build_project(p):
         story = f'<div class="story">{secs}</div>'
 
     year = (escape(p["year"]) + "<br>") if p.get("year") else ""
+    pager = f"""<nav class="pager" aria-label="More projects">
+    <a href="{prev["slug"]}.html"><strong>{escape(prev["title"])}</strong><span>Previous project</span></a>
+    <div class="mid"><span>{year}{escape(p["section_label"])}, {escape(p["type"])}</span></div>
+    <a class="next" href="{nxt["slug"]}.html"><strong>{escape(nxt["title"])}</strong><span>Next project</span></a>
+  </nav>"""
+    lightbox = f"""<div class="lightbox" role="dialog" aria-modal="true" aria-label="{escape(p["title"])}">
+  <div class="bar"><span>{escape(p["title"])}</span><button type="button">Close</button></div>
+  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
+</div>"""
+
+    if p["section"] == "ux":
+        # product design: images on the left, the write-up for each on the right
+        def shot(src, alt, vids):
+            label = escape(notes.get(src, (alt,))[0])
+            # very tall images (full-page captures) keep their full height; the rest fit the screen
+            try:
+                from PIL import Image
+                w, h = Image.open(ROOT / src).size
+                long = h / w > 2.2
+            except Exception:
+                long = False
+            return (f'<button class="shot{" long" if long else ""}" type="button" aria-label="View {label} larger">'
+                    f'{media(src, alt, vids, pre)}{note_html(src)}</button>')
+        rows = ""
+        if strip:
+            src, alt, vids = strip[0]
+            rows += f"""<section class="cs-row cs-intro">
+    <div class="cs-media">{shot(src, alt, vids)}</div>
+    <div class="cs-text">
+      <h1>{escape(p["title"])}</h1>
+      <div class="type">{escape(p["type"])}</div>
+      <div class="cs-meta">{left}</div>
+      <div class="desc">{desc}</div>
+      {story}
+    </div>
+  </section>"""
+        for src, alt, vids in strip[1:]:
+            title, txt = notes.get(src, fallback)
+            rows += f"""<section class="cs-row">
+    <div class="cs-media">{shot(src, alt, vids)}</div>
+    <div class="cs-text"><h2>{escape(title)}</h2><div class="body">{body_html(txt)}</div></div>
+  </section>"""
+        body = f"""{project_header(p, pre)}
+<main class="cs">
+  {rows}
+  {pager}
+</main>
+{lightbox}"""
+        return page(p["title"], body, prefix=pre)
+
     body = f"""{project_header(p, pre)}
 <main>
   <div class="gallery-slot"><div class="gallery">{shots}{next_panel}</div></div>

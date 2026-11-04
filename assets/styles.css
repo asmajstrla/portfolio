@@ -458,3 +458,41 @@ a.brick:hover .pic, a.brick:focus-visible .pic { border-radius: 32px; }
 a.ext { text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
 a.ext:hover { text-decoration-color: currentColor; }
 a.ext::after { content: " \2197"; font-size: .9em; }
+
+/* ---------- product design case studies: images left, write-up right ---------- */
+.cs { padding: var(--pad) var(--pad) 0; }
+.cs-row {
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px); align-items: start;
+  padding-bottom: clamp(40px, 6vw, 88px);
+}
+.cs-media .shot { display: block; width: 100%; padding: 0; border: 0; background: var(--tile-bg); cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
+.cs-media img, .cs-media video { width: 100%; height: auto; display: block; }
+.cs-media { display: flex; justify-content: center; }
+.cs-media .shot:not(.long) { width: auto; max-width: 100%; }
+.cs-media .shot:not(.long) img, .cs-media .shot:not(.long) video {
+  width: auto; max-width: 100%; max-height: calc(100svh - var(--header) - 2 * var(--pad)); object-fit: contain;
+}
+/* the short side stays in view while the long side scrolls past */
+.cs-intro .cs-media { position: sticky; top: calc(var(--header) + var(--pad)); }
+.cs-row:not(.cs-intro) .cs-text { position: sticky; top: calc(var(--header) + var(--pad)); }
+.cs-text { max-width: 52ch; }
+.cs-text h1 { margin: 0; font-size: 26px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2; }
+.cs-text .type { font-size: 13px; color: var(--muted); margin: 4px 0 20px; }
+.cs-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; font-size: 13px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+.cs-text .desc p { font-size: 16px; }
+.cs-text .story { padding: 12px 0 0; }
+.cs-text .story section { display: block; padding: 18px 0 6px; }
+.cs-text .story section:first-child { border-top: 1px solid var(--line); }
+.cs-text .story h2, .cs-text > h2 { margin: 0 0 8px; font-size: 15px; font-weight: 500; }
+.cs-text .body { font-size: 15px; }
+.cs-text .body ul { margin: 0 0 1em; padding-left: 1.1em; }
+.cs-text .body li { margin-bottom: .45em; }
+.cs-text .body li::marker { color: var(--muted); }
+.cs .pager { padding-left: 0; padding-right: 0; }
+@media (max-width: 760px) {
+  .cs-row { grid-template-columns: 1fr; gap: 16px; }
+  .cs-intro .cs-media, .cs-row:not(.cs-intro) .cs-text { position: static; }
+  .cs-media .shot:not(.long) img, .cs-media .shot:not(.long) video { max-height: none; }
+  .cs-meta { grid-template-columns: 1fr 1fr; }
+}
