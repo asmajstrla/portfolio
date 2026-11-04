@@ -27,7 +27,7 @@
 </header>
 <main class="cs">
   <section class="cs-row cs-intro">
-    <div class="cs-media"><button class="shot" type="button" aria-label="View Light and dark, side by side larger"><video src="../images/disney/dark-mode-phones.mp4" poster="../images/disney/dark-mode-phones.webp" muted loop playsinline preload="metadata" aria-label="Disney parks app dark mode" data-autoplay></video><span class="note" hidden><strong>Light and dark, side by side</strong><p>The trip home and trip checklist screens in both themes, scrolling together so you can compare how surfaces, cards, type and brand colors carry over from light to dark.</p></span></button></div>
+    <div class="cs-media"><button class="shot phones-shot" type="button" aria-label="View Light and dark, side by side larger"><div class="phones" role="img" aria-label="Trip home screen in light and dark mode, scrolling side by side"><figure class="phone"><figcaption>Light</figcaption><div class="screen-wrap"><div class="screen"><img class="scroll" src="../images/disney/screen-light.webp" alt=""><img class="tabs tl" src="../images/disney/tabs-light.webp" alt=""><span class="island"></span><span class="home-ind"></span></div></div></figure><figure class="phone"><figcaption>Dark</figcaption><div class="screen-wrap"><div class="screen"><img class="scroll" src="../images/disney/screen-dark.webp" alt=""><img class="tabs td" src="../images/disney/tabs-dark.webp" alt=""><span class="island"></span><span class="home-ind"></span></div></div></figure></div><span class="note" hidden><strong>Light and dark, side by side</strong><p>The trip home screen in both themes, scrolling together with the tab bar pinned, so you can compare how surfaces, cards, type and brand colors carry over from light to dark.</p></span></button></div>
     <div class="cs-text">
       <h1>Disney parks app dark mode</h1>
       <div class="lead"><p>Exploring a dark theme for Disney&#x27;s parks app, built into the Vista design system so every screen and component can switch with its tokens.</p></div>
@@ -178,7 +178,7 @@
     const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
     document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
       last = b;
-      const m = b.querySelector('img, video').cloneNode(true);
+      const m = b.querySelector('.phones, img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
       pic.innerHTML = ''; pic.appendChild(m);

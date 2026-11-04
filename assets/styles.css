@@ -520,3 +520,35 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .info-stack .lead p { max-width: 56ch; }
 .info-stack .cs-meta { grid-template-columns: repeat(4, auto); justify-content: start; column-gap: 48px; border-bottom: 0; margin: 24px 0 0; padding: 20px 0 0; }
 @media (max-width: 760px) { .info-stack .cs-meta { grid-template-columns: 1fr 1fr; } }
+
+/* light/dark phone comparison: screens scroll together inside phone frames, tab bars stay put */
+.phones-shot { background: none !important; border-radius: 0 !important; overflow: visible !important; width: 100% !important; }
+.phones { --ph-h: min(74svh, 700px); display: flex; justify-content: center; gap: clamp(20px, 5%, 56px); padding: 8px 0 24px; }
+.phone { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.phone .screen-wrap { width: calc(var(--ph-h) * 780 / 1690); container-type: inline-size; }
+.phone figcaption { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+.phone { gap: 0 !important; }
+.screen {
+  --u: calc(100cqw / 780);
+  position: relative; width: 100%; aspect-ratio: 780 / 1690; overflow: hidden;
+  border-radius: calc(96 * var(--u));
+  box-shadow: 0 0 0 calc(22 * var(--u)) #0b0b0d, 0 0 0 calc(25 * var(--u)) #45464d, 0 30px 60px -20px rgba(0,0,0,.45);
+  background: #0b0b0d;
+}
+.screen .scroll {
+  width: 100% !important; max-width: none !important; max-height: none !important; height: auto !important;
+  display: block; animation: phone-scroll 20s infinite;
+}
+.screen .tabs { position: absolute; max-width: none !important; max-height: none !important; height: auto !important; }
+.screen .td { left: calc(34 * var(--u)); bottom: calc(68 * var(--u)); width: calc(712 * var(--u)) !important; }
+.screen .tl { left: calc(-14 * var(--u)); bottom: calc(4 * var(--u)); width: calc(808 * var(--u)) !important; }
+.screen .island { position: absolute; top: calc(24 * var(--u)); left: 50%; width: calc(250 * var(--u)); height: calc(72 * var(--u)); transform: translateX(-50%); border-radius: 999px; background: #000; }
+.screen .home-ind { position: absolute; bottom: calc(18 * var(--u)); left: 50%; width: calc(268 * var(--u)); height: calc(10 * var(--u)); transform: translateX(-50%); border-radius: 99px; background: #000; }
+@keyframes phone-scroll {
+  0%, 8%   { transform: translateY(0); animation-timing-function: ease-in-out; }
+  46%, 58% { transform: translateY(calc(-1310 * var(--u))); animation-timing-function: ease-in-out; }
+  96%, 100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .screen .scroll { animation: none; } }
+.lightbox .pic .phones { --ph-h: calc(100svh - var(--header) - 2 * var(--pad) - 40px); }
+@media (max-width: 760px) { .phones { --ph-h: 88vw; gap: 18px; } }

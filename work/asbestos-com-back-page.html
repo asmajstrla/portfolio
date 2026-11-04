@@ -169,7 +169,7 @@
     const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
     document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
       last = b;
-      const m = b.querySelector('img, video').cloneNode(true);
+      const m = b.querySelector('.phones, img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
       pic.innerHTML = ''; pic.appendChild(m);

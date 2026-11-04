@@ -178,11 +178,16 @@ UX = [{'slug': 'disney-dark-mode',
                                                    'and dark. One set of tokens drives each brand and '
                                                    'theme.'],
             'images/disney/dark-mode-phones.webp': ['Light and dark, side by side',
-                                                    'The trip home and trip checklist screens in both '
-                                                    'themes, scrolling together so you can compare how '
+                                                    'The trip home screen in both themes, scrolling together '
+                                                    'with the tab bar pinned, so you can compare how '
                                                     'surfaces, cards, type and brand colors carry over from '
                                                     'light to dark.']},
-  'videos': {'images/disney/dark-mode-phones.webp': 'images/disney/dark-mode-phones.mp4'}},
+  'videos': {},
+  'phones': {'src': 'images/disney/dark-mode-phones.webp',
+             'light': 'images/disney/screen-light.webp',
+             'dark': 'images/disney/screen-dark.webp',
+             'tabs_light': 'images/disney/tabs-light.webp',
+             'tabs_dark': 'images/disney/tabs-dark.webp'}},
  {'slug': 'asbestos-com',
   'title': 'Asbestos.com homepage',
   'type': 'UX and web design',

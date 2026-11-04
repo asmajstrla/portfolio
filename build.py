@@ -225,7 +225,7 @@ SCRIPT = """<script>
     const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
     document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
       last = b;
-      const m = b.querySelector('img, video').cloneNode(true);
+      const m = b.querySelector('.phones, img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
       pic.innerHTML = ''; pic.appendChild(m);
@@ -505,6 +505,17 @@ def build_project(p):
                 long = h / w > 2.2
             except Exception:
                 long = False
+            ph = p.get("phones")
+            if ph and src == ph["src"]:
+                # light and dark screens in phone frames, scrolling together, tab bars pinned (pure HTML/CSS, transparent)
+                def phone(name, scr, tabs, cls):
+                    return (f'<figure class="phone"><figcaption>{name}</figcaption><div class="screen-wrap"><div class="screen">'
+                            f'<img class="scroll" src="{pre}{scr}" alt="">'
+                            f'<img class="tabs {cls}" src="{pre}{tabs}" alt=""><span class="island"></span><span class="home-ind"></span>'
+                            f'</div></div></figure>')
+                inner = (f'<div class="phones" role="img" aria-label="Trip home screen in light and dark mode, scrolling side by side">'
+                         f'{phone("Light", ph["light"], ph["tabs_light"], "tl")}{phone("Dark", ph["dark"], ph["tabs_dark"], "td")}</div>')
+                return (f'<button class="shot phones-shot" type="button" aria-label="View {label} larger">{inner}{note_html(src)}</button>')
             return (f'<button class="shot{" long" if long else ""}" type="button" aria-label="View {label} larger">'
                     f'{media(src, alt, vids, pre)}{note_html(src)}</button>')
         rows = ""
