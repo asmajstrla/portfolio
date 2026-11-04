@@ -514,9 +514,8 @@ def build_project(p):
     <div class="cs-media">{shot(src, alt, vids)}</div>
     <div class="cs-text">
       <h1>{escape(p["title"])}</h1>
-      <div class="type">{escape(p["type"])}</div>
+      <div class="lead">{desc}</div>
       <div class="cs-meta">{left}</div>
-      <div class="desc">{desc}</div>
       {story}
     </div>
   </section>"""
@@ -537,14 +536,10 @@ def build_project(p):
     body = f"""{project_header(p, pre)}
 <main>
   <div class="gallery-slot"><div class="gallery">{shots}{next_panel}</div></div>
-  <div class="info">
-    <div class="left">{left}</div>
-    <div>
-      <h1>{escape(p["title"])}</h1>
-      <div class="type">{escape(p["type"])}</div>
-      <div class="desc">{desc}</div>
-      {facts}
-    </div>
+  <div class="info info-stack">
+    <h1>{escape(p["title"])}</h1>
+    <div class="lead">{desc}</div>
+    <div class="cs-meta">{left}</div>
   </div>
   {story}
   {groups}
