@@ -77,7 +77,7 @@ def head(title, prefix):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 {THEME_BOOT}
-<link rel="stylesheet" href="{prefix}assets/styles.css">{palette_link(prefix)}
+<link rel="stylesheet" href="{prefix}assets/styles.css?v={CSS_VER}">{palette_link(prefix)}
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-4%20-35%20130.48%20130.48%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%227%22%3E%3Cpolyline%20points%3D%22.5%2043.04%20118.98%2043.04%20118.98%2030.62%203.5%2030.62%203.5%2018.48%20121.98%2018.48%22/%3E%3Cline%20x1%3D%22121.98%22%20y1%3D%2256.02%22%20x2%3D%2289.28%22%20y2%3D%2256.02%22/%3E%3Cline%20x1%3D%2277.59%22%20y1%3D%223.5%22%20x2%3D%2244.89%22%20y2%3D%223.5%22/%3E%3Cline%20x1%3D%2233.2%22%20y1%3D%2256.02%22%20x2%3D%22.5%22%20y2%3D%2256.02%22/%3E%3Cpolyline%20points%3D%22106.63%2056.02%2061.24%203.5%2015.85%2056.02%22/%3E%3C/g%3E%3C/svg%3E">
 </head>"""
 
@@ -260,6 +260,10 @@ SCRIPT = """<script>
 })();
 </script>"""
 
+
+import hashlib as _h, pathlib as _p
+# changes whenever styles.css changes, so phones never pair new pages with an old cached stylesheet
+CSS_VER = _h.md5(_p.Path(__file__).with_name("assets").joinpath("styles.css").read_bytes()).hexdigest()[:8]
 
 GALLERY_ARROW = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" '
                  'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
