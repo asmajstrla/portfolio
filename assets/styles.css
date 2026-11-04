@@ -578,3 +578,11 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .info-stack { grid-template-columns: 1fr; }
   .info-stack .cs-meta { grid-column: 1; grid-row: auto; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
 }
+
+/* home on phones: name pinned under the header, tiles + footer pushed to the bottom */
+@media (max-width: 760px) {
+  .stage.stage-home {
+    min-height: calc(100svh - var(--header) - var(--foot));
+    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 40px;
+  }
+}
