@@ -357,7 +357,7 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 .story .body li::marker { color: var(--muted); }
 
 .pager {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: end; gap: var(--pad);
+  display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: var(--pad);
   padding: clamp(64px, 10vw, 140px) var(--pad) var(--pad); font-size: 12px;
 }
 .pager a:hover strong { text-decoration: underline; text-underline-offset: 3px; }

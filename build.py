@@ -481,7 +481,6 @@ def build_project(p):
     year = (escape(p["year"]) + "<br>") if p.get("year") else ""
     pager = f"""<nav class="pager" aria-label="More projects">
     <a href="{prev["slug"]}.html"><strong>{escape(prev["title"])}</strong><span>Previous project</span></a>
-    <div class="mid"><span>{year}{escape(p["section_label"])}, {escape(p["type"])}</span></div>
     <a class="next" href="{nxt["slug"]}.html"><strong>{escape(nxt["title"])}</strong><span>Next project</span></a>
   </nav>"""
     lightbox = f"""<div class="lightbox" role="dialog" aria-modal="true" aria-label="{escape(p["title"])}">
@@ -551,7 +550,6 @@ def build_project(p):
   {groups}
   <nav class="pager" aria-label="More projects">
     <a href="{prev["slug"]}.html"><strong>{escape(prev["title"])}</strong><span>Previous project</span></a>
-    <div class="mid"><span>{year}{escape(p["section_label"])}, {escape(p["type"])}</span></div>
     <a class="next" href="{nxt["slug"]}.html"><strong>{escape(nxt["title"])}</strong><span>Next project</span></a>
   </nav>
 </main>
