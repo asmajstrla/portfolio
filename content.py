@@ -82,7 +82,7 @@ CASE_STUDY_PROMPTS = {
 }
 
 UX = [{'slug': 'disney-dark-mode',
-  'title': 'Disney parks app dark mode',
+  'title': 'Disney Parks – Dark Mode',
   'type': 'Product design and design systems',
   'client': 'The Walt Disney Company',
   'year': '2026',
