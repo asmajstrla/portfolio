@@ -586,3 +586,9 @@ a.ext::after { content: " \2197"; font-size: .9em; }
     display: flex; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 40px;
   }
 }
+
+/* footer on phones: a little more air above the text and off the bottom edge */
+@media (max-width: 760px) {
+  :root { --foot: 76px; }
+  .foot { padding-top: 22px; padding-bottom: calc(30px + env(safe-area-inset-bottom)); align-items: flex-start; }
+}

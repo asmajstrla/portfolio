@@ -120,8 +120,6 @@ def project_header(p, prefix):
 
 def footer():
     links = [(C.LINKEDIN, "LinkedIn"), (C.DRIBBBLE, "Dribbble")]
-    if C.EMAIL:
-        links.insert(0, (f"mailto:{C.EMAIL}", C.EMAIL))
     nav = "".join(f'<a href="{h}">{escape(l)}</a>' for h, l in links)
     return f'<footer class="foot"><span>{escape(C.NAME)}, {escape(C.LOCATION)}</span><nav aria-label="Elsewhere">{nav}</nav></footer>'
 
