@@ -508,13 +508,13 @@ def build_project(p):
             ph = p.get("phones")
             if ph and src == ph["src"]:
                 # light and dark screens in phone frames, scrolling together, tab bars pinned (pure HTML/CSS, transparent)
-                def phone(name, scr, tabs, cls):
+                def phone(name, scr, tabs, cls, status):
                     return (f'<figure class="phone"><figcaption>{name}</figcaption><div class="screen-wrap"><div class="screen">'
                             f'<img class="scroll" src="{pre}{scr}" alt="">'
-                            f'<img class="tabs {cls}" src="{pre}{tabs}" alt=""><span class="island"></span><span class="home-ind"></span>'
+                            f'<img class="tabs {cls}" src="{pre}{tabs}" alt=""><span class="status-bg"></span><img class="status st-top" src="{pre}{ph["status_dark"]}" alt=""><img class="status st-scrolled" src="{pre}{status}" alt=""><span class="island"></span><span class="home-ind"></span>'
                             f'</div></div></figure>')
                 inner = (f'<div class="phones" role="img" aria-label="Trip home screen in light and dark mode, scrolling side by side">'
-                         f'{phone("Light", ph["light"], ph["tabs_light"], "tl")}{phone("Dark", ph["dark"], ph["tabs_dark"], "td")}</div>')
+                         f'{phone("Light", ph["light"], ph["tabs_light"], "tl", ph["status_light"])}{phone("Dark", ph["dark"], ph["tabs_dark"], "td", ph["status_dark"])}</div>')
                 return (f'<button class="shot phones-shot" type="button" aria-label="View {label} larger">{inner}{note_html(src)}</button>')
             return (f'<button class="shot{" long" if long else ""}" type="button" aria-label="View {label} larger">'
                     f'{media(src, alt, vids, pre)}{note_html(src)}</button>')

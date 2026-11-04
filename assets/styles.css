@@ -542,6 +542,14 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .screen .tabs { position: absolute; max-width: none !important; max-height: none !important; height: auto !important; }
 .screen .td { left: calc(34 * var(--u)); bottom: calc(68 * var(--u)); width: calc(712 * var(--u)) !important; }
 .screen .tl { left: calc(-14 * var(--u)); bottom: calc(4 * var(--u)); width: calc(808 * var(--u)) !important; }
+.screen .status-bg { position: absolute; top: 0; left: 0; right: 0; height: calc(124 * var(--u)); opacity: 0; animation: status-bg 20s infinite; }
+.tl ~ .status-bg { background: rgb(250 252 255 / .96); }
+.td ~ .status-bg { background: rgb(13 22 48 / .96); }
+.screen .st-scrolled { opacity: 0; animation: status-bg 20s infinite; }
+/* the bar fills in once the hero scrolls under it, like a real app; dark-on-light text swaps in */
+@keyframes status-bg { 0%, 9% { opacity: 0; } 13%, 92% { opacity: 1; } 96%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .screen .status-bg, .screen .st-scrolled { animation: none; } }
+.screen .status { position: absolute; top: 0; left: 0; width: 100% !important; max-width: none !important; max-height: none !important; height: auto !important; }
 .screen .island { position: absolute; top: calc(24 * var(--u)); left: 50%; width: calc(250 * var(--u)); height: calc(72 * var(--u)); transform: translateX(-50%); border-radius: 999px; background: #000; }
 .screen .home-ind { position: absolute; bottom: calc(18 * var(--u)); left: 50%; width: calc(268 * var(--u)); height: calc(10 * var(--u)); transform: translateX(-50%); border-radius: 99px; background: #000; }
 @keyframes phone-scroll {
