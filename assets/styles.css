@@ -5,6 +5,7 @@
    ========================================================== */
 
 :root {
+  --h1: clamp(46px, 7.8vw, 160px);  /* one size for every page's big heading */
   --bg: #F5F5F3;
   --ink: #17181A;
   --muted: #8C8C89;
@@ -150,14 +151,14 @@ p { margin: 0 0 1em; }
 }
 .word {
   margin: 0;
-  font-size: clamp(72px, 13.5vw, 230px);
+  font-size: var(--h1);
   font-weight: 600;
   letter-spacing: -0.065em;
-  line-height: 0.8;
+  line-height: .86;
   text-transform: lowercase;
   padding-bottom: 0.03em;
 }
-.word.long { font-size: clamp(64px, 10.5vw, 180px); }
+.word.long { font-size: var(--h1); }
 .stage .lede { max-width: 34ch; margin: 0 0 clamp(24px, 4vw, 48px); color: var(--muted); }
 
 .tiles {
@@ -250,8 +251,8 @@ a.brick:hover img, a.brick:hover video { transform: scale(1.04); }
 }
 /* the rail is always three boxes wide and right-aligned, so boxes start at the same spot on every page;
    when there are more, it bleeds off the right edge and scrolls */
-.word-rail { font-size: clamp(52px, 8.4vw, 170px); line-height: .86; }
-.word-rail.word-name { font-size: clamp(46px, 7.2vw, 150px); }
+.word-rail { font-size: var(--h1); line-height: .86; }
+.word-rail.word-name { font-size: var(--h1); }
 .rail-wrap { min-width: 0; justify-self: end; width: calc(3 * var(--box-w) + 2 * 12px); }
 .rail-wrap.spills { width: calc(3 * var(--box-w) + 2 * 12px + var(--pad)); margin-right: calc(-1 * var(--pad)); }
 .rail {
@@ -595,10 +596,9 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 
 /* About: more room between the heading and the portrait, a touch more leading */
 .stage-about { column-gap: calc(2 * var(--pad) + 32px); }
-.stage-about .word { line-height: calc(0.8em + 3px); }
+.stage-about .word { line-height: .86; }
 @media (max-width: 760px) {
   .stage-about { row-gap: 40px; }
-  .stage-about .word { font-size: 83px; }
 }
 
 /* arrows over the project image strip */
@@ -621,3 +621,5 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .g-btn svg { width: 16px; height: 16px; }
   .g-btn.prev { left: 10px; } .g-btn.next { right: 10px; }
 }
+
+@media (max-width: 760px) { :root { --h1: 76px; } }
