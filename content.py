@@ -446,6 +446,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'gallery': ['images/site/Other-Illos.webp',
               'images/site/Certified-Trainer-Shirt-Mockup-scaled.webp',
               'images/site/certified-trainer-artwork.webp',
+              'images/site/certified-trainer-process.webp',
               'images/site/Dribbble-Mockup-2.webp',
               'images/site/Hawkers-Apparel.webp',
               'images/site/02-Mask-Mockup-Perspective-View2.webp',
@@ -486,7 +487,12 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                                                            'The full illustration for the Hawkers certified '
                                                            'trainer shirt: a masked trainer carrying a bowl '
                                                            'of dumplings, with one narrowly escaping the '
-                                                           'chopsticks.']}},
+                                                           'chopsticks.'],
+            'images/site/certified-trainer-process.webp': ['Certified trainer, in progress',
+                                                           'A screen recording of the illustration coming '
+                                                           'together in Illustrator, from line art to the '
+                                                           'finished color piece.']},
+  'videos': {'images/site/certified-trainer-process.webp': 'images/site/certified-trainer-process.mp4'}},
  {'slug': 'ucf',
   'title': 'UCF branding',
   'type': 'Environmental and print design',
