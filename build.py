@@ -305,7 +305,12 @@ def masonry(projects, prefix=""):
 
 def build_home():
     # the name with a 4-3-2 staircase of square tiles; no lists below
-    featured = [p for p in C.UX if p["images"]] + [ALL[s] for s in HOME_PICKS if s in ALL]
+    # square tiles made for the home page: (project, image). Bottom row first, then middle, then top.
+    picks = [("hawkers-brunch", "brunch"), ("disney-dark-mode", "disney"), ("hawkers-apparel", "apparel"), ("red-6-ar", "red-6"),
+             ("hawkers", "branding"), ("other-works", "hail-mary"), ("ucf", "ucf"),
+             ("asbestos-com", "asbestos-home"), ("asbestos-com-back-page", "asbestos-back")]
+    files = {"brunch": "hawkers-brunch", "apparel": "hawkers-apparel", "branding": "hawkers-branding"}
+    featured = [dict(ALL[slug], images=[f"images/home/{files.get(img, img)}.webp"]) for slug, img in picks if slug in ALL]
     first, last = C.NAME.split(" ", 1)
     body = f"""{header("index.html")}
 <main>
