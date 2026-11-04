@@ -61,8 +61,8 @@
     document.body.appendChild(cv);
     const cx = cv.getContext('2d'), parts = [];
     let dpr = 1, raf = 0, lx = null, ly = null, last = 0, light = false;
-    const PAL = { dark: ['255,246,220', '255,226,150', '214,228,255', '255,255,255'],
-                  light: ['232,176,52', '246,198,84', '96,128,230', '214,150,40'] };
+    const PAL = { dark: ['206,176,255', '170,140,255', '160,196,255', '226,236,255'],
+                  light: ['132,88,220', '160,110,240', '72,110,225', '96,140,240'] };
     const size = () => {
       dpr = Math.min(devicePixelRatio || 1, 2);
       cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
