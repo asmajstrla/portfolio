@@ -625,8 +625,5 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 
 @media (max-width: 760px) { :root { --h1: 76px; } }
 
-/* cursor particles (see script) */
-.sparks { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
-:root { --spark: 185,205,255; }
-:root[data-theme="light"] { --spark: 60,95,200; }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --spark: 60,95,200; } }
+/* Disney pages: star trail off the cursor, drawn over the page but under the header and lightbox (see script) */
+.sparks { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 25; pointer-events: none; }

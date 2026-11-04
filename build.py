@@ -133,20 +133,35 @@ SCRIPT = """<script>
     mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
   });
 
-  // particles spray off the cursor as it moves, then drift and fade
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // Disney projects only: a trail of twinkling four-point stars spills off the cursor
+  if (document.body.hasAttribute('data-sparkle') && matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const cv = document.createElement('canvas'); cv.className = 'sparks'; cv.setAttribute('aria-hidden', 'true');
-    document.body.prepend(cv);
+    document.body.appendChild(cv);
     const cx = cv.getContext('2d'), parts = [];
-    let dpr = 1, raf = 0, lx = null, ly = null, last = 0, tint = '150,180,255';
+    let dpr = 1, raf = 0, lx = null, ly = null, last = 0, light = false;
+    const PAL = { dark: ['255,246,220', '255,226,150', '214,228,255', '255,255,255'],
+                  light: ['232,176,52', '246,198,84', '96,128,230', '214,150,40'] };
     const size = () => {
       dpr = Math.min(devicePixelRatio || 1, 2);
       cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
       cx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-    const readTint = () => { tint = getComputedStyle(document.documentElement).getPropertyValue('--spark').trim() || tint; };
-    size(); readTint(); addEventListener('resize', size);
-    new MutationObserver(readTint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    const readTheme = () => {
+      const r = document.documentElement;
+      light = (r.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'light';
+    };
+    size(); readTheme(); addEventListener('resize', size);
+    new MutationObserver(readTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    // a classic storybook twinkle: four long points with pinched, curved sides
+    const star = (x, y, r, rot) => {
+      const w = r * 0.22;
+      cx.save(); cx.translate(x, y); cx.rotate(rot); cx.beginPath(); cx.moveTo(0, -r);
+      for (let i = 0; i < 4; i++) {
+        cx.quadraticCurveTo(w * 0.35, -w * 0.35, r, 0);   // inner curve to the next point
+        cx.rotate(Math.PI / 2);
+      }
+      cx.closePath(); cx.fill(); cx.restore();
+    };
     const tick = t => {
       const dt = Math.min((t - (last || t)) / 1000, 0.05); last = t;
       cx.clearRect(0, 0, innerWidth, innerHeight);
@@ -154,14 +169,17 @@ SCRIPT = """<script>
         const q = parts[i];
         q.life -= dt;
         if (q.life <= 0) { parts.splice(i, 1); continue; }
-        q.vx *= 0.96; q.vy = q.vy * 0.96 + 18 * dt;   // drag, plus a little fall
-        q.x += q.vx * dt; q.y += q.vy * dt;
-        const k = q.life / q.max;
-        cx.globalAlpha = k * k * q.a;
-        cx.fillStyle = `rgb(${tint})`;
-        cx.beginPath(); cx.arc(q.x, q.y, q.r * (0.5 + 0.5 * k), 0, 6.283); cx.fill();
+        q.vx *= 0.955; q.vy = q.vy * 0.955 + 26 * dt;
+        q.x += q.vx * dt; q.y += q.vy * dt; q.rot += q.spin * dt;
+        const k = q.life / q.max, tw = 0.65 + 0.35 * Math.sin(t / 1000 * q.tw + q.ph);
+        const r = q.r * (k < 0.25 ? k / 0.25 : 1) * (0.55 + 0.45 * tw);
+        cx.globalAlpha = Math.min(1, k * 1.6) * q.a;
+        cx.fillStyle = `rgb(${q.c})`;
+        if (!light) { cx.shadowColor = `rgba(${q.c},.9)`; cx.shadowBlur = r * 1.6; }
+        if (q.dot) { cx.beginPath(); cx.arc(q.x, q.y, r * 0.28, 0, 6.283); cx.fill(); }
+        else star(q.x, q.y, r, q.rot);
       }
-      cx.globalAlpha = 1;
+      cx.globalAlpha = 1; cx.shadowBlur = 0;
       raf = parts.length ? requestAnimationFrame(tick) : (last = 0, 0);
     };
     addEventListener('pointermove', e => {
@@ -170,14 +188,16 @@ SCRIPT = """<script>
       const dx = x - lx, dy = y - ly, d = Math.hypot(dx, dy);
       lx = x; ly = y;
       if (d < 2) return;
-      const n = Math.min(6, Math.ceil(d / 14));
-      for (let i = 0; i < n && parts.length < 260; i++) {
-        const f = Math.random();
-        const ang = Math.atan2(-dy, -dx) + (Math.random() - 0.5) * 2.2;   // flung back and out from the motion
-        const sp = 30 + Math.random() * 90 + Math.min(d, 60);
-        const max = 0.6 + Math.random() * 0.8;
+      const n = Math.min(5, Math.ceil(d / 16)), pal = light ? PAL.light : PAL.dark;
+      for (let i = 0; i < n && parts.length < 220; i++) {
+        const f = Math.random(), dot = Math.random() < 0.45;
+        const ang = Math.atan2(-dy, -dx) + (Math.random() - 0.5) * 2.4;
+        const sp = 20 + Math.random() * 70 + Math.min(d, 50);
+        const max = 0.8 + Math.random() * 1.0;
         parts.push({ x: x - dx * f, y: y - dy * f, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp,
-                     r: 1 + Math.random() * 2, a: 0.45 + Math.random() * 0.5, life: max, max });
+                     r: dot ? 5 + Math.random() * 4 : 4 + Math.random() * 7, rot: Math.random() * 0.6 - 0.3,
+                     spin: (Math.random() - 0.5) * 2.5, tw: 6 + Math.random() * 10, ph: Math.random() * 6.3,
+                     a: 0.7 + Math.random() * 0.3, c: pal[(Math.random() * pal.length) | 0], dot, life: max, max });
       }
       if (!raf) raf = requestAnimationFrame(tick);
     }, { passive: true });
@@ -327,8 +347,8 @@ GLASS = """<svg width="0" height="0" style="position:absolute" aria-hidden="true
 </svg>"""
 
 
-def page(title, body, prefix="", view=None):
-    attr = f' data-view="{view}"' if view else ""
+def page(title, body, prefix="", view=None, sparkle=False):
+    attr = (f' data-view="{view}"' if view else "") + (" data-sparkle" if sparkle else "")
     return f"{head(title, prefix)}\n<body{attr}>\n{GLASS}\n{body}\n{footer()}\n{SCRIPT}\n</body>\n</html>\n"
 
 
@@ -609,7 +629,7 @@ def build_project(p):
   {pager}
 </main>
 {lightbox}"""
-        return page(p["title"], body, prefix=pre)
+        return page(p["title"], body, prefix=pre, sparkle=p.get("client", "").startswith("The Walt Disney") or p.get("slug", "").startswith("disney"))
 
     body = f"""{project_header(p, pre)}
 <main>
@@ -630,7 +650,7 @@ def build_project(p):
   <div class="bar"><span>{escape(p["title"])}</span><button type="button">Close</button></div>
   <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
 </div>"""
-    return page(p["title"], body, prefix=pre)
+    return page(p["title"], body, prefix=pre, sparkle=p.get("client", "").startswith("The Walt Disney") or p.get("slug", "").startswith("disney"))
 
 
 def build_about():
