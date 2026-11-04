@@ -33,7 +33,7 @@ SECTIONS = [
     # key, nav label, page, projects, intro
     ("ux", "Product design", "ux.html", C.UX,
      "Case studies covering research, interaction design and the outcomes of shipped work."),
-    ("brand", "Graphic design", "brand.html", BRAND,
+    ("brand", "Design + Branding", "brand.html", BRAND,
      "Brand systems, illustration and graphic design for restaurants, universities and personal projects."),
 ]
 NAV = [("index.html", "Home")] + [(s[2], s[1]) for s in SECTIONS] + [("about.html", "About")]
@@ -361,13 +361,13 @@ def rail(items, prefix=""):
     return f'<div class="rail-wrap">{nav}<ul class="rail" tabindex="0" aria-label="Projects">{"".join(out)}</ul></div>'
 
 
-def build_rail_page(label, pg, intro, items):
+def build_rail_page(label, pg, intro, items, h1=None):
     body = f"""{header(pg)}
 <main>
   <section class="stage stage-rail">
     <div>
       <p class="lede">{escape(intro)}</p>
-      <h1 class="word word-rail">{escape(label).replace(" ", "<br>")}</h1>
+      <h1 class="word word-rail">{h1 or escape(label).replace(" ", "<br>")}</h1>
     </div>
     {rail(items)}
   </section>
@@ -376,7 +376,8 @@ def build_rail_page(label, pg, intro, items):
 
 
 def build_brand(key, label, pg, projects, intro):
-    return build_rail_page(label, pg, intro, BRAND_BOXES)
+    return build_rail_page(label, pg, intro, BRAND_BOXES, h1="Design +<br>Branding").replace(
+        'class="word word-rail"', 'class="word word-rail word-name"')
 
 
 def build_ux(key, label, pg, projects, intro):
