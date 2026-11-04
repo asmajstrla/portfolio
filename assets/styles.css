@@ -102,12 +102,12 @@ p { margin: 0 0 1em; }
 .views { display: flex; gap: 14px; }
 .views button { font: inherit; color: var(--muted); background: none; border: 0; padding: 4px 0; cursor: pointer; }
 .views button[aria-pressed="true"] { color: var(--ink); }
-.links { justify-self: end; display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+.links { justify-self: end; display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
 .links a { color: var(--muted); }
 .links a:hover, .links a[aria-current="page"] { color: var(--ink); }
 .theme-toggle {
   grid-column: 3; justify-self: end; display: grid; place-items: center;
-  width: 32px; height: 32px; margin-left: 14px; padding: 0; border: 0; border-radius: 50%;
+  width: 32px; height: 32px; margin-left: 32px; padding: 0; border: 0; border-radius: 50%;
   background: var(--tile-bg); color: var(--ink); cursor: pointer;
   transition: background-color .2s ease, color .2s ease;
 }
