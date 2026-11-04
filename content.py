@@ -477,7 +477,9 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'box_cover': 'images/site/hawkers-neon-interior.webp',
   'gallery': ['images/site/hawkers-interior-masks.webp',
               'images/site/gan-bei-neon-wall.webp',
-              'images/site/gan-bei-garden-mural-photo.webp'],
+              'images/site/gan-bei-garden-mural-photo.webp',
+              'images/site/year-of-the-pig-2019.webp',
+              'images/site/hawkers-doordash-send-noods.webp'],
   'notes': {'images/site/hawkers-interior-masks.webp': ['Restaurant interior',
                                                         'A Hawkers dining room: hand-painted mask mural, '
                                                         "custom neon and the brand's colors carried through "
@@ -488,7 +490,15 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/gan-bei-garden-mural-photo.webp': ['Gan Bei Garden mural',
                                                             'The finished Gan Bei Garden mural, painted on '
                                                             'site, a busy street scene of diners, shops and '
-                                                            'lanterns.']}},
+                                                            'lanterns.'],
+            'images/site/year-of-the-pig-2019.webp': ['Year of the Pig',
+                                                      'Lunar New Year 2019 artwork: a hand-drawn pig riding '
+                                                      'swirling clouds, finished with halftone texture in '
+                                                      'red and gold.'],
+            'images/site/hawkers-doordash-send-noods.webp': ['Send Noods Plz.',
+                                                             'A Hawkers + DoorDash delivery campaign, built '
+                                                             'around an illustrated plate of noodles and a '
+                                                             'cheeky headline.']}},
  {'slug': 'hawkers-apparel',
   'title': 'Hawkers apparel',
   'type': 'Apparel and merch design',
