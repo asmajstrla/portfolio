@@ -473,9 +473,10 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                'nom-neon',
                'lucky-cat-stamp-neon',
                'the-great-wave-neon'])],
-  'cover': 'images/site/hawkers-interior-masks.webp',
+  'cover': 'images/site/hawkers-menu-suite.webp',
   'box_cover': 'images/site/hawkers-neon-interior.webp',
-  'gallery': ['images/site/hawkers-interior-masks.webp',
+  'gallery': ['images/site/hawkers-menu-suite.webp',
+              'images/site/hawkers-interior-masks.webp',
               'images/site/gan-bei-neon-wall.webp',
               'images/site/gan-bei-garden-mural-photo.webp',
               'images/site/year-of-the-pig-2019.webp',
@@ -509,7 +510,13 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/hawkers-business-cards.webp': ['Business cards',
                                                         'Business cards with a collage back built from the '
                                                         "brand's poster style, mascots and street-food "
-                                                        'photography.']}},
+                                                        'photography.'],
+            'images/site/hawkers-menu-suite.webp': ['Menu suite',
+                                                    'The full menu system: small plates, noodles and rice '
+                                                    "with a hand-drawn map of the dishes' origins, craft "
+                                                    'cocktails and saké, and happy hour inserts. Each menu '
+                                                    'uses the same bold red and green type, halftone '
+                                                    'photography and playful callouts.']}},
  {'slug': 'hawkers-apparel',
   'title': 'Hawkers apparel',
   'type': 'Apparel and merch design',
