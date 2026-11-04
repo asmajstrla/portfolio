@@ -416,7 +416,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'type': 'Apparel and merch design',
   'client': 'Hawkers Asian Street Food',
   'year': '2021',
-  'date': 'October 2021',
+  'date': '2018–2022',
   'role': 'Brand identity',
   'result': 'ADDY Award winner',
   'description': 'Shirts, masks, uniforms and merch designed for Hawkers Asian Street Food, from Lunar New '

@@ -450,6 +450,16 @@ def build_project(p):
                   f'<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" '
                   f'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>')
 
+    if p["section"] != "ux":
+        # graphic design pages always show all four facts; filler fills any gaps for now
+        p = dict(p)
+        hk = "hawkers" in p["slug"] or "Hawkers" in (p.get("client") or "") or IN_CLIENT.get(p["slug"], {}).get("slug", "").startswith("hawkers")
+        ucf = "ucf" in p["slug"] or "Central Florida" in (p.get("client") or "") or IN_CLIENT.get(p["slug"], {}).get("slug") == "ucf"
+        p["client"] = p.get("client") or ("Hawkers Asian Street Food" if hk else "University of Central Florida" if ucf else "Personal project")
+        p["date"] = p.get("date") or p.get("year") or ("2018–2022" if hk else "2015–2018" if ucf else "2020")
+        p["role"] = p.get("role") or ("Creative direction and design" if hk else "Graphic design" if ucf else "Illustration and design")
+        p["result"] = p.get("result") or "Result coming soon"
+
     left = ""
     if p.get("client"):
         client = escape(p["client"])
