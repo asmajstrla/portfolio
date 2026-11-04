@@ -64,7 +64,7 @@ body {
 }
 img, video { display: block; max-width: 100%; }
 
-/* soft blue glow behind everything; drifts toward the cursor on a delay (see script) */
+/* soft blue glow behind everything */
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
@@ -624,3 +624,9 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 }
 
 @media (max-width: 760px) { :root { --h1: 76px; } }
+
+/* cursor particles (see script) */
+.sparks { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+:root { --spark: 185,205,255; }
+:root[data-theme="light"] { --spark: 60,95,200; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --spark: 60,95,200; } }

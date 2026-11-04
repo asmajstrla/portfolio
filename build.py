@@ -133,19 +133,55 @@ SCRIPT = """<script>
     mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
   });
 
-  // background glow follows the cursor, easing in behind it
+  // particles spray off the cursor as it moves, then drift and fade
   if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const rs = document.documentElement.style;
-    let tx = 70, ty = 30, x = 70, y = 30, raf = 0;
-    const step = () => {
-      x += (tx - x) * 0.045; y += (ty - y) * 0.045;
-      rs.setProperty('--mx', x.toFixed(2) + '%'); rs.setProperty('--my', y.toFixed(2) + '%');
-      raf = (Math.abs(tx - x) + Math.abs(ty - y) > 0.05) ? requestAnimationFrame(step) : 0;
+    const cv = document.createElement('canvas'); cv.className = 'sparks'; cv.setAttribute('aria-hidden', 'true');
+    document.body.prepend(cv);
+    const cx = cv.getContext('2d'), parts = [];
+    let dpr = 1, raf = 0, lx = null, ly = null, last = 0, tint = '150,180,255';
+    const size = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    const readTint = () => { tint = getComputedStyle(document.documentElement).getPropertyValue('--spark').trim() || tint; };
+    size(); readTint(); addEventListener('resize', size);
+    new MutationObserver(readTint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    const tick = t => {
+      const dt = Math.min((t - (last || t)) / 1000, 0.05); last = t;
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const q = parts[i];
+        q.life -= dt;
+        if (q.life <= 0) { parts.splice(i, 1); continue; }
+        q.vx *= 0.96; q.vy = q.vy * 0.96 + 18 * dt;   // drag, plus a little fall
+        q.x += q.vx * dt; q.y += q.vy * dt;
+        const k = q.life / q.max;
+        cx.globalAlpha = k * k * q.a;
+        cx.fillStyle = `rgb(${tint})`;
+        cx.beginPath(); cx.arc(q.x, q.y, q.r * (0.5 + 0.5 * k), 0, 6.283); cx.fill();
+      }
+      cx.globalAlpha = 1;
+      raf = parts.length ? requestAnimationFrame(tick) : (last = 0, 0);
     };
     addEventListener('pointermove', e => {
-      tx = e.clientX / innerWidth * 100; ty = e.clientY / innerHeight * 100;
-      if (!raf) raf = requestAnimationFrame(step);
+      const x = e.clientX, y = e.clientY;
+      if (lx === null) { lx = x; ly = y; return; }
+      const dx = x - lx, dy = y - ly, d = Math.hypot(dx, dy);
+      lx = x; ly = y;
+      if (d < 2) return;
+      const n = Math.min(6, Math.ceil(d / 14));
+      for (let i = 0; i < n && parts.length < 260; i++) {
+        const f = Math.random();
+        const ang = Math.atan2(-dy, -dx) + (Math.random() - 0.5) * 2.2;   // flung back and out from the motion
+        const sp = 30 + Math.random() * 90 + Math.min(d, 60);
+        const max = 0.6 + Math.random() * 0.8;
+        parts.push({ x: x - dx * f, y: y - dy * f, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp,
+                     r: 1 + Math.random() * 2, a: 0.45 + Math.random() * 0.5, life: max, max });
+      }
+      if (!raf) raf = requestAnimationFrame(tick);
     }, { passive: true });
+    document.addEventListener('pointerleave', () => { lx = null; });
   }
 
   // light / dark toggle
