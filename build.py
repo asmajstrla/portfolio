@@ -222,7 +222,11 @@ SCRIPT = """<script>
                    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     };
     gp.addEventListener('click', () => go(-1)); gn.addEventListener('click', () => go(1));
-    g.addEventListener('scroll', ends, { passive: true }); addEventListener('resize', ends); addEventListener('load', ends); ends();
+    g.addEventListener('scroll', ends, { passive: true }); addEventListener('resize', ends); addEventListener('load', ends);
+    // re-check whenever the strip or any image in it changes size (phones lay out late, images load lazily)
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(ends); ro.observe(g); [...g.children].forEach(k => ro.observe(k)); }
+    g.querySelectorAll('img, video').forEach(m => m.addEventListener(m.tagName === 'IMG' ? 'load' : 'loadedmetadata', ends));
+    requestAnimationFrame(ends); setTimeout(ends, 300); ends();
 
     const wide = matchMedia('(min-width: 761px)');
     let ticking = false;

@@ -615,7 +615,7 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .g-btn.next { right: var(--pad); }
 .g-btn svg { width: 18px; height: 18px; }
 .g-btn.prev svg { transform: rotate(180deg); }
-.g-btn:hover:not(:disabled) { background: #fff; color: #111; }
+@media (hover: hover) { .g-btn:hover:not(:disabled) { background: #fff; color: #111; } }
 .g-btn:disabled { opacity: 0; pointer-events: none; }
 @media (max-width: 760px) {
   .g-btn { width: 36px; height: 36px; }
