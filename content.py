@@ -492,8 +492,8 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'client': 'Hawkers Asian Street Food',
   'year': '2021',
   'date': '2018–2022',
-  'role': 'Brand identity',
-  'result': 'ADDY Award winner',
+  'role': 'Creative director',
+  'result': '8+ ADDY Awards',
   'description': 'Shirts, masks, uniforms and merch designed for Hawkers Asian Street Food, from Lunar New '
                  'Year drops to charity collaborations.',
   'cover': 'images/site/Hawkers-Apparel.webp',
@@ -511,7 +511,23 @@ CLIENTS = [{'slug': 'hawkers-brunch',
               'images/site/b34ffe5b35e4c396d4f7445bf05cc38c.webp',
               'images/site/hawkers_80851540.webp',
               'images/site/Geisha.webp'],
-  'story': [],
+  'story': [('The brief',
+             'Hawkers needed apparel that worked as hard as the brand. Most pieces were made for the team: '
+             'shirts for servers to wear on shift, hats for the back of house, and special designs that marked '
+             'milestones, like becoming a Certified Trainer or earning an award. The best pieces went on sale in '
+             'the Hawkers merch store, so guests could take the brand home too.'),
+            ('My role',
+             'As creative director I led the apparel program and did most of the illustration and design myself. '
+             'I also brought in outside illustrators from time to time to give back to the art community, which '
+             'was a big part of what Hawkers stood for.'),
+            ('The system',
+             '- Shirts for servers to wear on their shifts\n'
+             '- Back-of-house hats, redesigned every few months\n'
+             '- Certified Trainer shirts and pieces given as awards\n'
+             '- Merch store releases for guests\n'
+             '- Custom face masks during COVID\n'
+             '- A shirt we hand-dyed ourselves in turmeric\n'
+             '- Guest artist collaborations with local illustrators')],
   'groups': [('More apparel', ['hawkers-tiger-trucker-cap', 'i-wanna-wok-hat-design'])],
   'notes': {'images/site/Other-Illos.webp': ['Year of the Tiger',
                                              'A Lunar New Year 2022 shirt. All proceeds went to Asian '
