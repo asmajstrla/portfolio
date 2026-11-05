@@ -1,0 +1,54 @@
+/* ==========================================================
+   Slate and Sea Glass palette (suggestion).
+   To go back to the original colors, set PALETTE = "" in
+   content.py and run build.py. Nothing else changes.
+   ========================================================== */
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg: #111417;            /* cool slate, close to neutral so the work reads true */
+  --ink: #EEF2F1;           /* soft cool white */
+  --muted: #95A1A3;         /* slate grey */
+  --line: #232A2E;
+  --tile-bg: #181D21;
+  --card-line: #2A3338;
+  --accent: #6FD6C5;        /* sea glass */
+  --head-bg: rgba(17, 20, 23, .92);
+  --head-hi: rgba(255, 255, 255, .05);
+  --head-shadow: rgba(0, 0, 0, .6);
+  --next-ink-2: #CFDAD8;
+  --next-bg: linear-gradient(180deg, #17302E 0%, #142624 55%, #111D1C 100%);
+  --glow: rgba(111, 214, 197, .06);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #EFF3F2;            /* cool paper */
+  --ink: #141A1C;
+  --muted: #5D6A6C;
+  --line: #D9E1E0;
+  --tile-bg: #E3EAE9;
+  --card-line: #CAD5D3;
+  --accent: #0F7C6F;        /* deep sea glass for contrast */
+  --head-bg: rgba(239, 243, 242, .92);
+  --head-hi: rgba(255, 255, 255, .7);
+  --head-shadow: rgba(20, 26, 28, .16);
+  --next-ink-2: #3E4A4C;
+  --next-bg: linear-gradient(180deg, #DDEFEB 0%, #CFE6E1 55%, #BFDCD6 100%);
+  --glow: rgba(15, 124, 111, .06);
+  color-scheme: light;
+}
+
+/* accents the original palette doesn't have */
+.eyebrow, .work-story h2, .cs-text .work-story h2,
+.stage .lede, .story h2 { color: var(--accent); }
+.stat { border-color: var(--card-line); background: var(--tile-bg); }
+.rail-btn, .theme-toggle { background: var(--tile-bg); }
+
+/* hover and current-page states use the accent */
+.links a:hover, .links a[aria-current="page"],
+.views button[aria-pressed="true"],
+.close:hover, .foot a:hover, .lede a:hover, .more-xp summary:hover,
+.pager a:hover strong, a.ext:hover, .menu-btn:hover { color: var(--accent); }
+.theme-toggle:hover, .rail-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+@media (hover: hover) { .g-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); border-color: var(--accent); } }
