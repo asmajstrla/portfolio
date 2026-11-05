@@ -23,23 +23,24 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #F4F5FB;
-  --ink: #12152B;
-  --muted: #5B6187;
-  --line: #DCDFF0;
-  --tile-bg: #E8EBF8;
-  --card-line: #C9CEEA;
-  --accent: #4C57C9;
-  --head-bg: rgba(244, 245, 251, .92);
-  --head-hi: rgba(255, 255, 255, .7);
-  --head-shadow: rgba(18, 21, 43, .2);
-  --next-ink-2: #3A3F63;
-  --next-bg: linear-gradient(180deg, #E4E7FA 0%, #DADFF7 55%, #CED4F2 100%);
-  --glow: rgba(76, 87, 201, .08);
+  --bg: #E9E8FA;            /* pale periwinkle page */
+  --ink: #14163A;
+  --muted: #565B86;
+  --line: #CFCEEE;
+  --tile-bg: #DEDDF6;
+  --card-line: #C3C2EA;
+  --accent: #5A4FD0;
+  --head-bg: rgba(233, 232, 250, .92);
+  --head-hi: rgba(255, 255, 255, .6);
+  --head-shadow: rgba(20, 22, 58, .18);
+  --next-ink-2: #3A3D6A;
+  --next-bg: linear-gradient(180deg, #DEDCFA 0%, #D3D1F5 55%, #C8C5F0 100%);
+  --glow: rgba(110, 90, 230, .10);
   color-scheme: light;
 }
 
 /* accents the original palette doesn't have */
-.eyebrow, .work-story h2, .cs-text .work-story h2 { color: var(--accent); }
+.eyebrow, .work-story h2, .cs-text .work-story h2,
+.stage .lede, .story h2 { color: var(--accent); }
 .stat { border-color: var(--card-line); background: var(--tile-bg); }
 .rail-btn, .theme-toggle { background: var(--tile-bg); }
