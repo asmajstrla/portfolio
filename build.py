@@ -568,7 +568,8 @@ def build_project(p):
         p["client"] = p.get("client") or ("Hawkers Asian Street Food" if hk else "University of Central Florida" if ucf else "Personal project")
         p["date"] = p.get("date") or p.get("year") or ("2018–2022" if hk else "2015–2018" if ucf else "2020")
         p["role"] = p.get("role") or ("Creative direction and design" if hk else "Graphic design" if ucf else "Illustration and design")
-        p["result"] = p.get("result") or "Result coming soon"
+        if not p.get("hide_result"):
+            p["result"] = p.get("result") or "Result coming soon"
 
     # the four facts, each in its own card: value up top, small mono label beneath
     def stat(label, value):
@@ -591,7 +592,7 @@ def build_project(p):
     desc = f"<p>{escape(text)}</p>" if text else '<p class="prompt">Add a short description of this project.</p>'
 
     facts = story = groups = ""
-    if p.get("story"):
+    if "story" in p and p["story"] is not None:
         sections = list(p["story"])
     elif p["section"] == "ux":
         sections = [(n, p.get("sections", {}).get(n, "") or None, pr) for n, pr in C.CASE_STUDY_PROMPTS.items()]
