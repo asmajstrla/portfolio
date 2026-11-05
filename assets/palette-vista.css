@@ -44,3 +44,11 @@
 .stage .lede, .story h2 { color: var(--accent); }
 .stat { border-color: var(--card-line); background: var(--tile-bg); }
 .rail-btn, .theme-toggle { background: var(--tile-bg); }
+
+/* hover and current-page states use the accent */
+.links a:hover, .links a[aria-current="page"],
+.views button[aria-pressed="true"],
+.close:hover, .foot a:hover, .lede a:hover, .more-xp summary:hover,
+.pager a:hover strong, a.ext:hover, .menu-btn:hover { color: var(--accent); }
+.theme-toggle:hover, .rail-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+@media (hover: hover) { .g-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); border-color: var(--accent); } }
