@@ -97,6 +97,7 @@ UX = [{'slug': 'disney-dark-mode',
              'screen and component can switch with its tokens.',
   'box_cover': 'images/disney/dark-mode-box-v2.webp',
   'images': ['images/disney/dark-mode-phones-v2.webp',
+             'images/disney/dark-mode-components.webp',
              'images/disney/dark-mode-backgrounds.webp',
              'images/disney/dark-mode-explore.webp',
              'images/disney/dark-mode-checklist.webp',
@@ -137,7 +138,16 @@ UX = [{'slug': 'disney-dark-mode',
              'look.\n'
              '- Disabled states are moving to percentage-based fills.\n'
              '- Map pins and floating action menus need higher-contrast hover states on a dark map.')],
-  'notes': {'images/disney/dark-mode-backgrounds.webp': ['Finding the right background',
+  'notes': {'images/disney/dark-mode-components.webp': ['Every component, in both themes',
+                                                      'Dark mode had to work on every single component, not '
+                                                      'just whole screens. We ran each one through both themes '
+                                                      'side by side: calendars, date pickers, dropdowns, '
+                                                      'buttons, search, toggles, checkboxes and segmented '
+                                                      'controls. For each, we checked that it still read '
+                                                      'clearly, kept its contrast and behaved the same way, so '
+                                                      'a selected date or an active toggle is just as obvious '
+                                                      'at night as it is in daylight.'],
+            'images/disney/dark-mode-backgrounds.webp': ['Finding the right background',
                                                       'A straight dark theme gets very dark, very fast, and '
                                                       'loses the lightness and brightness people expect from '
                                                       'Disney. To bring the whimsy and magic back, we tried a '
