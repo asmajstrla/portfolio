@@ -6,36 +6,36 @@
 
 :root[data-theme="dark"],
 :root:not([data-theme]) {
-  --bg: #0E1125;            /* deep navy page */
-  --ink: #EEF0FA;           /* near-white headings and copy */
-  --muted: #A3A8C8;         /* lavender-grey secondary text */
-  --line: #262C58;          /* hairlines */
-  --tile-bg: #141A39;       /* cards and image placeholders */
-  --card-line: #31386A;     /* card outlines */
-  --accent: #9AA5FD;        /* periwinkle: eyebrows, highlights */
-  --head-bg: rgba(14, 17, 37, .92);
-  --head-hi: rgba(154, 165, 253, .08);
+  --bg: #0B1328;            /* deep navy page */
+  --ink: #EDF1FA;           /* near-white headings and copy */
+  --muted: #9EAAC6;         /* blue-grey secondary text */
+  --line: #212F57;          /* hairlines */
+  --tile-bg: #111B39;       /* cards and image placeholders */
+  --card-line: #2C3D6C;     /* card outlines */
+  --accent: #8EAEFF;        /* cornflower: eyebrows, highlights */
+  --head-bg: rgba(11, 19, 40, .92);
+  --head-hi: rgba(142, 174, 255, .08);
   --head-shadow: rgba(0, 0, 0, .6);
-  --next-ink-2: #C9CCE6;
-  --next-bg: linear-gradient(180deg, #1B2250 0%, #171D45 50%, #12173A 100%);
-  --glow: rgba(110, 120, 240, .12);
+  --next-ink-2: #C6D0E8;
+  --next-bg: linear-gradient(180deg, #172552 0%, #142047 50%, #0F1A3B 100%);
+  --glow: rgba(90, 130, 240, .12);
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #E9E8FA;            /* pale periwinkle page */
-  --ink: #14163A;
-  --muted: #565B86;
-  --line: #CFCEEE;
-  --tile-bg: #DEDDF6;
-  --card-line: #C3C2EA;
-  --accent: #5A4FD0;
-  --head-bg: rgba(233, 232, 250, .92);
+  --bg: #E5EBF9;            /* pale periwinkle-blue page */
+  --ink: #111A38;
+  --muted: #505E86;
+  --line: #CAD4EE;
+  --tile-bg: #D9E1F6;
+  --card-line: #BDC9EA;
+  --accent: #4060D2;
+  --head-bg: rgba(229, 235, 249, .92);
   --head-hi: rgba(255, 255, 255, .6);
-  --head-shadow: rgba(20, 22, 58, .18);
-  --next-ink-2: #3A3D6A;
-  --next-bg: linear-gradient(180deg, #DEDCFA 0%, #D3D1F5 55%, #C8C5F0 100%);
-  --glow: rgba(110, 90, 230, .10);
+  --head-shadow: rgba(17, 26, 56, .18);
+  --next-ink-2: #384468;
+  --next-bg: linear-gradient(180deg, #DAE3FA 0%, #CFDAF5 55%, #C3D0F0 100%);
+  --glow: rgba(70, 110, 230, .10);
   color-scheme: light;
 }
 
