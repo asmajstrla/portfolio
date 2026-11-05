@@ -97,7 +97,7 @@ UX = [{'slug': 'disney-dark-mode',
              'screen and component can switch with its tokens.',
   'box_cover': 'images/disney/dark-mode-box-v2.webp',
   'images': ['images/disney/dark-mode-phones-v2.webp',
-             'images/disney/dark-mode-triphome.webp',
+             'images/disney/dark-mode-backgrounds.webp',
              'images/disney/dark-mode-explore.webp',
              'images/disney/dark-mode-checklist.webp',
              'images/disney/dark-mode-scope.webp',
@@ -137,11 +137,14 @@ UX = [{'slug': 'disney-dark-mode',
              'look.\n'
              '- Disabled states are moving to percentage-based fills.\n'
              '- Map pins and floating action menus need higher-contrast hover states on a dark map.')],
-  'notes': {'images/disney/dark-mode-triphome.webp': ['Trip home, light and dark',
-                                                      'The same screen in both themes. Hero imagery keeps '
-                                                      'its full color; surfaces, cards and type shift to the '
-                                                      'dark palette, while fixed brand colors like the red '
-                                                      'toast and Cancel My Trip button keep white text.'],
+  'notes': {'images/disney/dark-mode-backgrounds.webp': ['Finding the right background',
+                                                      'A straight dark theme gets very dark, very fast, and '
+                                                      'loses the lightness and brightness people expect from '
+                                                      'Disney. To bring the whimsy and magic back, we tried a '
+                                                      'range of backgrounds on the same Trip Plans screen, '
+                                                      'from flat navy to soft gradients with hints of blue and '
+                                                      'purple. The gradients kept the screen easy on the eyes '
+                                                      'at night while still feeling like a Disney sky.'],
             'images/disney/dark-mode-explore.webp': ['Explore, a first pass',
                                                      'Dropping a dark theme onto existing screens exposed '
                                                      'problems: section headings and card copy that stayed '
