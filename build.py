@@ -679,8 +679,6 @@ def build_about():
     mentor = "".join(f"<li><span>{escape(m)}</span></li>" for m in C.MENTORSHIP)
     hl = "".join(f"<li><span>{escape(h)}</span></li>" for h in C.HIGHLIGHTS)
     contact = [f'<a href="{C.LINKEDIN}">LinkedIn</a>', f'<a href="{C.DRIBBBLE}">Dribbble</a>']
-    if C.EMAIL:
-        contact.insert(0, f'<a href="mailto:{C.EMAIL}">{escape(C.EMAIL)}</a>')
     if C.RESUME:
         contact.append(f'<a href="{C.RESUME}">Résumé (PDF)</a>')
     body = f"""{header("about.html")}

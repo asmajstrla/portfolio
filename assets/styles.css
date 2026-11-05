@@ -687,3 +687,7 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .stat-big .v { font-size: clamp(34px, 3vw, 48px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
 @container (min-width: 680px) { .stat-row { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .stat-big { min-height: 112px; } .stat-big .v { font-size: 34px; } }
+
+/* links inside the About and case study copy */
+.story .body a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: color .2s ease, text-decoration-color .2s ease; }
+.story .body a:hover { color: var(--accent, var(--ink)); text-decoration-color: currentColor; }
