@@ -114,11 +114,13 @@ UX = [{'slug': 'disney-dark-mode',
              'I built dark mode into the Vista design system so every component switches with tokens. Each '
              'component was reviewed side by side in light and dark, then the theme was tested on real '
              'parks app screens.'),
-            ('Open questions',
-             '- One "inverse" token does two jobs that need to split in dark mode. Renaming it is a breaking '
-             'change, so it is on hold while the team weighs the cost.\n'
-             '- Brand colors can only get so light before white text loses contrast.\n'
-             '- Toasts, disabled states, map pins and menus still need contrast tuning.')],
+            ('Roadblocks',
+             '- One "inverse" token was doing two jobs. I split it so text on brand colors stays white while '
+             'true inverse surfaces flip in dark mode.\n'
+             '- Brand colors could only get so light before white text lost contrast. I set a lightness limit so '
+             'every brand fill still passes.\n'
+             '- Toasts, disabled states, map pins and menus fell short on contrast in dark mode. Each was tuned '
+             'until it read clearly.')],
   'notes': {'images/disney/dark-mode-components.webp': ['Every component, in both themes',
                                                       'Dark mode had to work on every single component, not '
                                                       'just whole screens. We ran each one through both themes '
