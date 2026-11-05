@@ -720,9 +720,9 @@ def build_about():
   </section>
   <div class="story" style="padding-top:24px">
     <section><h2>Bio</h2><div class="body">{bio}</div></section>
+    <section><h2>Education and mentoring</h2><div><ul class="xp">{edu}</ul></div></section>
     <section><h2>Experience</h2><div>{xp}</div></section>
     <section><h2>Awards and recognition</h2><div><ul class="xp">{awards}</ul><p class="note-sm">{escape(C.AWARDS_NOTE)}</p></div></section>
-    <section><h2>Education and mentoring</h2><div><ul class="xp">{edu}</ul></div></section>
     <section><h2>Contact</h2><div class="body"><p>{"<br>".join(contact)}</p></div></section>
   </div>
 </main>"""
