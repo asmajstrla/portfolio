@@ -1,0 +1,54 @@
+/* ==========================================================
+   Ink and Ember palette (suggestion).
+   To go back to the original colors, set PALETTE = "" in
+   content.py and run build.py. Nothing else changes.
+   ========================================================== */
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg: #121212;            /* neutral ink, so colorful work reads true */
+  --ink: #F3EFE7;           /* warm paper white */
+  --muted: #A29C92;         /* warm grey */
+  --line: #26252A;
+  --tile-bg: #1B1B1E;
+  --card-line: #2F2E33;
+  --accent: #FF7246;        /* ember: one warm signature color */
+  --head-bg: rgba(18, 18, 18, .92);
+  --head-hi: rgba(255, 255, 255, .05);
+  --head-shadow: rgba(0, 0, 0, .6);
+  --next-ink-2: #D9D2C6;
+  --next-bg: linear-gradient(180deg, #2A1E19 0%, #231A16 55%, #1C1613 100%);
+  --glow: rgba(255, 114, 70, .06);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #F3EFE7;            /* warm paper */
+  --ink: #171614;
+  --muted: #6E685F;
+  --line: #E1DBD0;
+  --tile-bg: #EAE4D9;
+  --card-line: #D9D1C3;
+  --accent: #D9481F;        /* deeper ember for contrast on paper */
+  --head-bg: rgba(243, 239, 231, .92);
+  --head-hi: rgba(255, 255, 255, .7);
+  --head-shadow: rgba(23, 22, 20, .18);
+  --next-ink-2: #4A453E;
+  --next-bg: linear-gradient(180deg, #F6E2D4 0%, #F2D3BF 55%, #EDC3A8 100%);
+  --glow: rgba(217, 72, 31, .06);
+  color-scheme: light;
+}
+
+/* accents the original palette doesn't have */
+.eyebrow, .work-story h2, .cs-text .work-story h2,
+.stage .lede, .story h2 { color: var(--accent); }
+.stat { border-color: var(--card-line); background: var(--tile-bg); }
+.rail-btn, .theme-toggle { background: var(--tile-bg); }
+
+/* hover and current-page states use the accent */
+.links a:hover, .links a[aria-current="page"],
+.views button[aria-pressed="true"],
+.close:hover, .foot a:hover, .lede a:hover, .more-xp summary:hover,
+.pager a:hover strong, a.ext:hover, .menu-btn:hover { color: var(--accent); }
+.theme-toggle:hover, .rail-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+@media (hover: hover) { .g-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); border-color: var(--accent); } }
