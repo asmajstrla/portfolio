@@ -23,8 +23,8 @@ PALETTE = "vista"
 INTRO = "Merging data, graphic design and creative storytelling to enhance the user experience."
 
 ABOUT = [
-    "I'm a visual problem solver: a creative director and product designer in Central Florida, currently a senior product designer at The Walt Disney Company.",
-    "For 15 years I've designed across theme parks, hospitality, higher education, insurance and tech, from Disney's design systems to an award-winning restaurant brand at Hawkers.",
+    "I'm a visual problem solver: a creative director and product designer located in Central Florida, currently working at The Walt Disney Company as a senior product designer.",
+    "For over 15 years, I've designed across theme parks, hospitality, higher education, insurance and tech, from Disney's design systems to an award-winning restaurant brand at Hawkers.",
     "I pair intuition with research and data, and I give teams the structure to ship great work without losing a brand's personality.",
 ]
 HIGHLIGHTS = [
