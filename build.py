@@ -394,7 +394,7 @@ def masonry(projects, prefix=""):
 def build_home():
     # the name with a 4-3-2 staircase of square tiles; no lists below
     # square tiles made for the home page: (project, image). Bottom row first, then middle, then top.
-    picks = [("hawkers-brunch", "brunch"), ("disney-dark-mode", "disney-v2"), ("hawkers-apparel", "apparel"), ("red-6-ar", "red-6-helmet"),
+    picks = [("hawkers-brunch", "brunch"), ("disney-dark-mode", "disney-v2"), ("red-6-ar", "red-6-helmet"), ("hawkers-apparel", "apparel"),
              ("environmental-design", "branding"), ("other-works", "hail-mary"), ("ucf", "ucf"),
              ("hawkers", "hawkers-fox-mask"), ("hawkers", "year-of-the-pig")]
     files = {"brunch": "hawkers-brunch", "apparel": "hawkers-apparel", "branding": "hawkers-branding"}
