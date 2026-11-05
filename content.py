@@ -99,14 +99,8 @@ UX = [{'slug': 'disney-dark-mode',
   'images': ['images/disney/dark-mode-phones-v2.webp',
              'images/disney/dark-mode-components.webp',
              'images/disney/dark-mode-backgrounds.webp',
-             'images/disney/dark-mode-explore.webp',
-             'images/disney/dark-mode-checklist.webp',
-             'images/disney/dark-mode-scope.webp',
-             'images/disney/dark-mode-audit.webp',
-             'images/disney/dark-mode-toasts.webp',
-             'images/disney/dark-mode-fam.webp',
-             'images/disney/dark-mode-mappin.webp',
-             'images/disney/dark-mode-cards.webp'],
+             'images/disney/dark-mode-checklist.png',
+             'images/disney/dark-mode-toasts.webp'],
   'story': [('The problem',
              'Guests use the parks app all day, often where a bright white screen gets in the way: at '
              'nighttime shows, in dark ride queues and late in the day on a low battery. The app had no '
@@ -141,45 +135,17 @@ UX = [{'slug': 'disney-dark-mode',
                                                       'from flat navy to soft gradients with hints of blue and '
                                                       'purple. The gradients kept the screen easy on the eyes '
                                                       'at night while still feeling like a Disney sky.'],
-            'images/disney/dark-mode-explore.webp': ['Explore, a first pass',
-                                                     'Dropping a dark theme onto existing screens exposed '
-                                                     'problems: section headings and card copy that stayed '
-                                                     'dark on a dark background, and text over images that '
-                                                     'lost contrast. Each one went on the list of components '
-                                                     'to fix.'],
-            'images/disney/dark-mode-checklist.webp': ['Trip checklist',
+            'images/disney/dark-mode-checklist.png': ['Trip checklist',
                                                        'A dense, task-heavy screen. In dark mode, cards '
                                                        'separate from the background with lighter surfaces '
                                                        'instead of shadows, which disappear on dark '
                                                        'backgrounds.'],
-            'images/disney/dark-mode-scope.webp': ['Parks app scope',
-                                                   'The screens in scope for the exploration, each shown in '
-                                                   'light and dark: trip home, the trip checklist, Explore, '
-                                                   'account and settings, parking vouchers and resort '
-                                                   'details.'],
-            'images/disney/dark-mode-audit.webp': ['Component audit',
-                                                   'Every component in the Vista UI kit compared side by '
-                                                   'side in light and dark, then sorted into Approved and '
-                                                   'Needs revisions.'],
             'images/disney/dark-mode-toasts.webp': ['Toast messaging',
                                                     'Status colors become deep tinted fills, so info, '
                                                     'success, warning and error stay distinct without '
                                                     'glowing in a dark room. Warning uses white text while '
                                                     'the others use color-specific text, which is flagged '
                                                     'for review.'],
-            'images/disney/dark-mode-fam.webp': ['Floating action menu',
-                                                 'Interactive states were rebuilt for dark: hover and '
-                                                 'pressed get lighter instead of darker, and the selected '
-                                                 'state moves to a tinted surface.'],
-            'images/disney/dark-mode-mappin.webp': ['Map pins',
-                                                    'Pins need to stay easy to find on a dark map. Hover and '
-                                                    'pressed states flip to lighter fills, and both pins and '
-                                                    'floating action menus were flagged for higher-contrast '
-                                                    'hover states.'],
-            'images/disney/dark-mode-cards.webp': ['Large cards across themes',
-                                                   'The same attraction card in Parks light, Cruise light '
-                                                   'and dark. One set of tokens drives each brand and '
-                                                   'theme.'],
             'images/disney/dark-mode-phones-v2.webp': ['Light and dark, side by side',
                                                     'The trip home screen in both themes, scrolling together '
                                                     'with the tab bar pinned, so you can compare how '

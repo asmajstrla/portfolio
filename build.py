@@ -600,10 +600,13 @@ def build_project(p):
             # very tall images (full-page captures) keep their full height; the rest fit the screen
             try:
                 from PIL import Image
-                w, h = Image.open(ROOT / src).size
+                im = Image.open(ROOT / src)
+                w, h = im.size
                 long = h / w > 2.2
+                # transparent artwork (screens cut out on their own) sits straight on the page, no card behind it
+                bare = im.mode in ("RGBA", "LA") and im.getpixel((0, 0))[-1] == 0
             except Exception:
-                long = False
+                long = bare = False
             ph = p.get("phones")
             if ph and src == ph["src"]:
                 # light and dark screens in phone frames, scrolling together, tab bars pinned (pure HTML/CSS, transparent)
@@ -615,7 +618,7 @@ def build_project(p):
                 inner = (f'<div class="phones" role="img" aria-label="Trip home screen in light and dark mode, scrolling side by side">'
                          f'{phone("Light", ph["light"], ph["tabs_light"], "tl", ph["status_light"], ph["status_light"])}{phone("Dark", ph["dark"], ph["tabs_dark"], "td", ph["status_dark"], ph["status_dark"])}</div>')
                 return (f'<button class="shot phones-shot" type="button" aria-label="View {label} larger">{inner}{note_html(src)}</button>')
-            return (f'<button class="shot{" long" if long else ""}" type="button" aria-label="View {label} larger">'
+            return (f'<button class="shot{" long" if long else ""}{" bare" if bare else ""}" type="button" aria-label="View {label} larger">'
                     f'{media(src, alt, vids, pre)}{note_html(src)}</button>')
         rows = ""
         if strip:

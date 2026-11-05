@@ -691,3 +691,4 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 /* links inside the About and case study copy */
 .story .body a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: color .2s ease, text-decoration-color .2s ease; }
 .story .body a:hover { color: var(--accent, var(--ink)); text-decoration-color: currentColor; }
+.cs-media .shot.bare { background: none; border-radius: 0; }
