@@ -1,0 +1,54 @@
+/* ==========================================================
+   Year of the Pig palette (preview).
+   To go back to the original colors, set PALETTE = "" in
+   content.py and run build.py. Nothing else changes.
+   ========================================================== */
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg: #6E0E13;            /* deep lacquer red, from the pig's ground */
+  --ink: #FFE6BF;           /* warm cream */
+  --muted: #F2B98A;         /* peach */
+  --line: #8C1F23;
+  --tile-bg: #821419;
+  --card-line: #A8302C;
+  --accent: #F39223;        /* the pig's gold-orange */
+  --head-bg: rgba(110, 14, 19, .92);
+  --head-hi: rgba(243, 146, 35, .1);
+  --head-shadow: rgba(30, 0, 0, .55);
+  --next-ink-2: #FFD9A8;
+  --next-bg: linear-gradient(180deg, #C22026 0%, #A3171D 55%, #861317 100%);
+  --glow: rgba(243, 146, 35, .12);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #F8E6C8;            /* parchment gold */
+  --ink: #6E0E13;
+  --muted: #9A4A2C;
+  --line: #EBCB9B;
+  --tile-bg: #F2D8AE;
+  --card-line: #E2B27A;
+  --accent: #C22026;        /* the pig's red */
+  --head-bg: rgba(248, 230, 200, .92);
+  --head-hi: rgba(255, 245, 225, .7);
+  --head-shadow: rgba(110, 14, 19, .2);
+  --next-ink-2: #8A2A1E;
+  --next-bg: linear-gradient(180deg, #F6D49A 0%, #F1BE73 55%, #EA8024 100%);
+  --glow: rgba(234, 128, 36, .12);
+  color-scheme: light;
+}
+
+/* accents the original palette doesn't have */
+.eyebrow, .work-story h2, .cs-text .work-story h2,
+.stage .lede, .story h2 { color: var(--accent); }
+.stat { border-color: var(--card-line); background: var(--tile-bg); }
+.rail-btn, .theme-toggle { background: var(--tile-bg); }
+
+/* hover and current-page states use the accent */
+.links a:hover, .links a[aria-current="page"],
+.views button[aria-pressed="true"],
+.close:hover, .foot a:hover, .lede a:hover, .more-xp summary:hover,
+.pager a:hover strong, a.ext:hover, .menu-btn:hover { color: var(--accent); }
+.theme-toggle:hover, .rail-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+@media (hover: hover) { .g-btn:hover:not(:disabled) { background: var(--accent); color: var(--bg); border-color: var(--accent); } }
