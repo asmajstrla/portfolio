@@ -359,13 +359,31 @@ BRAND_PROMPTS = {
 
 CLIENTS = [{'slug': 'hawkers-brunch',
   'title': 'Hawkers brunch',
-  'type': 'Menu, photography and art direction',
+  'type': 'Brand campaign, menu and art direction',
   'client': 'Hawkers Asian Street Food',
   'year': '2022',
-  'description': '',
+  'description': 'An original brunch brand for Hawkers, built from scratch and launched in six weeks. It reached over 6 million people and returned five times what it cost.',
   'cover': 'images/work/hawkers-brunch-cover.webp',
   'box_cover': 'images/work/hawkers-brunch-box.webp',
-  'sections': {'The brief': '', 'My role': '', 'The system': ''},
+  'story': [('The idea',
+             'Hawkers wanted more people through the door on weekend mornings. Instead of just adding a brunch menu, '
+             'we gave brunch its own name, look and personality: a small brand that lives inside the bigger one.'),
+            ('My role',
+             'I came up with the concept and led it from first sketch to launch: the name and look, the menu, '
+             'the photoshoot and everything people saw online.'),
+            ('What we made',
+             '- Printed brunch menus\n'
+             '- Brunch pages on the Hawkers website\n'
+             '- Augmented reality filters for Instagram\n'
+             '- An interactive quiz to find your brunch order\n'
+             '- Spotify playlists to set the mood\n'
+             '- Email campaigns to bring guests in'),
+            ('The results',
+             'In just six weeks:\n'
+             '\n'
+             '- 3.1 million media impressions\n'
+             '- 2.9 million social impressions\n'
+             '- A 500% return on investment')],
   'groups': [],
   'gallery': ['images/site/brunch-social-grid.webp',
               'images/site/brunch-photo-hibiscus.webp',
@@ -417,7 +435,7 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/brunch-photo-mimosas.webp': ['Bottomless mimosas', 'From the brunch photoshoot.'],
             'images/site/brunch-photo-margarita.webp': ['Brunch margarita', 'From the brunch photoshoot.']},
   'date': '2022',
-  'result': 'Over 3M impressions'},
+  'result': '500% ROI in 6 weeks'},
  {'slug': 'hawkers',
   'title': 'Hawkers branding',
   'type': 'Brand identity and creative direction',
