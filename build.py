@@ -305,8 +305,11 @@ SCRIPT = """<script>
     const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
     let last = null;
     const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
-    document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
-      last = b;
+    const shots = [...document.querySelectorAll('button.shot')];
+    let at = 0;
+    const show = i => {
+      at = (i + shots.length) % shots.length;
+      const b = shots[at]; last = b;
       const m = b.querySelector('.phones, img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
@@ -315,8 +318,27 @@ SCRIPT = """<script>
       lb.classList.toggle('has-note', !!note);
       lb.querySelector('.bar span').textContent = note ? lb.getAttribute('aria-label') : (m.getAttribute('alt') || m.getAttribute('aria-label') || '');
       if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
+    };
+    lb.classList.toggle('single', shots.length < 2);
+    shots.forEach((b, i) => b.addEventListener('click', () => {
+      show(i);
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
     }));
+    // step through the images without closing: arrows, keyboard, or a swipe on phones
+    lb.querySelector('.lb-btn.prev').addEventListener('click', () => show(at - 1));
+    lb.querySelector('.lb-btn.next').addEventListener('click', () => show(at + 1));
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') show(at - 1);
+      if (e.key === 'ArrowRight') show(at + 1);
+    });
+    let sx = null;
+    frame.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    frame.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+    }, { passive: true });
     closeBtn.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
   }
@@ -330,6 +352,8 @@ CSS_VER = _h.md5(_p.Path(__file__).with_name("assets").joinpath("styles.css").re
 
 GALLERY_ARROW = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" '
                  'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+LB_NAV = (f'<button class="g-btn prev lb-btn" type="button" aria-label="Previous image">{GALLERY_ARROW}</button>'
+          f'<button class="g-btn next lb-btn" type="button" aria-label="Next image">{GALLERY_ARROW}</button>')
 GALLERY_NAV = (f'<button class="g-btn prev" type="button" aria-label="Previous image" disabled>{GALLERY_ARROW}</button>'
                f'<button class="g-btn next" type="button" aria-label="Next image">{GALLERY_ARROW}</button>')
 
@@ -590,7 +614,7 @@ def build_project(p):
   </nav>"""
     lightbox = f"""<div class="lightbox" role="dialog" aria-modal="true" aria-label="{escape(p["title"])}">
   <div class="bar"><span>{escape(p["title"])}</span><button type="button">Close</button></div>
-  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
+  <div class="frame"><div class="pic-wrap"><div class="pic"></div>{LB_NAV}</div><aside class="note-panel"></aside></div>
 </div>"""
 
     if p["section"] == "ux":
@@ -661,7 +685,7 @@ def build_project(p):
 </main>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="{escape(p["title"])}">
   <div class="bar"><span>{escape(p["title"])}</span><button type="button">Close</button></div>
-  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
+  <div class="frame"><div class="pic-wrap"><div class="pic"></div>{LB_NAV}</div><aside class="note-panel"></aside></div>
 </div>"""
     return page(p["title"], body, prefix=pre, sparkle=p.get("client", "").startswith("The Walt Disney") or p.get("slug", "").startswith("disney"))
 

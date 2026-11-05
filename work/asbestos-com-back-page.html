@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>var t='dark';try{t=localStorage.getItem('theme')||t}catch(e){}document.documentElement.dataset.theme=t</script>
-<link rel="stylesheet" href="../assets/styles.css?v=b3c4f1c2">
+<link rel="stylesheet" href="../assets/styles.css?v=eb67be7e">
 <link rel="stylesheet" href="../assets/palette-vista.css?v=c45bba14">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-4%20-35%20130.48%20130.48%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%227%22%3E%3Cpolyline%20points%3D%22.5%2043.04%20118.98%2043.04%20118.98%2030.62%203.5%2030.62%203.5%2018.48%20121.98%2018.48%22/%3E%3Cline%20x1%3D%22121.98%22%20y1%3D%2256.02%22%20x2%3D%2289.28%22%20y2%3D%2256.02%22/%3E%3Cline%20x1%3D%2277.59%22%20y1%3D%223.5%22%20x2%3D%2244.89%22%20y2%3D%223.5%22/%3E%3Cline%20x1%3D%2233.2%22%20y1%3D%2256.02%22%20x2%3D%22.5%22%20y2%3D%2256.02%22/%3E%3Cpolyline%20points%3D%22106.63%2056.02%2061.24%203.5%2015.85%2056.02%22/%3E%3C/g%3E%3C/svg%3E">
 </head>
@@ -60,7 +60,7 @@
 </main>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="Asbestos.com back pages">
   <div class="bar"><span>Asbestos.com back pages</span><button type="button">Close</button></div>
-  <div class="frame"><div class="pic"></div><aside class="note-panel"></aside></div>
+  <div class="frame"><div class="pic-wrap"><div class="pic"></div><button class="g-btn prev lb-btn" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="g-btn next lb-btn" type="button" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><aside class="note-panel"></aside></div>
 </div>
 <footer class="foot"><span>Adam Smajstrla, Central Florida</span><nav aria-label="Elsewhere"><a href="https://www.linkedin.com/in/adam-smajstrla/">LinkedIn</a><a href="https://dribbble.com/smaj">Dribbble</a></nav></footer>
 <script>
@@ -241,8 +241,11 @@
     const frame = lb.querySelector('.frame'), closeBtn = lb.querySelector('button');
     let last = null;
     const close = () => { lb.classList.remove('open'); frame.querySelector('.pic').innerHTML = ''; document.body.style.overflow = ''; last && last.focus(); };
-    document.querySelectorAll('button.shot').forEach(b => b.addEventListener('click', () => {
-      last = b;
+    const shots = [...document.querySelectorAll('button.shot')];
+    let at = 0;
+    const show = i => {
+      at = (i + shots.length) % shots.length;
+      const b = shots[at]; last = b;
       const m = b.querySelector('.phones, img, video').cloneNode(true);
       m.removeAttribute('loading'); m.removeAttribute('data-autoplay');
       const pic = frame.querySelector('.pic'), aside = frame.querySelector('.note-panel'), note = b.querySelector('.note');
@@ -251,8 +254,27 @@
       lb.classList.toggle('has-note', !!note);
       lb.querySelector('.bar span').textContent = note ? lb.getAttribute('aria-label') : (m.getAttribute('alt') || m.getAttribute('aria-label') || '');
       if (m.tagName === 'VIDEO' && !matchMedia('(prefers-reduced-motion: reduce)').matches) m.play().catch(() => {});
+    };
+    lb.classList.toggle('single', shots.length < 2);
+    shots.forEach((b, i) => b.addEventListener('click', () => {
+      show(i);
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus();
     }));
+    // step through the images without closing: arrows, keyboard, or a swipe on phones
+    lb.querySelector('.lb-btn.prev').addEventListener('click', () => show(at - 1));
+    lb.querySelector('.lb-btn.next').addEventListener('click', () => show(at + 1));
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') show(at - 1);
+      if (e.key === 'ArrowRight') show(at + 1);
+    });
+    let sx = null;
+    frame.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    frame.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+    }, { passive: true });
     closeBtn.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
   }

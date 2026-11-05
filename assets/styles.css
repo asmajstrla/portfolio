@@ -692,3 +692,13 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .story .body a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: color .2s ease, text-decoration-color .2s ease; }
 .story .body a:hover { color: var(--accent, var(--ink)); text-decoration-color: currentColor; }
 .cs-media .shot.bare { background: none; border-radius: 0; }
+
+/* arrows inside the full-screen image view */
+.lightbox .pic-wrap { position: relative; display: grid; min-height: 0; min-width: 0; }
+.lightbox .lb-btn.prev { left: 12px; }
+.lightbox .lb-btn.next { right: 12px; }
+.lightbox.single .lb-btn { display: none; }
+@media (max-width: 760px) {
+  .lightbox .pic-wrap { position: sticky; top: 0; }
+  .lightbox .lb-btn.prev { left: 6px; } .lightbox .lb-btn.next { right: 6px; }
+}
