@@ -413,8 +413,8 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'client': 'Hawkers Asian Street Food',
   'year': '2018–2022',
   'description': 'A brand system for a fast-growing Asian street food restaurant group, built to feel as '
-                 'loud, warm and hand-made as the food, and to scale from 4 to 15 locations across the '
-                 'country.',
+                 'loud, warm and hand-made as the food.',
+  'result': 'Grew from 4 to 15 locations',
   'sections': {'The brief': 'Hawkers started as a single Orlando restaurant serving the dishes its founders '
                             'grew up with at street stalls across Asia. As the group expanded, the brand had '
                             'to travel to new cities without losing the energy of the original: every '
@@ -429,15 +429,14 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                           'I owned the brand end to end: the 40-page brand guidelines, the menu suite, '
                           'takeout packaging, uniforms and merch, neon signage and seasonal campaigns. I '
                           'also traveled to new locations to design and paint the murals myself.',
-               'The system': 'The tiger mascot is the anchor. It shows up as a full illustration on murals '
-                             'and Lunar New Year pieces, simplified on packaging, and as a single-line mark '
-                             'on pins and caps. Around it sits a tight palette of tiger orange, deep green '
-                             'and cream, a bold sans for headlines and hand lettering for moments that need '
-                             'personality.\n'
+               'The system': 'Street culture is the anchor for everything we design. The brand borrows the energy of '
+                             'night markets and hawker stalls: bold color, loud art and a lot of hand-drawn '
+                             'illustration.\n'
                              '\n'
-                             'Every year the zodiac animal becomes a new campaign, which keeps the brand '
-                             'fresh while reinforcing the tiger. The work earned Central Florida Art '
-                             'Director of the Year and a string of ADDY awards.'},
+                             'Asian heritage runs through every piece, and the restaurants lean into Asian holidays '
+                             'like Lunar New Year as reasons to celebrate with guests. The result is an art-forward '
+                             'brand where the artwork does as much of the talking as the food. The work earned '
+                             'Central Florida Art Director of the Year and a string of ADDY awards.'},
   'groups': [('Identity and mascot', ['japanese-hero-mask-lockup', 'lapel-pins']),
              ('Lunar New Year and anniversaries',
               ['happy-new-year-2020-year-of-the-rat', 'year-of-the-ox', 'luck-cat-anniversary-pin']),
