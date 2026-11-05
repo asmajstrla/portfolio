@@ -627,3 +627,55 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 
 /* Disney pages: star trail off the cursor, drawn over the page but under the header and lightbox (see script) */
 .sparks { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 25; pointer-events: none; }
+
+/* ---------- work page headings: eyebrow, bold title, larger lead, four fact cards ---------- */
+:root { --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; }
+.eyebrow {
+  margin: 0 0 18px; font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.cs-text h1, .info-stack h1 {
+  font-size: clamp(40px, 4.4vw, 68px); font-weight: 700; letter-spacing: -0.035em; line-height: 1;
+}
+.cs-head .lead p {
+  margin: 22px 0 0; font-size: clamp(18px, 1.45vw, 21px); line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 80%, var(--bg));
+}
+.cs-meta.stats {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  border: 0; padding: 0; margin: 32px 0 8px; font-size: inherit;
+}
+.stat {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
+  min-height: 104px; padding: 18px 18px 16px;
+  border: 1px solid var(--line); border-radius: 14px;
+  background: color-mix(in srgb, var(--tile-bg) 70%, transparent);
+}
+.stat .v { font-size: 18px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+.stat .k {
+  font-family: var(--mono); font-size: 11px; font-weight: 500; line-height: 1.35;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+}
+/* product design: the intro column lays the cards four across when it has the room */
+.cs-text { container-type: inline-size; max-width: 60ch; }
+@container (min-width: 600px) { .cs-text .cs-meta.stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* design pages: copy left, the 2x2 cards right */
+.info-stack { padding-top: clamp(36px, 4vw, 56px); }
+.info-stack .cs-head { grid-column: 1; }
+.info-stack .cs-meta.stats { grid-column: 2; grid-row: 1; align-self: start; margin: 34px 0 0; }
+@media (max-width: 760px) {
+  .info-stack .cs-meta.stats { grid-column: 1; grid-row: auto; margin-top: 28px; padding-top: 0; border-top: 0; }
+  .stat { min-height: 92px; padding: 16px 14px 14px; }
+  .stat .v { font-size: 16px; }
+}
+
+/* section labels in the case study copy pick up the same mono eyebrow */
+.work-story h2, .cs-text .work-story h2 {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 12px;
+}
+.work-story .body { font-size: 16px; }
+.work-story .body p:first-child { font-size: 18px; line-height: 1.5; color: var(--ink); }
+.cs-row:not(.cs-intro) .cs-text h2 { font-size: clamp(22px, 1.9vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 12px; }
+@media (max-width: 760px) { .work-story section { row-gap: 4px; } }

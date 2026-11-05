@@ -75,7 +75,7 @@ def head(title, prefix):
 <meta name="description" content="{escape(C.NAME)}, {escape(C.TITLE)}. UX case studies, illustration and graphic design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 {THEME_BOOT}
 <link rel="stylesheet" href="{prefix}assets/styles.css?v={CSS_VER}">{palette_link(prefix)}
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-4%20-35%20130.48%20130.48%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%227%22%3E%3Cpolyline%20points%3D%22.5%2043.04%20118.98%2043.04%20118.98%2030.62%203.5%2030.62%203.5%2018.48%20121.98%2018.48%22/%3E%3Cline%20x1%3D%22121.98%22%20y1%3D%2256.02%22%20x2%3D%2289.28%22%20y2%3D%2256.02%22/%3E%3Cline%20x1%3D%2277.59%22%20y1%3D%223.5%22%20x2%3D%2244.89%22%20y2%3D%223.5%22/%3E%3Cline%20x1%3D%2233.2%22%20y1%3D%2256.02%22%20x2%3D%22.5%22%20y2%3D%2256.02%22/%3E%3Cpolyline%20points%3D%22106.63%2056.02%2061.24%203.5%2015.85%2056.02%22/%3E%3C/g%3E%3C/svg%3E">
@@ -538,18 +538,22 @@ def build_project(p):
         p["role"] = p.get("role") or ("Creative direction and design" if hk else "Graphic design" if ucf else "Illustration and design")
         p["result"] = p.get("result") or "Result coming soon"
 
+    # the four facts, each in its own card: value up top, small mono label beneath
+    def stat(label, value):
+        return f'<div class="stat"><span class="v">{value}</span><span class="k">{label}</span></div>'
     left = ""
     if p.get("client"):
         client = escape(p["client"])
         if p.get("client_url"):
             client = f'<a class="ext" href="{p["client_url"]}" target="_blank" rel="noopener">{client}</a>'
-        left += f'<div><span class="muted">Designed for</span><br>{client}</div>'
+        left += stat("Designed for", client)
     if p.get("date") or p.get("year"):
-        left += f'<div><span class="muted">Date</span><br>{escape(p.get("date") or p["year"])}</div>'
+        left += stat("Date", escape(p.get("date") or p["year"]))
     if p.get("role"):
-        left += f'<div><span class="muted">Role</span><br>{escape(p["role"])}</div>'
+        left += stat("Role", escape(p["role"]))
     if p.get("result"):
-        left += f'<div><span class="muted">Result</span><br>{escape(p["result"])}</div>'
+        left += stat("Result", escape(p["result"]))
+    eyebrow = f'<p class="eyebrow">{escape(p.get("type") or ("Product design" if p["section"] == "ux" else "Design + Branding"))}</p>'
 
     text = p.get("description") or p.get("summary") or ""
     desc = f"<p>{escape(text)}</p>" if text else '<p class="prompt">Add a short description of this project.</p>'
@@ -569,7 +573,7 @@ def build_project(p):
         inner = body_html(txt) if txt else f'<p class="prompt">{escape(sec[2])}</p>'
         secs += f'<section><h2>{escape(name)}</h2><div class="body">{inner}</div></section>'
     if secs:
-        story = f'<div class="story">{secs}</div>'
+        story = f'<div class="story work-story">{secs}</div>'
 
     year = (escape(p["year"]) + "<br>") if p.get("year") else ""
     pager = f"""<nav class="pager" aria-label="More projects">
@@ -611,9 +615,8 @@ def build_project(p):
             rows += f"""<section class="cs-row cs-intro">
     <div class="cs-media">{shot(src, alt, vids)}</div>
     <div class="cs-text">
-      <h1>{escape(p["title"])}</h1>
-      <div class="lead">{desc}</div>
-      <div class="cs-meta">{left}</div>
+      <div class="cs-head">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>
+      <div class="cs-meta stats">{left}</div>
       {story}
     </div>
   </section>"""
@@ -635,9 +638,8 @@ def build_project(p):
 <main>
   <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
   <div class="info info-stack">
-    <h1>{escape(p["title"])}</h1>
-    <div class="lead">{desc}</div>
-    <div class="cs-meta">{left}</div>
+    <div class="cs-head">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>
+    <div class="cs-meta stats">{left}</div>
   </div>
   {story}
   {groups}
