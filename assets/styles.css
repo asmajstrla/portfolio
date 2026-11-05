@@ -702,3 +702,6 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .lightbox .pic-wrap { position: sticky; top: 0; }
   .lightbox .lb-btn.prev { left: 6px; } .lightbox .lb-btn.next { right: 6px; }
 }
+
+/* home squares: image only, no caption on hover */
+.tiles-stair .cap { display: none; }
