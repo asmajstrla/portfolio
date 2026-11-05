@@ -108,36 +108,22 @@ UX = [{'slug': 'disney-dark-mode',
              'images/disney/dark-mode-mappin.webp',
              'images/disney/dark-mode-cards.webp'],
   'story': [('The problem',
-             'Guests lean on the parks app all day, often where a bright white screen works against them: '
-             'watching fireworks and nighttime shows, waiting in dark ride queues, inside attractions, and '
-             'late in a long day when the battery is running low. The app had no dark theme.'),
+             'Guests use the parks app all day, often where a bright white screen gets in the way: at '
+             'nighttime shows, in dark ride queues and late in the day on a low battery. The app had no '
+             'dark theme.'),
             ('Why dark mode',
-             '- Save battery. Dark surfaces draw less power on OLED phones over a full park day.\n'
-             "- Easier viewing at night. A dimmer screen is easier on the eyes in a dark park and doesn't "
-             'light up the people around you.\n'
-             '- A dark variation for indoor spaces and queue lines for dark rides, where a bright screen is '
-             'a distraction.'),
+             '- Saves battery\n'
+             '- Easier viewing at night\n'
+             '- Less glare in dark rides and indoor queues'),
             ('The approach',
-             'I built dark mode as a theme inside the Vista UI kit rather than as one-off screens, so '
-             'components switch through design tokens. I audited every component side by side in light and '
-             'dark, sorted them into Approved and Needs revisions, then tested the theme on real parks app '
-             'screens: trip home, the trip checklist, Explore, account settings, parking vouchers and resort '
-             'details.'),
-            ('Concerns and open questions',
-             '- The "inverse" token does two jobs. In light mode, inverse text is white, which happens to be '
-             'right both for text on fixed brand colors (buttons, destructive actions, map pins, anything '
-             'over a photo) and for text on true inverse surfaces like tooltips and snackbars. In dark mode '
-             'they need to split: text on fixed colors stays white, while inverse surfaces should flip.\n'
-             '- All 128 component bindings to inverse turned out to be the fixed-color case. I proposed '
-             'renaming them to "on-color" and adding a true inverse set. That\'s a breaking token-name '
-             'change for engineering, so it was tried and rolled back in October 2026 while the team weighs '
-             'the cost.\n'
-             "- Fixed brand fills can't get lighter than the point where white text still clears 4.5:1 "
-             'contrast.\n'
-             '- Warning toasts use white text while the others use color-specific text, which needs a closer '
-             'look.\n'
-             '- Disabled states are moving to percentage-based fills.\n'
-             '- Map pins and floating action menus need higher-contrast hover states on a dark map.')],
+             'I built dark mode into the Vista design system so every component switches with tokens. Each '
+             'component was reviewed side by side in light and dark, then the theme was tested on real '
+             'parks app screens.'),
+            ('Open questions',
+             '- One "inverse" token does two jobs that need to split in dark mode. Renaming it is a breaking '
+             'change, so it is on hold while the team weighs the cost.\n'
+             '- Brand colors can only get so light before white text loses contrast.\n'
+             '- Toasts, disabled states, map pins and menus still need contrast tuning.')],
   'notes': {'images/disney/dark-mode-components.webp': ['Every component, in both themes',
                                                       'Dark mode had to work on every single component, not '
                                                       'just whole screens. We ran each one through both themes '
