@@ -61,7 +61,10 @@ def media(src, alt, videos=None, prefix=""):
 
 def palette_link(prefix):
     p = getattr(C, "PALETTE", "")
-    return f'\n<link rel="stylesheet" href="{prefix}assets/palette-{p}.css">' if p else ""
+    if not p:
+        return ""
+    ver = _h.md5(_p.Path(__file__).with_name("assets").joinpath(f"palette-{p}.css").read_bytes()).hexdigest()[:8]
+    return f'\n<link rel="stylesheet" href="{prefix}assets/palette-{p}.css?v={ver}">'
 
 
 def head(title, prefix):

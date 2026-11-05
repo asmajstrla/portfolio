@@ -1,0 +1,45 @@
+/* ==========================================================
+   Vista navy palette (trial).
+   To go back to the original colors, set PALETTE = "" in
+   content.py and run build.py. Nothing else changes.
+   ========================================================== */
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg: #0E1125;            /* deep navy page */
+  --ink: #EEF0FA;           /* near-white headings and copy */
+  --muted: #A3A8C8;         /* lavender-grey secondary text */
+  --line: #262C58;          /* hairlines */
+  --tile-bg: #141A39;       /* cards and image placeholders */
+  --card-line: #31386A;     /* card outlines */
+  --accent: #9AA5FD;        /* periwinkle: eyebrows, highlights */
+  --head-bg: rgba(14, 17, 37, .92);
+  --head-hi: rgba(154, 165, 253, .08);
+  --head-shadow: rgba(0, 0, 0, .6);
+  --next-ink-2: #C9CCE6;
+  --next-bg: linear-gradient(180deg, #1B2250 0%, #171D45 50%, #12173A 100%);
+  --glow: rgba(110, 120, 240, .12);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #F4F5FB;
+  --ink: #12152B;
+  --muted: #5B6187;
+  --line: #DCDFF0;
+  --tile-bg: #E8EBF8;
+  --card-line: #C9CEEA;
+  --accent: #4C57C9;
+  --head-bg: rgba(244, 245, 251, .92);
+  --head-hi: rgba(255, 255, 255, .7);
+  --head-shadow: rgba(18, 21, 43, .2);
+  --next-ink-2: #3A3F63;
+  --next-bg: linear-gradient(180deg, #E4E7FA 0%, #DADFF7 55%, #CED4F2 100%);
+  --glow: rgba(76, 87, 201, .08);
+  color-scheme: light;
+}
+
+/* accents the original palette doesn't have */
+.eyebrow, .work-story h2, .cs-text .work-story h2 { color: var(--accent); }
+.stat { border-color: var(--card-line); background: var(--tile-bg); }
+.rail-btn, .theme-toggle { background: var(--tile-bg); }
