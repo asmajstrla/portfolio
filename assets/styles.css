@@ -679,3 +679,11 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 .work-story .body p:first-child { font-size: 18px; line-height: 1.5; color: var(--ink); }
 .cs-row:not(.cs-intro) .cs-text h2 { font-size: clamp(22px, 1.9vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 12px; }
 @media (max-width: 760px) { .work-story section { row-gap: 4px; } }
+
+/* big-number result cards inside a case study section */
+.work-story .body, .cs-text .body { container-type: inline-size; }
+.stat-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 24px 0 8px; }
+.stat-big { min-height: 132px; padding: 20px 18px 16px; }
+.stat-big .v { font-size: clamp(34px, 3vw, 48px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
+@container (min-width: 680px) { .stat-row { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .stat-big { min-height: 112px; } .stat-big .v { font-size: 34px; } }

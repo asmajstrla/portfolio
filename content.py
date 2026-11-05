@@ -379,11 +379,12 @@ CLIENTS = [{'slug': 'hawkers-brunch',
              '- Spotify playlists to set the mood\n'
              '- Email campaigns to bring guests in'),
             ('The results',
-             'In just six weeks:\n'
+             'In just six weeks, the launch reached millions and paid for itself many times over.\n'
              '\n'
-             '- 3.1 million media impressions\n'
-             '- 2.9 million social impressions\n'
-             '- A 500% return on investment')],
+             '= 3.1M | Media impressions\n'
+             '= 2.9M | Social impressions\n'
+             '= 500% | Return on investment\n'
+             '= 6 | Weeks from launch')],
   'groups': [],
   'gallery': ['images/site/brunch-social-grid.webp',
               'images/site/brunch-photo-hibiscus.webp',

@@ -499,7 +499,12 @@ def build_project(p):
         out = ""
         for block in txt.split("\n\n"):
             lines = block.split("\n")
-            if all(l.startswith("- ") for l in lines):
+            if all(l.startswith("= ") and "|" in l for l in lines):
+                # "= 3.1M | Media impressions" lines become big-number cards
+                cards = "".join(f'<div class="stat stat-big"><span class="v">{escape(a.strip())}</span><span class="k">{escape(b.strip())}</span></div>'
+                                for a, b in (l[2:].split("|", 1) for l in lines))
+                out += f'<div class="stats stat-row">{cards}</div>'
+            elif all(l.startswith("- ") for l in lines):
                 out += "<ul>" + "".join(f"<li>{escape(l[2:])}</li>" for l in lines) + "</ul>"
             else:
                 out += f"<p>{escape(block)}</p>"
