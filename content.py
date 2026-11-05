@@ -100,7 +100,7 @@ UX = [{'slug': 'disney-dark-mode',
              'images/disney/dark-mode-components.webp',
              'images/disney/dark-mode-backgrounds.webp',
              'images/disney/dark-mode-checklist.png',
-             'images/disney/dark-mode-toasts.webp'],
+             'images/disney/dark-mode-alerts.png'],
   'story': [('The problem',
              'Guests use the parks app all day, often where a bright white screen gets in the way: at '
              'nighttime shows, in dark ride queues and late in the day on a low battery. The app had no '
@@ -140,12 +140,12 @@ UX = [{'slug': 'disney-dark-mode',
                                                        'separate from the background with lighter surfaces '
                                                        'instead of shadows, which disappear on dark '
                                                        'backgrounds.'],
-            'images/disney/dark-mode-toasts.webp': ['Toast messaging',
-                                                    'Status colors become deep tinted fills, so info, '
-                                                    'success, warning and error stay distinct without '
-                                                    'glowing in a dark room. Warning uses white text while '
-                                                    'the others use color-specific text, which is flagged '
-                                                    'for review.'],
+            'images/disney/dark-mode-alerts.png': ['Alert components',
+                                                   'Toasts and badges, light against dark. Status colors '
+                                                   'become deep tinted fills, so success, warning, error and '
+                                                   'info stay easy to tell apart without glowing in a dark '
+                                                   'room, and every badge style keeps its meaning in both '
+                                                   'themes.'],
             'images/disney/dark-mode-phones-v2.webp': ['Light and dark, side by side',
                                                     'The trip home screen in both themes, scrolling together '
                                                     'with the tab bar pinned, so you can compare how '
