@@ -572,7 +572,23 @@ CLIENTS = [{'slug': 'hawkers-brunch',
   'year': '2015–2018',
   'description': 'Three years of environmental graphics, admissions publications, Pegasus magazine editorial '
                  'and campus spirit work for the University of Central Florida.',
-  'sections': {'The brief': '', 'My role': '', 'The system': ''},
+  'role': 'Graphic designer',
+  'result': 'Multiple ADDY and CASE Awards',
+  'story': [('The brief',
+             "UCF is one of the largest universities in the country, and its main marketing department sets the "
+             "look for everything from the alumni magazine to student IDs. The work had to feel like one brand "
+             "across print, web, campus spaces and video."),
+            ('My role',
+             'As a graphic designer in the central marketing department, I helped build and carry the UCF brand. '
+             'I focused mostly on layout and editorial design, created custom illustrations, and art directed '
+             'other designers, illustrators and video shoots.'),
+            ('The system',
+             '- Pegasus, the quarterly alumni magazine, made with a team of 10 designers and project managers\n'
+             '- Admissions materials for future students\n'
+             '- Wall wraps and murals across campus\n'
+             '- Websites, including the UCF homepage\n'
+             '- Art direction for video shoots\n'
+             '- Custom illustration, stickers, student IDs and spirit pieces')],
   'groups': [('Admissions',
               ['ucf-viewbook',
                'ucf-viewbook-full-magazine',
