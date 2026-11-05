@@ -20,7 +20,7 @@ PORTRAIT = "images/adam-smajstrla.webp"
 # set to "" for the original black-and-white colors.
 PALETTE = "vista"
 
-INTRO = "Merging data, graphic design and creative storytelling to enhance the user experience."
+INTRO = "A visual problem solver for brands, products and the spaces in between."
 
 ABOUT = [
     "I'm a visual problem solver: a creative director and product designer located in Central Florida, currently working at The Walt Disney Company as a senior product designer.",
