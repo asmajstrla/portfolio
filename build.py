@@ -560,7 +560,7 @@ def build_project(p):
     if p.get("role"):
         left += stat("Role", escape(p["role"]))
     if p.get("result"):
-        left += stat("Result", escape(p["result"]))
+        left += stat(escape(p.get("result_label", "Result")), escape(p["result"]))
     eyebrow = f'<p class="eyebrow">{escape(p.get("type") or ("Product design" if p["section"] == "ux" else "Design + Branding"))}</p>'
 
     text = p.get("description") or p.get("summary") or ""
