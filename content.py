@@ -649,7 +649,23 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/hawkers-neon-interior.webp': ['Hawkers neon interior',
                                                        'Neon, signage and poster collage layered through a '
                                                        'Hawkers dining room.']},
-  'sections': {'The brief': '', 'My role': '', 'The system': ''},
+  'story': [('The brief',
+             'At both Hawkers and UCF, a big part of the job was turning walls into part of the brand. At '
+             'Hawkers, every restaurant needed to feel like stepping onto a street in Asia. At UCF, campus '
+             'spaces and public places across Orlando needed to carry the university brand at a large scale.'),
+            ('My role',
+             'I designed most of these pieces myself and drew them by hand before they went up on the walls. '
+             'At Hawkers I also painted multiple murals on location by hand. At UCF I designed wall wraps, '
+             'wayfinding and out-of-home campaigns.'),
+            ('The system',
+             '- Layered street posters at Hawkers, hand-installed on the walls to recreate the way ads stack on '
+             'top of each other on the streets of Asia\n'
+             '- Custom neon signs for Hawkers restaurants\n'
+             '- Hand-painted murals, done on location\n'
+             '- Wall wraps at the UCF Downtown campus and Millican Hall\n'
+             '- Wayfinding for UCF\n'
+             '- Wall wraps at Orlando International Airport (MCO)\n'
+             '- Bus wraps and billboards')],
   'groups': [('Hawkers murals', ['gan-bei-garden-mural', 'dumplings-and-dragons-mural', 'custom-neons']),
              ('Hawkers neon signs',
               ['spicy-smile-neon-sign',
