@@ -165,6 +165,71 @@ UX = [{'slug': 'disney-dark-mode',
              'tabs_dark': 'images/disney/tabs-dark.webp',
              'status_light': 'images/disney/status-dark-text.webp',
              'status_dark': 'images/disney/status-light-text.webp'}},
+ {'slug': 'liquid-glass-duo',
+  'title': 'Liquid Glass on iPhone Duo',
+  'type': 'Product strategy and navigation design',
+  'client': 'The Walt Disney Company',
+  'year': '2026',
+  'date': '2026',
+  'role': 'Senior Product Designer',
+  'result_label': 'Recommendation',
+  'result': 'Native navigation, scored 9/10',
+  'summary': "Should Disney's parks app adopt Apple's native Liquid Glass, now that the foldable iPhone Duo "
+             "changes how layouts work? I compared three navigation directions and made the case for going native.",
+  'box_cover': 'images/duo/duo-box.webp',
+  'images': ['images/duo/duo-directions-a.png',
+             'images/duo/duo-scores.png',
+             'images/duo/duo-who-controls.webp',
+             'images/duo/duo-customization.webp',
+             'images/duo/duo-guest-settings.webp',
+             'images/duo/duo-plus-button.webp'],
+  'videos': {},
+  'notes': {'images/duo/duo-directions-a.png': ['Native navigation on the Duo',
+                                                'The recommended direction on both screens. On the outer display (left) and '
+                                                'the open inner display (right), native tabs move into the Duo\'s side strip '
+                                                'next to the camera on their own, with no custom code.'],
+            'images/duo/duo-scores.png': ['Three directions, scored',
+                                          'Each direction was scored on effort, risk and payoff, with a note on what would '
+                                          'change the score. Native navigation came out on top at 9/10. A custom rail mostly '
+                                          'duplicated what the system now does for free, and native panes with Flutter '
+                                          'content had the biggest payoff but the highest cost, so it became a phase two.'],
+            'images/duo/duo-who-controls.webp': ['Who controls what',
+                                                 'Setting expectations early: what our team designs, what Apple controls, '
+                                                 'and what every guest can change on their own phone. This kept the '
+                                                 'conversation about brand control grounded in what was actually possible.'],
+            'images/duo/duo-customization.webp': ['How custom can the bar get?',
+                                                  'The same bar over the park map, from fully native to changes that break the '
+                                                  'glass. Our practical ceiling: our own icons, our brand color on the '
+                                                  'selected tab and one tinted floating button.'],
+            'images/duo/duo-guest-settings.webp': ['Designing for every guest setting',
+                                                   'Guests can make the glass clearer, more opaque, solid, high contrast or '
+                                                   'dark. Native bars adapt to all six on their own; a custom bar adapts to '
+                                                   'none. These six states became the QA checklist for release.'],
+            'images/duo/duo-plus-button.webp': ['Fixing a confusing + button',
+                                                'Moving to native exposed a problem: two + icons on one screen that did '
+                                                'different things. I explored three fixes and recommended giving every icon '
+                                                'one meaning, so + always means "add."'],
+           },
+  'story': [('The problem',
+             "Apple's Liquid Glass and the foldable iPhone Duo arrived at the same time. The Duo has a narrow outer "
+             "display and a wide inner one, and it moves system controls into a strip beside the camera. Our "
+             "navigation wasn't built for either, so the team had to decide: keep a custom, branded nav or move to "
+             "Apple's native components."),
+            ('My approach',
+             '- Learned from a Disney team that had already shipped Liquid Glass, plus iOS engineering and Android design\n'
+             '- Mapped what our team controls, what Apple controls and what each guest can change\n'
+             '- Designed three navigation directions across both Duo displays and scored each one\n'
+             '- Logged every design and technical risk with a status and next step'),
+            ('The decision',
+             'I recommended native system navigation. Apple confirmed native tabs move into the Duo\'s side strip '
+             'automatically, our tab bar was already native, and native components follow every accessibility '
+             'setting and keep icons readable over busy imagery. A custom version would have meant rebuilding all of '
+             'that ourselves.'),
+            ('The outcome',
+             'Product and engineering got a clear recommendation, six design ground rules for every screen and a '
+             'running log of 12 risks to track through release. The bigger inner-display layouts were set up as a '
+             'second phase, once engineering confirms they can be built.')],
+ },
  {'slug': 'asbestos-com',
   'title': 'Asbestos.com homepage',
   'type': 'UX and web design',
