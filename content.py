@@ -120,7 +120,10 @@ UX = [{'slug': 'disney-dark-mode',
              '- Brand colors could only get so light before white text lost contrast. I set a lightness limit so '
              'every brand fill still passes.\n'
              '- Toasts, disabled states, map pins and menus fell short on contrast in dark mode. Each was tuned '
-             'until it read clearly.')],
+             'until it read clearly.\n'
+             '- Illustration was a new challenge. Other Vista themes, like Cruise and Aulani, are light, so their '
+             'artwork never had to sit on a dark background. Most illustrations hold up, but a few, like the castle '
+             'at the top of the home screen, will need an illustration budget to redraw for dark mode.')],
   'notes': {'images/disney/dark-mode-components.webp': ['Every component, in both themes',
                                                       'Dark mode had to work on every single component, not '
                                                       'just whole screens. We ran each one through both themes '
