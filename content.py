@@ -176,7 +176,7 @@ UX = [{'slug': 'disney-dark-mode',
   'result': 'Native navigation, scored 9/10',
   'summary': "Should Disney's parks app adopt Apple's native Liquid Glass, now that the foldable iPhone Duo "
              "changes how layouts work? I compared three navigation directions and made the case for going native.",
-  'box_cover': 'images/duo/duo-box.webp',
+  'box_cover': 'images/duo/duo-box-v2.webp',
   'images': ['images/duo/duo-directions-a.png',
              'images/duo/duo-scores.png',
              'images/duo/duo-who-controls.webp',
