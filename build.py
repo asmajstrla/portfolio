@@ -96,14 +96,19 @@ THEME_TOGGLE = (
 THEME_BOOT = """<script>var t='dark';try{t=localStorage.getItem('theme')||t}catch(e){}document.documentElement.dataset.theme=t</script>"""
 
 
+def link(prefix, h):
+    # point home links at the folder, not index.html, so the address bar stays clean (adamsmaj.com/)
+    return (prefix or "./") if h == "index.html" else prefix + h
+
+
 def header(current, prefix="", views=False):
     cur = ' aria-current="page"'
-    links = "".join(f'<li><a href="{prefix}{h}"{cur if h == current else ""}>{l}</a></li>' for h, l in NAV)
+    links = "".join(f'<li><a href="{link(prefix, h)}"{cur if h == current else ""}>{l}</a></li>' for h, l in NAV)
     toggle = ('<div class="views" role="group" aria-label="Layout">'
               '<button type="button" data-set="list" aria-pressed="false">List</button>'
               '<button type="button" data-set="grid" aria-pressed="true">Grid</button></div>') if views else "<span></span>"
     return f"""<header class="top">
-  <a class="brand" href="{prefix}index.html" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
+  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
   {toggle}
   <div class="top-right">
     <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -115,7 +120,7 @@ def header(current, prefix="", views=False):
 
 def project_header(p, prefix):
     return f"""<header class="top">
-  <a class="brand" href="{prefix}index.html" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
+  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
   <span></span>
   <div class="top-right"><a class="close" href="{prefix}{p['section_page']}">Close</a>{THEME_TOGGLE}</div>
 </header>"""
