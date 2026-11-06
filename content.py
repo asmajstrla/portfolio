@@ -182,7 +182,7 @@ UX = [{'slug': 'disney-dark-mode',
              'images/duo/duo-who-controls.webp',
              'images/duo/duo-customization.webp',
              'images/duo/duo-guest-settings.webp',
-             'images/duo/duo-plus-button.webp'],
+             'images/duo/duo-plus-button-v2.webp'],
   'videos': {},
   'notes': {'images/duo/duo-directions-a.png': ['Native navigation on the Duo',
                                                 'The recommended direction on both screens. On the outer display (left) and '
@@ -205,10 +205,11 @@ UX = [{'slug': 'disney-dark-mode',
                                                    'Guests can make the glass clearer, more opaque, solid, high contrast or '
                                                    'dark. Native bars adapt to all six on their own; a custom bar adapts to '
                                                    'none. These six states became the QA checklist for release.'],
-            'images/duo/duo-plus-button.webp': ['Fixing a confusing + button',
-                                                'Moving to native exposed a problem: two + icons on one screen that did '
-                                                'different things. I explored three fixes and recommended giving every icon '
-                                                'one meaning, so + always means "add."'],
+            'images/duo/duo-plus-button-v2.webp': ['Fixing a confusing + button',
+                                                'Moving to native exposed a problem. Today, My Plans has two + icons that do '
+                                                'different things: the center tab opens shortcuts, and Add Plans adds a plan. '
+                                                'I explored three fixes and recommended giving every icon one meaning, so + '
+                                                'always means "add."'],
            },
   'story': [('The problem',
              "Apple's Liquid Glass and the foldable iPhone Duo arrived at the same time. The Duo has a narrow outer "
