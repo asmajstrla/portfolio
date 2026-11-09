@@ -153,7 +153,9 @@ UX = [{'slug': 'disney-dark-mode',
             'images/lg/lg-who-controls.webp',
             'images/lg/lg-customization.webp',
             'images/lg/lg-guest-settings.webp',
-            'images/lg/lg-options.webp'],
+            'images/lg/lg-options.webp',
+            'images/lg/lg-duo-native.png',
+            'images/lg/lg-duo-split.png'],
  'videos': {},
  'notes': {'images/lg/lg-direction-1.png': ['The recommendation',
                                             "Same app, new glass. Today's tabs and icons stay; Search moves "
@@ -175,7 +177,11 @@ UX = [{'slug': 'disney-dark-mode',
                                                 'custom bar adapts to none.'],
            'images/lg/lg-options.webp': ['Every Liquid Glass option',
                                          'Each feature Apple offers, rated for our first release. A sample '
-                                         'from the tab bar.']},
+                                         'from the tab bar.'],
+           'images/lg/lg-duo-native.png': ['Ready for the iPhone Duo',
+                                           "Native tabs move into the Duo's side strip by the camera on their own, on both the outer and inner displays. One more reason to go native."],
+           'images/lg/lg-duo-split.png': ['A future phase for the Duo',
+                                          'On the open Duo, a split view could show a list beside its details, and the map beside a side panel. Parked until the Duo is a priority.']},
  'story': [('The problem',
             'Apps built with the new iOS SDK get Liquid Glass automatically, and Apple is expected to '
             'require it in 2027. The team needed a plan that works with our mix of native and Flutter '
@@ -190,7 +196,12 @@ UX = [{'slug': 'disney-dark-mode',
             '- Move Search into the round button beside the tab bar\n'
             '- Follow with a navigation cleanup in a later release\n'
             '- Avoid a custom glass look'),
-           ('Why native',
+           ('The iPhone Duo',
+           '- The work started with the foldable iPhone Duo and its new layouts\n'
+           '- Native tabs move into the Duo\'s side strip automatically, which made native the clear choice\n'
+           '- A custom side rail would have repeated what the system already does (3/10)\n'
+           '- A split view for the open Duo has the biggest payoff, so it\'s saved for a later phase'),
+          ('Why native',
             '- Our tab bar is already native, so the lift is low\n'
             '- Follows every accessibility setting and dark mode\n'
             '- Keeps icons readable over busy images\n'
