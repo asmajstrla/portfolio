@@ -94,69 +94,39 @@ UX = [{'slug': 'disney-dark-mode',
   'role': 'Senior Product Designer',
   'result_label': 'Components themed',
   'result': '60+',
-  'summary': "Exploring a dark theme for Disney's parks app, built into the Vista design system so every "
-             'screen and component can switch with its tokens.',
+  'summary': "A dark theme for Disney's parks app, built into the Vista design system.",
   'box_cover': 'images/disney/dark-mode-box-v2.webp',
   'images': ['images/disney/dark-mode-phones-v2.webp',
              'images/disney/dark-mode-components.webp',
              'images/disney/dark-mode-backgrounds.webp',
              'images/disney/dark-mode-checklist.png',
              'images/disney/dark-mode-alerts.png'],
-  'story': [('The problem',
-             'Guests use the parks app all day, often where a bright white screen gets in the way: at '
-             'nighttime shows, in dark ride queues and late in the day on a low battery. The app had no '
-             'dark theme.'),
-            ('Why dark mode',
-             '- Saves battery\n'
-             '- Easier viewing at night\n'
-             '- Less glare in dark rides and indoor queues'),
-            ('The approach',
-             'I built dark mode into the Vista design system so every component switches with tokens. Each '
-             'component was reviewed side by side in light and dark, then the theme was tested on real '
-             'parks app screens.'),
-            ('Roadblocks',
-             '- One "inverse" token was doing two jobs. I split it so text on brand colors stays white while '
-             'true inverse surfaces flip in dark mode.\n'
-             '- Brand colors could only get so light before white text lost contrast. I set a lightness limit so '
-             'every brand fill still passes.\n'
-             '- Toasts, disabled states, map pins and menus fell short on contrast in dark mode. Each was tuned '
-             'until it read clearly.\n'
-             '- Illustration was a new challenge. Other Vista themes, like Cruise and Aulani, are light, so their '
-             'artwork never had to sit on a dark background. Most illustrations hold up, but a few, like the castle '
-             'at the top of the home screen, will need an illustration budget to redraw for dark mode.')],
-  'notes': {'images/disney/dark-mode-components.webp': ['Every component, in both themes',
-                                                      'Dark mode had to work on every single component, not '
-                                                      'just whole screens. We ran each one through both themes '
-                                                      'side by side: calendars, date pickers, dropdowns, '
-                                                      'buttons, search, toggles, checkboxes and segmented '
-                                                      'controls. For each, we checked that it still read '
-                                                      'clearly, kept its contrast and behaved the same way, so '
-                                                      'a selected date or an active toggle is just as obvious '
-                                                      'at night as it is in daylight.'],
-            'images/disney/dark-mode-backgrounds.webp': ['Finding the right background',
-                                                      'A straight dark theme gets very dark, very fast, and '
-                                                      'loses the lightness and brightness people expect from '
-                                                      'Disney. To bring the whimsy and magic back, we tried a '
-                                                      'range of backgrounds on the same Trip Plans screen, '
-                                                      'from flat navy to soft gradients with hints of blue and '
-                                                      'purple. The gradients kept the screen easy on the eyes '
-                                                      'at night while still feeling like a Disney sky.'],
-            'images/disney/dark-mode-checklist.png': ['Trip checklist',
-                                                       'A dense, task-heavy screen. In dark mode, cards '
-                                                       'separate from the background with lighter surfaces '
-                                                       'instead of shadows, which disappear on dark '
-                                                       'backgrounds.'],
-            'images/disney/dark-mode-alerts.png': ['Alert components',
-                                                   'Toasts and badges, light against dark. Status colors '
-                                                   'become deep tinted fills, so success, warning, error and '
-                                                   'info stay easy to tell apart without glowing in a dark '
-                                                   'room, and every badge style keeps its meaning in both '
-                                                   'themes.'],
-            'images/disney/dark-mode-phones-v2.webp': ['Light and dark, side by side',
-                                                    'The trip home screen in both themes, scrolling together '
-                                                    'with the tab bar pinned, so you can compare how '
-                                                    'surfaces, cards, type and brand colors carry over from '
-                                                    'light to dark.']},
+  'story': [('The problem', 'Guests use the app all day, often in the dark. It had no dark theme.'),
+ ('Why dark mode',
+  '- Saves battery\n- Easier viewing at night\n- Less glare in dark rides and indoor queues'),
+ ('The approach',
+  '- Built dark mode into Vista, so every component switches with tokens\n'
+  '- Reviewed every component side by side in light and dark\n'
+  '- Tested the theme on real parks app screens'),
+ ('Roadblocks',
+  '- Split an overloaded "inverse" token so text on brand colors stays white\n'
+  '- Capped how light brand colors can go, so white text keeps its contrast\n'
+  '- Tuned toasts, disabled states, map pins and menus for contrast\n'
+  '- Flagged illustrations, like the home screen castle, that need redrawing for dark backgrounds')],
+  'notes': {'images/disney/dark-mode-alerts.png': ['Alert components',
+                                        'Status colors become deep tinted fills, so success, warning, error '
+                                        'and info stay distinct without glowing.'],
+ 'images/disney/dark-mode-backgrounds.webp': ['Finding the right background',
+                                              'Plain dark felt flat. Soft blue and purple gradients brought '
+                                              'back the Disney magic while staying easy on the eyes.'],
+ 'images/disney/dark-mode-checklist.png': ['Trip checklist',
+                                           'On dark, cards separate with lighter surfaces instead of '
+                                           'shadows.'],
+ 'images/disney/dark-mode-components.webp': ['Every component, in both themes',
+                                             'Each component checked in light and dark, so a selected date '
+                                             'or active toggle is just as clear at night.'],
+ 'images/disney/dark-mode-phones-v2.webp': ['Light and dark, side by side',
+                                            'The same screen in both themes, scrolling together.']},
   'videos': {},
   'phones': {'src': 'images/disney/dark-mode-phones-v2.webp',
              'light': 'images/disney/screen-light.webp',
@@ -240,18 +210,15 @@ UX = [{'slug': 'disney-dark-mode',
   'date': 'February 2024',
   'role': 'UX and web design',
   'result': 'Creating frictionless conversions',
-  'summary': 'A homepage redesign to build trust, simplify navigation and use real imagery so visitors can '
-             'picture themselves using the service.',
+  'summary': 'A homepage redesign that builds trust and gets visitors to the right content faster.',
   'story': [('The problem',
-             'Asbestos.com is a deep, knowledge-based resource, similar to WebMD or Wikipedia. For most of '
-             'its audience, people 65 and older, the sheer amount of information can be overwhelming, and '
-             'the site struggled to guide visitors to the content they needed.'),
-            ('The solution',
-             '- Clear trust signals near the top to build confidence quickly.\n'
-             "- A more visible call to action for the free guide, the site's highest-converting element.\n"
-             '- Entry points for patients, caregivers and medical professionals, so each group finds '
-             'relevant content fast.\n'
-             "- Better search, for information that doesn't live in the top navigation.")],
+  'A huge medical resource for an audience mostly 65 and older. The amount of information made it hard to '
+  'find what they needed.'),
+ ('The solution',
+  '- Trust signals near the top\n'
+  "- A bigger call to action for the free guide, the site's top converter\n"
+  '- Entry points for patients, caregivers and medical professionals\n'
+  '- Better search')],
   'images': ['images/site/hero3.webp',
              'images/site/Before-and-After.webp',
              'images/site/on-screen-asbestos.webp',
@@ -265,25 +232,17 @@ UX = [{'slug': 'disney-dark-mode',
              'images/site/nav-comp.webp': 'images/site/nav-comp.mp4',
              'images/site/video-5.webp': 'images/site/video-5.mp4'},
   'notes': {'images/site/Before-and-After.webp': ['Before and after',
-                                                  'The old layout on the left, the new design on the right.\n'
-                                                  '\n'
-                                                  '- Blue reserved for calls to action.\n'
-                                                  '- Custom video content in place of stock imagery.\n'
-                                                  '- New components to guide visitors, below.'],
-            'images/site/nav-comp.webp': ['New navigation component',
-                                          '- More emphasis on search.\n'
-                                          '- Most-visited pages grouped by audience.\n'
-                                          '- Friendlier, more engaging heading copy.'],
-            'images/site/homepage-2.webp': ['New comparison component',
-                                            'Many visitors find a doctor or lawyer on Asbestos.com and '
-                                            'contact them directly. The comparison tool shows the benefits '
-                                            "of working with the site's patient advocates instead, which led "
-                                            'to more case signings.'],
-            'images/site/homepage-6.webp': ['Mobile mockups', 'The redesigned homepage on mobile.'],
-            'images/site/video-5.webp': ['Mobile functionality',
-                                         'The existing site was static, so I added motion to make the mobile '
-                                         'experience more dynamic and engaging.'],
-            'images/site/full-homepage.webp': ['Full page', 'The complete redesigned homepage.']}},
+                                       'Old on the left, new on the right. Blue is now saved for calls to '
+                                       'action, and custom video replaces stock photos.'],
+ 'images/site/full-homepage.webp': ['Full page', 'The complete redesigned homepage.'],
+ 'images/site/homepage-2.webp': ['New comparison component',
+                                 "Shows the benefits of working with the site's patient advocates, which led "
+                                 'to more case signings.'],
+ 'images/site/homepage-6.webp': ['Mobile mockups', 'The redesigned homepage on mobile.'],
+ 'images/site/nav-comp.webp': ['New navigation component',
+                               'Puts search first and groups the most-visited pages by audience.'],
+ 'images/site/video-5.webp': ['Mobile functionality',
+                              'Added motion to a mobile experience that used to be static.']}},
  {'slug': 'asbestos-com-back-page',
   'title': 'Asbestos.com back pages',
   'box_cover': 'images/site/asbestos-back-pages-box.webp',
@@ -294,19 +253,15 @@ UX = [{'slug': 'disney-dark-mode',
   'date': 'July 2024',
   'role': 'UX and web design',
   'result': 'Conversions up 17%, Google ranking up 2 points on average',
-  'summary': 'A new article template that puts more of the most important content above the fold without '
-             'hurting design or readability.',
+  'summary': 'A new article template that moves the most important content above the fold.',
   'story': [('The problem',
-             "- The layout couldn't fit all the content stakeholders wanted higher on the page.\n"
-             "- Videos took up a lot of space and weren't getting much engagement.\n"
-             "- The primary call to action wasn't as prominent as it could be.\n"
-             '- The page felt flat and hard to read.'),
-            ('The solution',
-             '- More legible typography.\n'
-             '- Stronger separation between the hero and the rest of the page.\n'
-             '- A smaller video, with trust signals and authorship moved up.\n'
-             '- A sticky side navigation that shows more content without distracting readers.\n'
-             '- Higher contrast on the table of contents for easier navigation.')],
+  '- Key content sat too low on the page\n'
+  '- Large videos got little engagement\n'
+  '- The main call to action was easy to miss'),
+ ('The solution',
+  '- A smaller video, with trust signals and authorship moved up\n'
+  '- A sticky sidebar that keeps the call to action in view\n'
+  '- Clearer type and a higher-contrast table of contents')],
   'images': ['images/site/template-featured.webp',
              'images/site/before-after-ux-test.webp',
              'images/site/Full-template.webp',
@@ -316,39 +271,19 @@ UX = [{'slug': 'disney-dark-mode',
              'images/site/pull-quote.webp'],
   'videos': {'images/site/Full-template.webp': 'images/site/Full-template.mp4',
              'images/site/Typography-Update-New-remix-1.webp': 'images/site/Typography-Update-New-remix-1.mp4'},
-  'notes': {'images/site/before-after-ux-test.webp': ['Before and after',
-                                                      'The old layout on the left, the new design on the '
-                                                      'right.\n'
-                                                      '\n'
-                                                      '- Videos had a low click-through rate, so shrinking '
-                                                      'them made the primary call to action more visible.\n'
-                                                      '- A new dark header and a more visible fact-checked '
-                                                      'box build trust.\n'
-                                                      '- Related articles moved from the bottom of the page '
-                                                      'to the sidebar.\n'
-                                                      "- A table of contents bar that's easier to see."],
-            'images/site/Full-template.webp': ['Sidebar',
-                                               'The original template used a single column. A sticky side '
-                                               'navigation fits more content above the fold, moves '
-                                               'recommended reading higher, and keeps the call to action '
-                                               'visible while reading. It also fixed an issue where the call '
-                                               'to action overlapped text on some screen sizes.'],
-            'images/site/before-and-after-1.webp': ['Profile pages',
-                                                    'The old profile layout was cluttered and short on white '
-                                                    'space. The new template moves key content above the '
-                                                    'fold and uses collapsible sections to cut visual '
-                                                    'noise.'],
-            'images/site/Typography-Update-New-remix-1.webp': ['Sticky navigation',
-                                                               'On the old template, readers had to scroll '
-                                                               'back to the top to reach the main '
-                                                               'navigation. The new navigation reappears as '
-                                                               'you scroll up, and the updated table of '
-                                                               'contents no longer gets lost '
-                                                               'white-on-white.'],
-            'images/site/mobile.webp': ['Mobile mockups', 'The new template on mobile.'],
-            'images/site/pull-quote.webp': ['New pull quote style',
-                                            'A more distinct pull quote style for highlighting key '
-                                            'statements.']}},
+  'notes': {'images/site/Full-template.webp': ['Sidebar',
+                                    'A sticky sidebar fits more above the fold and keeps the call to action '
+                                    'visible while reading.'],
+ 'images/site/Typography-Update-New-remix-1.webp': ['Sticky navigation',
+                                                    'The navigation reappears as you scroll up, so readers '
+                                                    'never have to go back to the top.'],
+ 'images/site/before-after-ux-test.webp': ['Before and after',
+                                           'Old on the left, new on the right: a smaller video, a stronger '
+                                           'call to action and related articles moved to the sidebar.'],
+ 'images/site/before-and-after-1.webp': ['Profile pages',
+                                         'More white space and collapsible sections cut the clutter.'],
+ 'images/site/mobile.webp': ['Mobile mockups', 'The new template on mobile.'],
+ 'images/site/pull-quote.webp': ['New pull quote style', 'A bolder pull quote for key statements.']}},
  {'slug': 'red-6-ar',
   'title': 'Red 6 AR website',
   'type': 'Web design',
@@ -358,33 +293,23 @@ UX = [{'slug': 'disney-dark-mode',
   'date': 'January 2023',
   'role': 'Web design and development',
   'result': '',
-  'summary': 'A minimal, modern website for an augmented reality company that builds hardware and software '
-             'for fighter pilot training.',
-  'story': [('The problem',
-             'Red 6 needed a minimal, modern website that would act as a visual gateway into its work. The '
-             'challenge was to deliver a seamless experience while showcasing striking imagery of its '
-             'technology.'),
-            ('The solution',
-             'I worked with Red 6 to build a site that pairs a sleek look with straightforward navigation. '
-             "It reflects the company's forward-thinking culture and tells a clear story about its augmented "
-             'reality products, turning complex technology into something visually striking and easy to '
-             'follow.')],
+  'summary': 'A minimal, modern website for an AR company that trains fighter pilots.',
+  'story': [('The problem', 'Red 6 needed a sleek site that shows off its technology without getting in the way.'),
+ ('The solution',
+  '- A dark, cinematic look with bold imagery and video\n'
+  '- Simple navigation and clear calls to action\n'
+  '- Complex AR products told as a clear, visual story')],
   'images': ['images/site/Untitled-1.webp',
              'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp',
              'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp',
              'images/site/ATARS-Red-6.webp'],
   'videos': {'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': 'images/site/original-a848813faa7e65c0ed97d736165d2ad2.mp4'},
-  'notes': {'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp': ['Layout',
-                                                                           'Dark colors, impactful imagery '
-                                                                           'and video, and clear calls to '
-                                                                           'action guided the design, from '
-                                                                           'the homepage through the full '
-                                                                           'product pages.'],
-            'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': ['Homepage',
-                                                                           'The homepage hero, with video '
-                                                                           'front and center.'],
-            'images/site/ATARS-Red-6.webp': ['Full product page',
-                                             'The ATARS product page from top to bottom.']}}]
+  'notes': {'images/site/ATARS-Red-6.webp': ['Full product page', 'The full ATARS product page.'],
+ 'images/site/original-a848813faa7e65c0ed97d736165d2ad2.webp': ['Homepage',
+                                                                'Video front and center in the hero.'],
+ 'images/site/original-ae1aba409bcef10cc8902e2d34af971f.webp': ['Layout',
+                                                                'Dark colors, bold imagery and clear calls '
+                                                                'to action, from homepage to product pages.']}}]
 
 # ---------------------------------------------------------------------------
 # Brand section. Client pages group pieces (by slug from PIECES) under
