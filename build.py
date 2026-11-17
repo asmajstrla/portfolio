@@ -429,7 +429,7 @@ def build_home():
     picks = [("hawkers-brunch", "brunch"), ("disney-dark-mode", "disney-v2"), ("red-6-ar", "red-6-helmet"), ("hawkers-apparel", "apparel"),
              ("environmental-design", "branding"), ("other-works", "hail-mary"), ("ucf", "ucf"),
              ("hawkers", "hawkers-fox-mask"), ("hawkers", "year-of-the-pig")]
-    files = {"brunch": "hawkers-brunch", "apparel": "hawkers-apparel", "branding": "hawkers-branding"}
+    files = {"brunch": "hawkers-brunch-v2", "apparel": "hawkers-apparel", "branding": "hawkers-branding"}
     featured = [dict(ALL[slug], images=[f"images/home/{files.get(img, img)}.webp"]) for slug, img in picks if slug in ALL]
     first, last = C.NAME.split(" ", 1)
     body = f"""{header("index.html")}
