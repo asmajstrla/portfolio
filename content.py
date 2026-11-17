@@ -328,7 +328,129 @@ BRAND_PROMPTS = {
     "The system": "How the pieces work together: mascot, type, color, voice, and where it shows up.",
 }
 
-CLIENTS = [{'slug': 'hawkers-brunch',
+CLIENTS = [
+ {'slug': 'environmental-design',
+  'title': 'Environmental design',
+  'type': 'Murals, neon, wall wraps and signage',
+  'client': 'Hawkers Asian Street Food and UCF',
+  'year': '2015–2022',
+  'date': '2015–2022',
+  'role': 'Environmental design and art direction',
+  'result': 'Best of Show, Out of Home ADDY',
+  'description': 'Spaces people walk into: hand-painted murals and custom neon for Hawkers restaurants, and '
+                 'large-format wall wraps, vehicle wraps and billboards for UCF.',
+  'cover': 'images/site/hawkers-neon-interior.webp',
+  'box_cover': 'images/site/hawkers-neon-interior.webp',
+  'crop': '37.9% center',
+  'gallery': ['images/site/hawkers-interior-masks.webp',
+              'images/site/gan-bei-neon-wall.webp',
+              'images/site/gan-bei-garden-mural-photo.webp'],
+  'notes': {'images/site/hawkers-interior-masks.webp': ['Restaurant interior',
+                                                        'A Hawkers dining room: hand-painted mask mural, '
+                                                        "custom neon and the brand's colors carried through "
+                                                        'the space.'],
+            'images/site/gan-bei-neon-wall.webp': ['Gan Bei neon wall',
+                                                   'The bar at Gan Bei, layered with poster collage and '
+                                                   'custom neon signs, including the Gan Bei bicycle mark.'],
+            'images/site/gan-bei-garden-mural-photo.webp': ['Gan Bei Garden mural',
+                                                            'The finished Gan Bei Garden mural, painted on '
+                                                            'site, a busy street scene of diners, shops and '
+                                                            'lanterns.'],
+            'images/site/hawkers-neon-interior.webp': ['Hawkers neon interior',
+                                                       'Neon, signage and poster collage layered through a '
+                                                       'Hawkers dining room.']},
+  'story': [('The brief',
+             'At both Hawkers and UCF, a big part of the job was turning walls into part of the brand. At '
+             'Hawkers, every restaurant needed to feel like stepping onto a street in Asia. At UCF, campus '
+             'spaces and public places across Orlando needed to carry the university brand at a large scale.'),
+            ('My role',
+             'I designed most of these pieces myself and drew them by hand before they went up on the walls. '
+             'At Hawkers I also painted multiple murals on location by hand. At UCF I designed wall wraps, '
+             'wayfinding and out-of-home campaigns.'),
+            ('The system',
+             '- Layered street posters at Hawkers, hand-installed on the walls to recreate the way ads stack on '
+             'top of each other on the streets of Asia\n'
+             '- Custom neon signs for Hawkers restaurants\n'
+             '- Hand-painted murals, done on location\n'
+             '- Wall wraps at the UCF Downtown campus and Millican Hall\n'
+             '- Wayfinding for UCF\n'
+             '- Wall wraps at Orlando International Airport (MCO)\n'
+             '- Bus wraps and billboards')],
+  'groups': [('Hawkers murals', ['gan-bei-garden-mural', 'dumplings-and-dragons-mural', 'custom-neons']),
+             ('Hawkers neon signs',
+              ['spicy-smile-neon-sign',
+               'nice-buns-neon',
+               'neon-cocktails',
+               'drink-like-a-fish-neon-sign',
+               'asian-neon-masks',
+               'nom-neon',
+               'lucky-cat-stamp-neon',
+               'the-great-wave-neon']),
+             ('UCF wall wraps and outdoor',
+              ['ucf-mba-downtown-wall-wrap',
+               'ucf-champions-wall-wrap',
+               'ucf-wall-wrap',
+               'ucf-wall-wrap-mural',
+               'big-dreams-orlando-airport-wallwrap',
+               'orlando-downtown-wall-wrap',
+               'ucf-marketing-wall-wrap',
+               'bus-wrap',
+               'ucf-vs-auburn-chick-fil-a-peach-bowl-billboard'])]},
+ {'slug': 'ucf',
+  'title': 'UCF branding',
+  'type': 'Editorial, admissions and print design',
+  'client': 'University of Central Florida',
+  'year': '2015–2018',
+  'description': 'Three years of environmental graphics, admissions publications, Pegasus magazine editorial '
+                 'and campus spirit work for the University of Central Florida.',
+  'role': 'Graphic designer',
+  'result': 'Multiple ADDY and CASE Awards',
+  'story': [('The brief',
+             "UCF is one of the largest universities in the country, and its main marketing department sets the "
+             "look for everything from the alumni magazine to student IDs. The work had to feel like one brand "
+             "across print, web, campus spaces and video."),
+            ('My role',
+             'As a graphic designer in the central marketing department, I helped build and carry the UCF brand. '
+             'I focused mostly on layout and editorial design, created custom illustrations, and art directed '
+             'other designers, illustrators and video shoots.'),
+            ('The system',
+             '- Pegasus, the quarterly alumni magazine, made with a team of 10 designers and project managers\n'
+             '- Admissions materials for future students\n'
+             '- Wall wraps and murals across campus\n'
+             '- Websites, including the UCF homepage\n'
+             '- Art direction for video shoots\n'
+             '- Custom illustration, stickers, student IDs and spirit pieces')],
+  'groups': [('Admissions',
+              ['ucf-viewbook',
+               'ucf-viewbook-full-magazine',
+               'ucf-big-is-editorial-spread',
+               'ucf-book-cover-idea',
+               'ucf-downtown-campus-spread',
+               'be-a-part-of-something-big',
+               'this-is-big-ucf-landing-page',
+               'ucf-campaign-website-impact']),
+             ('Pegasus magazine',
+              ['all-the-buzz-honey-bee-editorial',
+               'hand-drawn-flower-illustration',
+               'drive-on-editorial-racing-story',
+               'ucf-student-debt-infographic',
+               'ucf-global-distribution-infographic',
+               'pegasus-the-space-issue',
+               'citronaut-spread-for-ucf-alumni-magazine',
+               'space-shuttle-discovery',
+               'international-space-station',
+               'ucf-old-mascot-the-citronaut']),
+             ('Spirit and merch',
+              ['ucf-knights-sticker',
+               'pegasus-sticker',
+               'ucf-knights-lapel-pin-concept',
+               'knightro-poster-charge-on',
+               'laser-cut-wood-press-poster',
+               'ucf-student-id-concept'])],
+  'cover': 'images/work/ucf-cover.webp',
+  'box_cover': 'images/site/ucf-pegasus-covers.webp',
+  'crop': '52% center'},
+ {'slug': 'hawkers-brunch',
   'title': 'Hawkers brunch',
   'type': 'Brand campaign, menu and art direction',
   'client': 'Hawkers Asian Street Food',
@@ -408,85 +530,6 @@ CLIENTS = [{'slug': 'hawkers-brunch',
             'images/site/brunch-photo-margarita.webp': ['Brunch margarita', 'From the brunch photoshoot.']},
   'date': '2022',
   'result': '500% ROI in 6 weeks'},
- {'slug': 'hawkers',
-  'title': 'Hawkers branding',
-  'type': 'Brand identity and creative direction',
-  'client': 'Hawkers Asian Street Food',
-  'year': '2018–2022',
-  'description': 'A brand system for a fast-growing Asian street food restaurant group, built to feel as '
-                 'loud, warm and hand-made as the food.',
-  'result': 'Grew from 4 to 15 locations',
-  'sections': {'The brief': 'Hawkers started as a single Orlando restaurant serving the dishes its founders '
-                            'grew up with at street stalls across Asia. As the group expanded, the brand had '
-                            'to travel to new cities without losing the energy of the original: every '
-                            'location needed to feel local and lived-in, not like a chain.\n'
-                            '\n'
-                            'The challenge was to build one system flexible enough for menus, packaging, '
-                            'apparel, signage and full-wall murals, while giving each new restaurant its own '
-                            'personality.',
-               'My role': 'I joined as senior art director and later became creative director, leading an '
-                          'in-house team of designers, photographers and videographers.\n'
-                          '\n'
-                          'I owned the brand end to end: the 40-page brand guidelines, the menu suite, '
-                          'takeout packaging, uniforms and merch, neon signage and seasonal campaigns. I '
-                          'also traveled to new locations to design and paint the murals myself.',
-               'The system': 'Street culture is the anchor for everything we design. The brand borrows the energy of '
-                             'night markets and hawker stalls: bold color, loud art and a lot of hand-drawn '
-                             'illustration.\n'
-                             '\n'
-                             'Asian heritage runs through every piece, and the restaurants lean into Asian holidays '
-                             'like Lunar New Year as reasons to celebrate with guests. The result is an art-forward '
-                             'brand where the artwork does as much of the talking as the food. The work earned '
-                             'Central Florida Art Director of the Year and a string of ADDY awards.'},
-  'groups': [('Identity and mascot', ['japanese-hero-mask-lockup', 'lapel-pins']),
-             ('Lunar New Year and anniversaries',
-              ['happy-new-year-2020-year-of-the-rat', 'year-of-the-ox', 'luck-cat-anniversary-pin']),
-             ('Menus and packaging',
-              ['hawkers-takeout-bag',
-               'hawkers-to-go-cup',
-               'hawkers-beverage-coasters',
-               'foo-dog-drink-coaster',
-               'daruma-lucky-cat-drink-coaster']),
-             ('Illustration',
-              ['street-of-asia',
-               'streets-of-asia',
-               'asian-food-illustrations',
-               'kabuki-mask',
-               'fu-lion-playing-with-noodles',
-               'happy-mother-s-day-nesting-dolls',
-               'nom-com-movie-night',
-               'cute-lucky-cat',
-               'cocktails'])],
-  'cover': 'images/site/hawkers-menu-suite.webp',
-  'box_cover': 'images/site/hawkers-brandbook-box-v2.webp',
-  'gallery': ['images/site/hawkers-menu-suite.webp',
-              'images/site/year-of-the-pig-2019.webp',
-              'images/site/hawkers-doordash-send-noods.webp',
-              'images/site/hawkers-brand-book.webp',
-              'images/site/hawkers-business-cards.webp'],
-  'notes': {'images/site/year-of-the-pig-2019.webp': ['Year of the Pig',
-                                                      'Lunar New Year 2019 artwork: a hand-drawn pig riding '
-                                                      'swirling clouds, finished with halftone texture in '
-                                                      'red and gold.'],
-            'images/site/hawkers-doordash-send-noods.webp': ['Send Noods Plz.',
-                                                             'A Hawkers + DoorDash delivery campaign, built '
-                                                             'around an illustrated plate of noodles and a '
-                                                             'cheeky headline.'],
-            'images/site/hawkers-brand-book.webp': ['Brand book',
-                                                    'The cover of the Hawkers brand book, second edition: '
-                                                    "Food. Service. Vibe. The guide covers the brand's "
-                                                    'voice, photography, type, color and how they come '
-                                                    'together across every location.'],
-            'images/site/hawkers-business-cards.webp': ['Business cards',
-                                                        'Business cards with a collage back built from the '
-                                                        "brand's poster style, mascots and street-food "
-                                                        'photography.'],
-            'images/site/hawkers-menu-suite.webp': ['Menu suite',
-                                                    'The full menu system: small plates, noodles and rice '
-                                                    "with a hand-drawn map of the dishes' origins, craft "
-                                                    'cocktails and saké, and happy hour inserts. Each menu '
-                                                    'uses the same bold red and green type, halftone '
-                                                    'photography and playful callouts.']}},
  {'slug': 'hawkers-apparel',
   'title': 'Hawkers apparel',
   'type': 'Apparel and merch design',
@@ -566,127 +609,85 @@ CLIENTS = [{'slug': 'hawkers-brunch',
                                                            'together in Illustrator, from line art to the '
                                                            'finished color piece.']},
   'videos': {'images/site/certified-trainer-process.webp': 'images/site/certified-trainer-process.mp4'}},
- {'slug': 'ucf',
-  'title': 'UCF branding',
-  'type': 'Editorial, admissions and print design',
-  'client': 'University of Central Florida',
-  'year': '2015–2018',
-  'description': 'Three years of environmental graphics, admissions publications, Pegasus magazine editorial '
-                 'and campus spirit work for the University of Central Florida.',
-  'role': 'Graphic designer',
-  'result': 'Multiple ADDY and CASE Awards',
-  'story': [('The brief',
-             "UCF is one of the largest universities in the country, and its main marketing department sets the "
-             "look for everything from the alumni magazine to student IDs. The work had to feel like one brand "
-             "across print, web, campus spaces and video."),
-            ('My role',
-             'As a graphic designer in the central marketing department, I helped build and carry the UCF brand. '
-             'I focused mostly on layout and editorial design, created custom illustrations, and art directed '
-             'other designers, illustrators and video shoots.'),
-            ('The system',
-             '- Pegasus, the quarterly alumni magazine, made with a team of 10 designers and project managers\n'
-             '- Admissions materials for future students\n'
-             '- Wall wraps and murals across campus\n'
-             '- Websites, including the UCF homepage\n'
-             '- Art direction for video shoots\n'
-             '- Custom illustration, stickers, student IDs and spirit pieces')],
-  'groups': [('Admissions',
-              ['ucf-viewbook',
-               'ucf-viewbook-full-magazine',
-               'ucf-big-is-editorial-spread',
-               'ucf-book-cover-idea',
-               'ucf-downtown-campus-spread',
-               'be-a-part-of-something-big',
-               'this-is-big-ucf-landing-page',
-               'ucf-campaign-website-impact']),
-             ('Pegasus magazine',
-              ['all-the-buzz-honey-bee-editorial',
-               'hand-drawn-flower-illustration',
-               'drive-on-editorial-racing-story',
-               'ucf-student-debt-infographic',
-               'ucf-global-distribution-infographic',
-               'pegasus-the-space-issue',
-               'citronaut-spread-for-ucf-alumni-magazine',
-               'space-shuttle-discovery',
-               'international-space-station',
-               'ucf-old-mascot-the-citronaut']),
-             ('Spirit and merch',
-              ['ucf-knights-sticker',
-               'pegasus-sticker',
-               'ucf-knights-lapel-pin-concept',
-               'knightro-poster-charge-on',
-               'laser-cut-wood-press-poster',
-               'ucf-student-id-concept'])],
-  'cover': 'images/work/ucf-cover.webp',
-  'box_cover': 'images/site/ucf-pegasus-covers.webp',
-  'crop': '52% center'},
- {'slug': 'environmental-design',
-  'title': 'Environmental design',
-  'type': 'Murals, neon, wall wraps and signage',
-  'client': 'Hawkers Asian Street Food and UCF',
-  'year': '2015–2022',
-  'date': '2015–2022',
-  'role': 'Environmental design and art direction',
-  'result': 'Best of Show, Out of Home ADDY',
-  'description': 'Spaces people walk into: hand-painted murals and custom neon for Hawkers restaurants, and '
-                 'large-format wall wraps, vehicle wraps and billboards for UCF.',
-  'cover': 'images/site/hawkers-neon-interior.webp',
-  'box_cover': 'images/site/hawkers-neon-interior.webp',
-  'crop': '37.9% center',
-  'gallery': ['images/site/hawkers-interior-masks.webp',
-              'images/site/gan-bei-neon-wall.webp',
-              'images/site/gan-bei-garden-mural-photo.webp'],
-  'notes': {'images/site/hawkers-interior-masks.webp': ['Restaurant interior',
-                                                        'A Hawkers dining room: hand-painted mask mural, '
-                                                        "custom neon and the brand's colors carried through "
-                                                        'the space.'],
-            'images/site/gan-bei-neon-wall.webp': ['Gan Bei neon wall',
-                                                   'The bar at Gan Bei, layered with poster collage and '
-                                                   'custom neon signs, including the Gan Bei bicycle mark.'],
-            'images/site/gan-bei-garden-mural-photo.webp': ['Gan Bei Garden mural',
-                                                            'The finished Gan Bei Garden mural, painted on '
-                                                            'site, a busy street scene of diners, shops and '
-                                                            'lanterns.'],
-            'images/site/hawkers-neon-interior.webp': ['Hawkers neon interior',
-                                                       'Neon, signage and poster collage layered through a '
-                                                       'Hawkers dining room.']},
-  'story': [('The brief',
-             'At both Hawkers and UCF, a big part of the job was turning walls into part of the brand. At '
-             'Hawkers, every restaurant needed to feel like stepping onto a street in Asia. At UCF, campus '
-             'spaces and public places across Orlando needed to carry the university brand at a large scale.'),
-            ('My role',
-             'I designed most of these pieces myself and drew them by hand before they went up on the walls. '
-             'At Hawkers I also painted multiple murals on location by hand. At UCF I designed wall wraps, '
-             'wayfinding and out-of-home campaigns.'),
-            ('The system',
-             '- Layered street posters at Hawkers, hand-installed on the walls to recreate the way ads stack on '
-             'top of each other on the streets of Asia\n'
-             '- Custom neon signs for Hawkers restaurants\n'
-             '- Hand-painted murals, done on location\n'
-             '- Wall wraps at the UCF Downtown campus and Millican Hall\n'
-             '- Wayfinding for UCF\n'
-             '- Wall wraps at Orlando International Airport (MCO)\n'
-             '- Bus wraps and billboards')],
-  'groups': [('Hawkers murals', ['gan-bei-garden-mural', 'dumplings-and-dragons-mural', 'custom-neons']),
-             ('Hawkers neon signs',
-              ['spicy-smile-neon-sign',
-               'nice-buns-neon',
-               'neon-cocktails',
-               'drink-like-a-fish-neon-sign',
-               'asian-neon-masks',
-               'nom-neon',
-               'lucky-cat-stamp-neon',
-               'the-great-wave-neon']),
-             ('UCF wall wraps and outdoor',
-              ['ucf-mba-downtown-wall-wrap',
-               'ucf-champions-wall-wrap',
-               'ucf-wall-wrap',
-               'ucf-wall-wrap-mural',
-               'big-dreams-orlando-airport-wallwrap',
-               'orlando-downtown-wall-wrap',
-               'ucf-marketing-wall-wrap',
-               'bus-wrap',
-               'ucf-vs-auburn-chick-fil-a-peach-bowl-billboard'])]},
+ {'slug': 'hawkers',
+  'title': 'Hawkers branding',
+  'type': 'Brand identity and creative direction',
+  'client': 'Hawkers Asian Street Food',
+  'year': '2018–2022',
+  'description': 'A brand system for a fast-growing Asian street food restaurant group, built to feel as '
+                 'loud, warm and hand-made as the food.',
+  'result': 'Grew from 4 to 15 locations',
+  'sections': {'The brief': 'Hawkers started as a single Orlando restaurant serving the dishes its founders '
+                            'grew up with at street stalls across Asia. As the group expanded, the brand had '
+                            'to travel to new cities without losing the energy of the original: every '
+                            'location needed to feel local and lived-in, not like a chain.\n'
+                            '\n'
+                            'The challenge was to build one system flexible enough for menus, packaging, '
+                            'apparel, signage and full-wall murals, while giving each new restaurant its own '
+                            'personality.',
+               'My role': 'I joined as senior art director and later became creative director, leading an '
+                          'in-house team of designers, photographers and videographers.\n'
+                          '\n'
+                          'I owned the brand end to end: the 40-page brand guidelines, the menu suite, '
+                          'takeout packaging, uniforms and merch, neon signage and seasonal campaigns. I '
+                          'also traveled to new locations to design and paint the murals myself.',
+               'The system': 'Street culture is the anchor for everything we design. The brand borrows the energy of '
+                             'night markets and hawker stalls: bold color, loud art and a lot of hand-drawn '
+                             'illustration.\n'
+                             '\n'
+                             'Asian heritage runs through every piece, and the restaurants lean into Asian holidays '
+                             'like Lunar New Year as reasons to celebrate with guests. The result is an art-forward '
+                             'brand where the artwork does as much of the talking as the food. The work earned '
+                             'Central Florida Art Director of the Year and a string of ADDY awards.'},
+  'groups': [('Identity and mascot', ['japanese-hero-mask-lockup', 'lapel-pins']),
+             ('Lunar New Year and anniversaries',
+              ['happy-new-year-2020-year-of-the-rat', 'year-of-the-ox', 'luck-cat-anniversary-pin']),
+             ('Menus and packaging',
+              ['hawkers-takeout-bag',
+               'hawkers-to-go-cup',
+               'hawkers-beverage-coasters',
+               'foo-dog-drink-coaster',
+               'daruma-lucky-cat-drink-coaster']),
+             ('Illustration',
+              ['street-of-asia',
+               'streets-of-asia',
+               'asian-food-illustrations',
+               'kabuki-mask',
+               'fu-lion-playing-with-noodles',
+               'happy-mother-s-day-nesting-dolls',
+               'nom-com-movie-night',
+               'cute-lucky-cat',
+               'cocktails'])],
+  'cover': 'images/site/hawkers-menu-suite.webp',
+  'box_cover': 'images/site/hawkers-brandbook-box-v2.webp',
+  'gallery': ['images/site/hawkers-menu-suite.webp',
+              'images/site/year-of-the-pig-2019.webp',
+              'images/site/hawkers-doordash-send-noods.webp',
+              'images/site/hawkers-brand-book.webp',
+              'images/site/hawkers-business-cards.webp'],
+  'notes': {'images/site/year-of-the-pig-2019.webp': ['Year of the Pig',
+                                                      'Lunar New Year 2019 artwork: a hand-drawn pig riding '
+                                                      'swirling clouds, finished with halftone texture in '
+                                                      'red and gold.'],
+            'images/site/hawkers-doordash-send-noods.webp': ['Send Noods Plz.',
+                                                             'A Hawkers + DoorDash delivery campaign, built '
+                                                             'around an illustrated plate of noodles and a '
+                                                             'cheeky headline.'],
+            'images/site/hawkers-brand-book.webp': ['Brand book',
+                                                    'The cover of the Hawkers brand book, second edition: '
+                                                    "Food. Service. Vibe. The guide covers the brand's "
+                                                    'voice, photography, type, color and how they come '
+                                                    'together across every location.'],
+            'images/site/hawkers-business-cards.webp': ['Business cards',
+                                                        'Business cards with a collage back built from the '
+                                                        "brand's poster style, mascots and street-food "
+                                                        'photography.'],
+            'images/site/hawkers-menu-suite.webp': ['Menu suite',
+                                                    'The full menu system: small plates, noodles and rice '
+                                                    "with a hand-drawn map of the dishes' origins, craft "
+                                                    'cocktails and saké, and happy hour inserts. Each menu '
+                                                    'uses the same bold red and green type, halftone '
+                                                    'photography and playful callouts.']}},
  {'slug': 'other-works',
    'title': 'Other works',
    'type': 'Illustration and identity',
