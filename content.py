@@ -226,7 +226,7 @@ UX = [{'slug': 'disney-dark-mode',
   "- A bigger call to action for the free guide, the site's top converter\n"
   '- Entry points for patients, caregivers and medical professionals\n'
   '- Better search')],
-  'images': ['images/site/hero3.webp',
+  'images': ['images/site/hero3-bright.webp',
              'images/site/Before-and-After.webp',
              'images/site/on-screen-asbestos.webp',
              'images/site/homepage-3.webp',
