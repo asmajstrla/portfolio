@@ -149,7 +149,7 @@ UX = [{'slug': 'disney-dark-mode',
  'result': 'Native glass, scored 9/10',
  'summary': "How Disney's parks app should adopt Apple's Liquid Glass, with as little change for guests as "
             'possible.',
- 'box_cover': 'images/lg/lg-box.webp',
+ 'box_cover': 'images/lg/lg-box-v2.webp',
  'images': ['images/lg/lg-before-after.webp',
             'images/lg/lg-scores.webp',
             'images/lg/lg-directions.webp',
