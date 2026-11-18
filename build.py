@@ -468,7 +468,7 @@ def build_home():
   <section class="stage stage-home">
     <div>
       <p class="lede">{escape(C.INTRO)}</p>
-      <h1 class="word long">{escape(first)}<br>{escape(last)}<span class="cred">, {escape(C.CREDENTIAL)}</span></h1>
+      <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>
     </div>
     {tiles(featured, stair=True)}
   </section>
