@@ -785,15 +785,16 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .brief { overflow: hidden; }
   .brief-head::after {
     content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
-    background: linear-gradient(105deg, transparent 28%, color-mix(in srgb, var(--accent, #8eaeff) 40%, transparent) 44%,
-                rgb(255 255 255 / .28) 50%, color-mix(in srgb, var(--accent, #8eaeff) 40%, transparent) 56%, transparent 72%);
-    background-size: 250% 100%; background-position: 130% 0;
+    background: linear-gradient(100deg, transparent 10%, color-mix(in srgb, var(--accent, #8eaeff) 14%, transparent) 28%,
+                color-mix(in srgb, var(--accent, #8eaeff) 32%, transparent) 42%, rgb(255 255 255 / .2) 50%,
+                color-mix(in srgb, var(--accent, #8eaeff) 32%, transparent) 58%, color-mix(in srgb, var(--accent, #8eaeff) 14%, transparent) 72%, transparent 90%);
+    background-size: 300% 100%; background-position: 150% 0;
   }
-  .brief-head.shimmer::after { animation: brief-sweep 1.3s cubic-bezier(.4,0,.2,1) 2 both; }
-  .brief-head.shimmer .brief-chev { animation: brief-nudge 1.2s ease-in-out 2; }
+  .brief-head.shimmer::after { animation: brief-sweep 2.6s cubic-bezier(.45,0,.25,1) 1 both; }
+  .brief-head.shimmer .brief-chev { animation: brief-nudge 1.6s ease-in-out .5s 1; }
   @keyframes brief-sweep {
-    0% { opacity: 1; background-position: 130% 0; }
-    100% { opacity: 1; background-position: -30% 0; }
+    0% { opacity: 1; background-position: 150% 0; }
+    100% { opacity: 1; background-position: -50% 0; }
   }
   @keyframes brief-nudge { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-4px); } }
 }
