@@ -333,6 +333,11 @@ SCRIPT = """<script>
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && brief.classList.contains('open')) set(false); });
     small.addEventListener('change', () => set(false));
+    // a soft light sweeps across the bar once, a second after the page finishes loading
+    const shimmer = () => setTimeout(() => {
+      if (!brief.classList.contains('open')) { head.classList.add('shimmer'); setTimeout(() => head.classList.remove('shimmer'), 2600); }
+    }, 1000);
+    document.readyState === 'complete' ? shimmer() : addEventListener('load', shimmer, { once: true });
   }
 
   // lightbox
