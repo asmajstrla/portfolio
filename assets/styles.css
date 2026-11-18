@@ -762,3 +762,20 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 
 /* "MBA" after the big home-page name: kept in capitals and smaller so the name still leads */
 .word .cred { font-size: .32em; letter-spacing: -0.01em; text-transform: none; font-weight: 600; white-space: nowrap; }
+
+/* hamburger that turns into an X */
+.menu-btn { width: 40px; height: 40px; padding: 0; color: var(--ink); display: none; place-items: center; }
+@media (max-width: 760px) { .menu-btn { display: grid; } }
+.menu-btn .bars { position: relative; display: block; width: 22px; height: 16px; }
+.menu-btn .bars span {
+  position: absolute; left: 0; width: 100%; height: 2px; border-radius: 2px; background: currentColor;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), opacity .2s ease, top .3s cubic-bezier(.2,.8,.2,1);
+}
+.menu-btn .bars span:nth-child(1) { top: 0; }
+.menu-btn .bars span:nth-child(2) { top: 7px; }
+.menu-btn .bars span:nth-child(3) { top: 14px; }
+.menu-btn[aria-expanded="true"] .bars span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.menu-btn[aria-expanded="true"] .bars span:nth-child(2) { opacity: 0; transform: scaleX(.2); }
+.menu-btn[aria-expanded="true"] .bars span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+@media (hover: hover) { .menu-btn:hover { color: var(--accent, var(--ink)); } }
+@media (prefers-reduced-motion: reduce) { .menu-btn .bars span { transition: none; } }

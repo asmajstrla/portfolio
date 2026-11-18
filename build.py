@@ -112,7 +112,7 @@ def header(current, prefix="", views=False):
   <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(FULL_NAME)}, home">{LOGO}</a>
   {toggle}
   <div class="top-right">
-    <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
     <ul class="links" id="menu">{links}</ul></nav>
     {THEME_TOGGLE}
   </div>
@@ -139,7 +139,7 @@ SCRIPT = """<script>
   const mb = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
   mb && mb.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
-    mb.setAttribute('aria-expanded', open); mb.textContent = open ? 'Close' : 'Menu';
+    mb.setAttribute('aria-expanded', open); mb.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
 
   // Disney projects only: a trail of twinkling four-point stars spills off the cursor
