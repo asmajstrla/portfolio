@@ -311,7 +311,6 @@ SCRIPT = """<script>
     const small = matchMedia('(max-width: 760px)');
     const set = open => {
       brief.classList.toggle('open', open); head.setAttribute('aria-expanded', open);
-      head.querySelector('.brief-sub').textContent = open ? 'Swipe down to close' : 'Swipe up to read about this project';
       document.documentElement.classList.toggle('brief-lock', open && small.matches);
       brief.style.transform = '';
     };
@@ -708,9 +707,10 @@ def build_project(p):
 
     body = f"""{project_header(p, pre)}
 <main>
+  <div class="m-title">{eyebrow}<h1>{escape(p["title"])}</h1></div>
   <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
   <section class="brief" aria-label="Project brief">
-  <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span><span class="brief-sub">Swipe up to read about this project</span></button>
+  <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span></button>
   <div class="brief-body" id="brief-body">
   <div class="info info-stack">
     <div class="cs-head">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>
