@@ -120,11 +120,8 @@ def header(current, prefix="", views=False):
 
 
 def project_header(p, prefix):
-    return f"""<header class="top">
-  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(FULL_NAME)}, home">{LOGO}</a>
-  <span></span>
-  <div class="top-right"><a class="close" href="{prefix}{p['section_page']}">Close</a>{THEME_TOGGLE}</div>
-</header>"""
+    # work pages use the main header, so the menu is always one tap away; the project's section is highlighted
+    return header(p["section_page"], prefix)
 
 
 def footer():
@@ -333,11 +330,6 @@ SCRIPT = """<script>
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && brief.classList.contains('open')) set(false); });
     small.addEventListener('change', () => set(false));
-    // a soft light sweeps across the bar once, a second after the page finishes loading
-    const shimmer = () => setTimeout(() => {
-      if (!brief.classList.contains('open')) { head.classList.add('shimmer'); setTimeout(() => head.classList.remove('shimmer'), 3000); }
-    }, 1000);
-    document.readyState === 'complete' ? shimmer() : addEventListener('load', shimmer, { once: true });
   }
 
   // lightbox

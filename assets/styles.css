@@ -780,37 +780,6 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 @media (hover: hover) { .menu-btn:hover { color: var(--accent, var(--ink)); } }
 @media (prefers-reduced-motion: reduce) { .menu-btn .bars span { transition: none; } }
 
-/* brief drawer: one gentle light sweep to hint that it opens */
-@media (max-width: 760px) {
-  .brief { overflow: hidden; }
-  .brief-head::after {
-    content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 70%; pointer-events: none; opacity: 0;
-    transform: translateX(-100%);
-    /* many soft stops so the light fades in and out with no visible edge */
-    background: linear-gradient(100deg,
-      transparent 0%,
-      color-mix(in srgb, var(--accent, #8eaeff) 3%, transparent) 12%,
-      color-mix(in srgb, var(--accent, #8eaeff) 9%, transparent) 24%,
-      color-mix(in srgb, var(--accent, #8eaeff) 17%, transparent) 36%,
-      color-mix(in srgb, var(--accent, #8eaeff) 24%, transparent) 46%,
-      color-mix(in srgb, var(--accent, #8eaeff) 26%, transparent) 50%,
-      color-mix(in srgb, var(--accent, #8eaeff) 24%, transparent) 54%,
-      color-mix(in srgb, var(--accent, #8eaeff) 17%, transparent) 64%,
-      color-mix(in srgb, var(--accent, #8eaeff) 9%, transparent) 76%,
-      color-mix(in srgb, var(--accent, #8eaeff) 3%, transparent) 88%,
-      transparent 100%);
-  }
-  .brief-head.shimmer::after { animation: brief-sweep 2.8s cubic-bezier(.45,0,.25,1) 1 both; }
-  .brief-head.shimmer .brief-chev { animation: brief-nudge 1.6s ease-in-out .5s 1; }
-  @keyframes brief-sweep {
-    /* starts fully off the left edge, ends fully off the right */
-    0% { opacity: 1; transform: translateX(-100%); }
-    100% { opacity: 1; transform: translateX(calc(100% / .7 + 2%)); }
-  }
-  @keyframes brief-nudge { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-4px); } }
-}
-@media (prefers-reduced-motion: reduce) { .brief-head.shimmer::after, .brief-head.shimmer .brief-chev { animation: none; } }
-
 /* phones: hamburger icon sits as far from the theme toggle as the toggle sits from the screen edge
    (the 40px button has 9px of space around its 22px icon, so subtract that) */
 @media (max-width: 760px) { .theme-toggle { margin-left: calc(var(--pad) - 9px); } }
