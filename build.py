@@ -11,6 +11,7 @@ from html import escape
 from pathlib import Path
 
 import content as C
+FULL_NAME = f"{C.NAME}, {C.CREDENTIAL}" if getattr(C, "CREDENTIAL", "") else C.NAME
 
 ROOT = Path(__file__).parent
 
@@ -68,14 +69,14 @@ def palette_link(prefix):
 
 
 def head(title, prefix):
-    full = f"{title} | {C.NAME}" if title else f"{C.NAME} | {C.TITLE}"
+    full = f"{title} | {FULL_NAME}" if title else f"{FULL_NAME} | {C.TITLE}"
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(full)}</title>
-<meta name="description" content="{escape(C.NAME)}, {escape(C.TITLE)}. UX case studies, illustration and graphic design.">
+<meta name="description" content="{escape(FULL_NAME)}, {escape(C.TITLE)}. UX case studies, illustration and graphic design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -108,7 +109,7 @@ def header(current, prefix="", views=False):
               '<button type="button" data-set="list" aria-pressed="false">List</button>'
               '<button type="button" data-set="grid" aria-pressed="true">Grid</button></div>') if views else "<span></span>"
     return f"""<header class="top">
-  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
+  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(FULL_NAME)}, home">{LOGO}</a>
   {toggle}
   <div class="top-right">
     <nav aria-label="Main"><button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -120,7 +121,7 @@ def header(current, prefix="", views=False):
 
 def project_header(p, prefix):
     return f"""<header class="top">
-  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(C.NAME)}, home">{LOGO}</a>
+  <a class="brand" href="{link(prefix, 'index.html')}" aria-label="{escape(FULL_NAME)}, home">{LOGO}</a>
   <span></span>
   <div class="top-right"><a class="close" href="{prefix}{p['section_page']}">Close</a>{THEME_TOGGLE}</div>
 </header>"""
@@ -129,7 +130,7 @@ def project_header(p, prefix):
 def footer():
     links = [(C.LINKEDIN, "LinkedIn"), (C.DRIBBBLE, "Dribbble")]
     nav = "".join(f'<a href="{h}">{escape(l)}</a>' for h, l in links)
-    return f'<footer class="foot"><span>{escape(C.NAME)}, {escape(C.LOCATION)}</span><nav aria-label="Elsewhere">{nav}</nav></footer>'
+    return f'<footer class="foot"><span>{escape(FULL_NAME)} · {escape(C.LOCATION)}</span><nav aria-label="Elsewhere">{nav}</nav></footer>'
 
 
 SCRIPT = """<script>
@@ -467,7 +468,7 @@ def build_home():
   <section class="stage stage-home">
     <div>
       <p class="lede">{escape(C.INTRO)}</p>
-      <h1 class="word long">{escape(first)}<br>{escape(last)}</h1>
+      <h1 class="word long">{escape(first)}<br>{escape(last)}<span class="cred">, {escape(C.CREDENTIAL)}</span></h1>
     </div>
     {tiles(featured, stair=True)}
   </section>
@@ -707,7 +708,7 @@ def build_project(p):
 
     body = f"""{project_header(p, pre)}
 <main>
-  <div class="m-title">{eyebrow}<h1>{escape(p["title"])}</h1></div>
+  <div class="m-title">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>
   <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
   <section class="brief" aria-label="Project brief">
   <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span><svg class="brief-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -734,7 +735,7 @@ def build_project(p):
 
 
 def build_about():
-    portrait = (f'<img src="{C.PORTRAIT}" alt="Portrait of {escape(C.NAME)}">' if C.PORTRAIT
+    portrait = (f'<img src="{C.PORTRAIT}" alt="Portrait of {escape(FULL_NAME)}">' if C.PORTRAIT
                 else '<span class="empty">Add your photo</span>')
     bio = "".join(f"<p>{escape(t)}</p>" for t in C.ABOUT)
     row = lambda a, b_, c: f"<li><span>{escape(a)}</span><span>{escape(b_)}</span><span>{escape(c)}</span></li>"
@@ -755,7 +756,7 @@ def build_about():
 <main>
   <section class="stage stage-about">
     <div>
-      <p class="lede">{escape(C.TITLE)}<br>{escape(C.LOCATION)}</p>
+      <p class="lede">{escape(FULL_NAME)}<br>{escape(C.TITLE)}</p>
       <h1 class="word">About</h1>
     </div>
     <div class="about-portrait">{portrait}</div>

@@ -8,7 +8,8 @@ Edit this file, then run `python3 build.py` to rebuild the pages.
 """
 
 NAME = "Adam Smajstrla"
-TITLE = "Creative Director & Product Design"
+CREDENTIAL = "MBA"          # shown after the name everywhere: "Adam Smajstrla, MBA"
+TITLE = "Creative Director & Product Designer"
 LOCATION = "Central Florida"
 LINKEDIN = "https://www.linkedin.com/in/adam-smajstrla/"
 DRIBBBLE = "https://dribbble.com/smaj"

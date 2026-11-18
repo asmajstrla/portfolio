@@ -752,9 +752,13 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .m-title { display: block; padding: 24px var(--pad) 20px; }
   .m-title .eyebrow { margin-bottom: 10px; }
   .m-title h1 { margin: 0; font-size: clamp(34px, 9vw, 44px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.02; }
-  .brief-body .cs-head .eyebrow, .brief-body .cs-head h1 { display: none; }
-  .brief-body .cs-head .lead p { margin-top: 0; }
+  .brief-body .cs-head { display: none; }
+  .m-title .lead p { margin: 14px 0 0; font-size: 17px; line-height: 1.5; color: color-mix(in srgb, var(--ink) 80%, var(--bg)); }
+  .brief-body .cs-meta.stats { margin-top: 20px; }
 }
 
 .brief-chev { width: 22px; height: 22px; flex: none; color: var(--accent, var(--ink)); transition: transform .3s ease; }
 .brief.open .brief-chev { transform: rotate(180deg); }
+
+/* "MBA" after the big home-page name: kept in capitals and smaller so the name still leads */
+.word .cred { font-size: .32em; letter-spacing: -0.01em; text-transform: none; font-weight: 600; white-space: nowrap; }
