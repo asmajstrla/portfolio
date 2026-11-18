@@ -304,6 +304,37 @@ SCRIPT = """<script>
     addEventListener('resize', fit); wide.addEventListener('change', fit); fit();
   }
 
+  // phones: the project brief lives in a drawer that pulls up from the bottom
+  const brief = document.querySelector('.brief');
+  if (brief) {
+    const head = brief.querySelector('.brief-head'), scrim = document.querySelector('.brief-scrim');
+    const small = matchMedia('(max-width: 760px)');
+    const set = open => {
+      brief.classList.toggle('open', open); head.setAttribute('aria-expanded', open);
+      head.querySelector('.brief-sub').textContent = open ? 'Swipe down to close' : 'Swipe up to read about this project';
+      document.documentElement.classList.toggle('brief-lock', open && small.matches);
+      brief.style.transform = '';
+    };
+    let y0 = null, dy = 0, moved = false;
+    head.addEventListener('click', () => { if (!moved) set(!brief.classList.contains('open')); moved = false; });
+    scrim && scrim.addEventListener('click', () => set(false));
+    head.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; dy = 0; moved = false; brief.classList.add('dragging'); }, { passive: true });
+    head.addEventListener('touchmove', e => {
+      if (y0 === null) return;
+      dy = e.touches[0].clientY - y0; if (Math.abs(dy) > 6) moved = true;
+      const open = brief.classList.contains('open'), h = brief.offsetHeight, peek = head.offsetHeight;
+      const base = open ? 0 : h - peek, y = Math.min(h - peek, Math.max(0, base + dy));
+      brief.style.transform = `translateY(${y}px)`;
+    }, { passive: true });
+    head.addEventListener('touchend', () => {
+      brief.classList.remove('dragging');
+      if (moved) set(brief.classList.contains('open') ? dy < 60 : dy < -60); else brief.style.transform = '';
+      y0 = null;
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && brief.classList.contains('open')) set(false); });
+    small.addEventListener('change', () => set(false));
+  }
+
   // lightbox
   const lb = document.querySelector('.lightbox');
   if (lb) {
@@ -678,12 +709,18 @@ def build_project(p):
     body = f"""{project_header(p, pre)}
 <main>
   <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
+  <section class="brief" aria-label="Project brief">
+  <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span><span class="brief-sub">Swipe up to read about this project</span></button>
+  <div class="brief-body" id="brief-body">
   <div class="info info-stack">
     <div class="cs-head">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>
     <div class="cs-meta stats">{left}</div>
   </div>
   {story}
   {groups}
+  </div>
+  </section>
+  <div class="brief-scrim" aria-hidden="true"></div>
   <nav class="pager" aria-label="More projects">
     <a href="{prev["slug"]}.html"><strong>{escape(prev["title"])}</strong><span>Previous project</span></a>
     <a class="next" href="{nxt["slug"]}.html"><strong>{escape(nxt["title"])}</strong><span>Next project</span></a>
