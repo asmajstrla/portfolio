@@ -710,7 +710,7 @@ def build_project(p):
   <div class="m-title">{eyebrow}<h1>{escape(p["title"])}</h1></div>
   <div class="gallery-slot"><div class="gallery-frame"><div class="gallery">{shots}{next_panel}</div>{GALLERY_NAV}</div></div>
   <section class="brief" aria-label="Project brief">
-  <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span></button>
+  <button class="brief-head" type="button" aria-expanded="false" aria-controls="brief-body"><span class="grip" aria-hidden="true"></span><span class="brief-title">Project brief</span><svg class="brief-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="brief-body" id="brief-body">
   <div class="info info-stack">
     <div class="cs-head">{eyebrow}<h1>{escape(p["title"])}</h1><div class="lead">{desc}</div></div>

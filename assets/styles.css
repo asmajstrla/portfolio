@@ -731,7 +731,7 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .brief.open { transform: translateY(0); }
   .brief.dragging { transition: none; }
   .brief-head {
-    display: grid; grid-template-columns: 1fr; justify-items: start; gap: 2px; flex: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; flex: none;
     min-height: var(--peek); padding: 26px var(--pad) calc(14px + env(safe-area-inset-bottom));
     border: 0; background: none; color: var(--ink); font: inherit; text-align: left; cursor: pointer; position: relative;
     touch-action: none;
@@ -755,3 +755,6 @@ a.ext::after { content: " \2197"; font-size: .9em; }
   .brief-body .cs-head .eyebrow, .brief-body .cs-head h1 { display: none; }
   .brief-body .cs-head .lead p { margin-top: 0; }
 }
+
+.brief-chev { width: 22px; height: 22px; flex: none; color: var(--accent, var(--ink)); transition: transform .3s ease; }
+.brief.open .brief-chev { transform: rotate(180deg); }
