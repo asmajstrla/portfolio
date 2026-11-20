@@ -783,3 +783,13 @@ a.ext::after { content: " \2197"; font-size: .9em; }
 /* phones: hamburger icon sits as far from the theme toggle as the toggle sits from the screen edge
    (the 40px button has 9px of space around its 22px icon, so subtract that) */
 @media (max-width: 760px) { .theme-toggle { margin-left: calc(var(--pad) - 9px); } }
+
+/* ---------- print gallery: masonry columns, images keep their shape ---------- */
+.print-page { padding: clamp(32px, 5vw, 64px) var(--pad) var(--pad); }
+.print-title { margin: 0 0 clamp(24px, 3vw, 40px); font-size: clamp(40px, 5vw, 72px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
+.masonry { list-style: none; margin: 0; padding: 0; columns: 4 280px; column-gap: 16px; }
+.masonry li { break-inside: avoid; margin: 0 0 16px; }
+.masonry .shot { display: block; width: 100%; padding: 0; border: 0; background: var(--tile-bg); cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
+.masonry img { display: block; width: 100%; height: auto; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+@media (hover: hover) { .masonry .shot:hover img { transform: scale(1.03); } }
+@media (max-width: 760px) { .masonry { columns: 2; column-gap: 10px; } .masonry li { margin-bottom: 10px; } }

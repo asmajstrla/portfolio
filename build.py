@@ -769,11 +769,46 @@ def build_about():
     return page("About", body)
 
 
+# print gallery: a copy of every print piece in one masonry grid (not in the main nav)
+PRINT = [
+    # UCF admissions and Pegasus magazine
+    "images/site/ucf-pegasus-covers.webp", "images/work/ucf-viewbook.webp", "images/work/ucf-viewbook-full-magazine.webp",
+    "images/work/ucf-big-is-editorial-spread.webp", "images/work/ucf-book-cover-idea.webp", "images/work/ucf-downtown-campus-spread.webp",
+    "images/work/be-a-part-of-something-big.webp", "images/work/pegasus-the-space-issue.webp",
+    "images/work/citronaut-spread-for-ucf-alumni-magazine.webp", "images/work/all-the-buzz-honey-bee-editorial.webp",
+    "images/work/drive-on-editorial-racing-story.webp", "images/work/ucf-student-debt-infographic.webp",
+    "images/work/ucf-global-distribution-infographic.webp", "images/work/knightro-poster-charge-on.webp",
+    "images/work/laser-cut-wood-press-poster.webp",
+    # Hawkers
+    "images/site/hawkers-menu-suite.webp", "images/site/hawkers-brand-book.webp", "images/site/hawkers-business-cards.webp",
+    "images/site/brunch-menu.webp", "images/site/brunch-poster-basic.webp", "images/site/brunch-poster-rbf.webp",
+    "images/site/brunch-poster-level-up.webp", "images/site/brunch-poster-dtb.webp",
+    "images/work/happy-new-year-2020-year-of-the-rat.webp", "images/work/year-of-the-ox.webp",
+    "images/work/hawkers-takeout-bag.webp", "images/work/hawkers-to-go-cup.webp", "images/work/hawkers-beverage-coasters.webp",
+    "images/work/foo-dog-drink-coaster.webp", "images/work/daruma-lucky-cat-drink-coaster.webp",
+]
+
+
+def build_print():
+    tiles = "".join(f'<li><button class="shot" type="button" aria-label="View larger"><img src="{src}" alt="" loading="lazy"></button></li>'
+                    for src in PRINT if (ROOT / src).exists())
+    body = f"""{header("print.html")}
+<main class="print-page">
+  <h1 class="print-title">Print</h1>
+  <ul class="masonry">{tiles}</ul>
+</main>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Print">
+  <div class="bar"><span>Print</span><button type="button">Close</button></div>
+  <div class="frame"><div class="pic-wrap"><div class="pic"></div>{LB_NAV}</div><aside class="note-panel"></aside></div>
+</div>"""
+    return page("Print", body)
+
+
 def main():
     (ROOT / "work").mkdir(exist_ok=True)
     for old in (ROOT / "work").glob("*.html"):
         old.unlink()
-    files = {"index.html": build_home(), "about.html": build_about()}
+    files = {"index.html": build_home(), "about.html": build_about(), "print.html": build_print()}
     for s in SECTIONS:
         files[s[2]] = {"brand": build_brand, "ux": build_ux}.get(s[0], build_index)(*s)
     for p in ALL.values():
