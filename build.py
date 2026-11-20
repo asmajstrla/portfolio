@@ -779,6 +779,8 @@ PRINT = [
     "images/work/drive-on-editorial-racing-story.webp", "images/work/ucf-student-debt-infographic.webp",
     "images/work/ucf-global-distribution-infographic.webp", "images/work/knightro-poster-charge-on.webp",
     "images/work/laser-cut-wood-press-poster.webp",
+    "images/work/ucf-wall-wrap-mural.webp", "images/work/big-dreams-orlando-airport-wallwrap.webp",
+    "images/work/bus-wrap.webp", "images/work/ucf-vs-auburn-chick-fil-a-peach-bowl-billboard.webp",
     # Hawkers
     "images/site/hawkers-menu-suite.webp", "images/site/hawkers-brand-book.webp", "images/site/hawkers-business-cards.webp",
     "images/site/brunch-menu.webp", "images/site/brunch-poster-basic.webp", "images/site/brunch-poster-rbf.webp",
